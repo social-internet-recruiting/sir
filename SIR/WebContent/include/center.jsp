@@ -17,16 +17,16 @@
     <h2>회원가입</h2>
     <div class="form-group" align="left">
       <label for="email">이름</label>
-      <input class="form-control" id="name" type="text" placeholder="Full Name" >
+      <input class="form-control" id="name" type="text" placeholder="Full Name" required >
     </div>
    	<div class="form-group" align="left">
       <label for="email">이메일</label>
-      <input class="form-control" id="email" type="email" placeholder="Enter email" >
+      <input class="form-control" id="email" type="email" placeholder="Enter email" required>
       <small class="form-text text-muted" id="emailHelp">아이디로 사용하실 이메일 주소를 작성해주세요.</small>
     </div>
     <div class="form-group" align="left">
       <label for="pass">비밀번호</label>
-      <input class="form-control" id="pass" type="password" placeholder="Password">
+      <input class="form-control" id="pass" type="password" placeholder="Password" required>
       <small class="form-text text-muted" id="passHelp">비밀번호는 6자 이상으로 작성해주세요.</small>
     </div>
     <button class="btn btn-primary" type="submit">가입하기</button>

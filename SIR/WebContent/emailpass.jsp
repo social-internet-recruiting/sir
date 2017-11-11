@@ -21,7 +21,7 @@
   	<h2>이메일 인증 절차</h2>
     <div class="form-group" >
     	<p>작성해주신 이메일로 인증번호를 전송하였습니다.</p>
-		<input class="form-control" id="emailpass" type="text" placeholder="Write here" >
+		<input class="form-control" id="emailpass" type="text" placeholder="Write here" required >
 		<small class="form-text text-muted" id="emailHelp">인증번호를 입력해주세요.</small>
     </div>
     <button class="btn btn-primary" type="submit">인증</button>
