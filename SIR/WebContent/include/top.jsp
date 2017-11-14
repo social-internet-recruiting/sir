@@ -10,16 +10,9 @@
 </head>
 <html>
 <header>
-	<%
-		String email = null;
-		if (session.getAttribute("email") != null) {
-			email = (String) session.getAttribute("email");
-		}
-		
-	%>
-
+<a class="navbar-brand" href="main.jsp"><img src="./images/sir.gif" height="100" width="200"></a>
 <nav class="navbar navbar-expand-lg navbar-blue bg-blue">
-<a class="navbar-brand" href="main.jsp"><img src="images/sir.gif" height="100" width="200"></a>
+
 <button class="navbar-toggler" aria-expanded="false" aria-controls="navbarColor01" aria-label="Toggle navigation" type="button" data-toggle="collapse" data-target="#navbarColor01">
 	<span class="navbar-toggler-icon"></span>
 </button>
@@ -36,9 +29,6 @@
     	    	<a class="nav-link" href="#">About</a>
    			</li>
    		 </ul>
-   		 	<%
-				if(email == null) {
-			%>
     	<form class="form-inline my-2 my-lg-0">
       	<div class="input-group">
       		<span class="input-group-addon"><img src="images/login.jpg"></span>
@@ -49,23 +39,6 @@
          	<input id="password" type="password" class="form-control" name="password" value="" placeholder="Password">                                        
       	</div>
 	 	<button type="submit" class="btn btn-primary">Login</button>
-	 		<%
-				} else {
-			%>
-			<ul class="nav navbar-nav navbar-right">
-				<li class="dropdown">
-					<a href="#" class="dropdown-toggle"
-						data-toggle="dropdown" role="button" aria-haspopup="true"
-						aria-expanded="false">회원관리<span class="caret"></span></a>
-					<ul class="dropdown-menu">
-						<li><a href="logout.jsp">로그아웃</a></li>
-						<li><a href="modifymember.jsp">회원정보수정</a></li>
-					</ul>	
-				</li>
-			</ul> 
-			<%
-				}
-			%>
     	</form>
 	</div>
 </nav>

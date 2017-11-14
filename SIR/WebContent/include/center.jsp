@@ -9,7 +9,8 @@
 <link rel="stylesheet" href="../css/custom.css">
 <title>JSP 게시판 웹 사이트</title>
 </head>
-<body>
+<body class="wrapper">
+<div class="logo"><img src="./images/sir.gif"></div>
 <center class="container" style="background-color:#E1F5FA">
 <form method="post" action="emailpass.jsp">
   	<div>&nbsp;</div>
@@ -17,19 +18,23 @@
     <h2>회원가입</h2>
     <div class="form-group" align="left">
       <label for="email">이름</label>
-      <input class="form-control" id="name" type="text" placeholder="Full Name" required >
+      <input class="form-control" id="name" type="text" placeholder="Full Name" >
     </div>
    	<div class="form-group" align="left">
       <label for="email">이메일</label>
-      <input class="form-control" id="email" type="email" placeholder="Enter email" required>
+      <input class="form-control" id="email" type="email" placeholder="Enter email" >
       <small class="form-text text-muted" id="emailHelp">아이디로 사용하실 이메일 주소를 작성해주세요.</small>
     </div>
     <div class="form-group" align="left">
       <label for="pass">비밀번호</label>
-      <input class="form-control" id="pass" type="password" placeholder="Password" required>
+      <input class="form-control" id="pass" type="password" placeholder="Password">
       <small class="form-text text-muted" id="passHelp">비밀번호는 6자 이상으로 작성해주세요.</small>
     </div>
     <button class="btn btn-primary" type="submit">가입하기</button>
+    <div>&nbsp;</div>
+    <div>
+      <button class="btn btn-facebook" href="#"><img src="./images/facebook2.png" height="30" weight="30">&nbsp;&nbsp;&nbsp;facebook으로 로그인하기</button>
+    </div>
     <div>&nbsp;</div>
   </fieldset>
 </form>
