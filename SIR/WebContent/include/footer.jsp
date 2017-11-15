@@ -5,7 +5,7 @@
 	<div align="center" id="copy">
 		All contents Copyright 2017 SIR 
 		Inc. all rights reserved<br>
-		Contact mail:sir@sir.com Tel +82 051 123 4567
+		Contact mail:social_recruiting@naver.com +82 051 123 4567
 		Fax +82 51 123 4567
 	</div>
 	<div align="center" id="social">

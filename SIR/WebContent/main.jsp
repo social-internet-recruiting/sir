@@ -11,9 +11,16 @@
 <meta name="viewport" content="width=device-width" , initial-scale="1">
 <link rel="stylesheet" href="./css/bootstrap.css">
 <link rel="stylesheet" href="./css/custom.css">
+
 <title>Insert title here</title>
 </head>
 <body>
+
+<c:set var="center" value="${param.center}"/>
+<c:if test="${center == null}">
+	<c:set var="center" value="/include/register.jsp"/>
+</c:if>
+ 
 <!-- header 부분  시작-->
 <header>
 <jsp:include page="/include/top.jsp"/>
@@ -22,8 +29,9 @@
 	
 <!-- center 부분 시작-->
 <center>
-<jsp:include page="/include/center.jsp"/>
+<jsp:include page="${center}"/>
 </center>
+
 <!-- center 부분 끝 -->
 	
 <!-- footer 부분 시작 -->
@@ -32,14 +40,6 @@
 </footer>	
 <!-- footer 부분 끝 -->
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-	<script src="../js/bootstrap.js"></script>
+	<script src="./js/bootstrap.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-
-

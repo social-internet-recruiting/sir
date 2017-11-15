@@ -1,12 +1,24 @@
+
+<%@page import="net.member.db.MemberDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width" , initial-scale="1">
-<link rel="stylesheet" href="../css/bootstrap.css">
-<link rel="stylesheet" href="../css/custom.css">
 <title>JSP 게시판 웹 사이트</title>
+<%
+	Cookie[] cookies = request.getCookies();
+	MemberDao memDao = new MemberDao();
+	String email = memDao.getEmailInCookie(cookies);
+
+	if(email != null){ //email 값 있으니깐 로그인 화면으로
+%>
+	<h1>TOP 부분이에요 성웅씨 여기 꾸며 주세요</h1>
+<%
+	} else { // 로그인 안된 화면
+%>  
+
 </head>
 <html>
 <header>
@@ -32,19 +44,18 @@
     	<form class="form-inline my-2 my-lg-0">
       	<div class="input-group">
       		<span class="input-group-addon"><img src="images/login.jpg"></span>
-			<input id="email" type="email" class="form-control" name="email" value="" placeholder="Email Address">                                        
+			<input id="loginemail" type="email" class="form-control" name="loginemail" value="" placeholder="Email Address">                                        
 		</div>
 	 	<div class="input-group">
       		<span class="input-group-addon"><img src="images/password.jpg"></span>
-         	<input id="password" type="password" class="form-control" name="password" value="" placeholder="Password">                                        
+         	<input id="loginpass" type="password" class="form-control" name="loginpass" value="" placeholder="Password">                                        
       	</div>
 	 	<button type="submit" class="btn btn-primary">Login</button>
     	</form>
 	</div>
 </nav>
-	
-	
-	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-	<script src="../js/bootstrap.js"></script>
 </header>
+<%
+	}
+%>
 </html>
