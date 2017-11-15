@@ -142,6 +142,8 @@ body {
 }
 .logo { width:235px; margin:50px auto 50px;}    
 .logo img { width:212px; height:76px;}
+.logo1 { width:235px; margin:50px auto 50px;}  
+.logo1 img { width:76px; height:76px;}
 
 [tabindex="-1"]:focus {
   outline: none !important;

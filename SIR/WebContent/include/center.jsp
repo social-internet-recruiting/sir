@@ -10,7 +10,7 @@
 <title>JSP 게시판 웹 사이트</title>
 </head>
 <body class="wrapper">
-<div class="logo"><img src="./images/sir.gif"></div>
+<div class="logo1"><img src="./images/sir1.gif"></div>
 <center class="container" style="background-color:#E1F5FA">
 <form method="post" action="emailpass.jsp">
   	<div>&nbsp;</div>
