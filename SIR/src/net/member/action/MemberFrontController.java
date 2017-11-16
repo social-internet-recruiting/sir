@@ -16,7 +16,7 @@ public class MemberFrontController extends HttpServlet {
 	
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");		
-		response.setContentType("text/plain; charset=UTF-8");
+		response.setContentType("text/html;charset=UTF-8");
 		
 		String RequestURI=request.getRequestURI();
 		//System.out.println(RequestURI);
@@ -40,8 +40,8 @@ public class MemberFrontController extends HttpServlet {
 				PrintWriter out = response.getWriter();
 				out.println("<script>");
 				out.println("alert('아이뒤와 비밀번호를 확인하세요');");
+				out.println("location.href='./main.jsp';");
 				out.println("</script>");
-				out.println("location.href='./main.jsp'");
 				out.close();
 			}
 
