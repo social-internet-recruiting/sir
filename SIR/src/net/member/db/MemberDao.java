@@ -60,7 +60,7 @@ public class MemberDao {
 		try {
 			con = getConnection();
 			
-			String sql = "insert into member values (null,?,?,?)";
+			String sql = "insert into member values (null,?,?,?,null)";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, name);
 			pstmt.setString(2, email);
@@ -90,10 +90,36 @@ public class MemberDao {
 			System.out.println("getDomain  " + cookie.getDomain());
 			System.out.println("getValue  " + cookie.getValue());
 */
-			if(cookie.getName().equals("email")){
+			if(cookie.getName().equals("sirEmailId")){
 				return cookie.getValue();
 			}
 		}
 		return null;
+	}
+	
+	
+	// 로그인 하기 위해서 체크 
+	public boolean checkUser(String email, String pass) {
+		boolean check = false;
+		
+		try {
+			con = getConnection();
+			
+			String sql = "SELECT email FROM member WHERE email=? and pass=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, email);
+			pstmt.setString(2, pass);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) check = true;
+			else check = false;
+		} catch(Exception e) {
+			System.out.println("checkUser()메서드에서 에러 : " + e);
+		} finally {
+			freeResource();
+		}
+		
+		return check;
 	}	
 }

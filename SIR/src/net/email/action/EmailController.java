@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import net.cookie.action.CookieAction;
 import net.member.db.MemberDao;
 
 public class EmailController extends HttpServlet {
@@ -41,14 +42,9 @@ public class EmailController extends HttpServlet {
 
 			String certcode = emailAction.getCertCode(request, response); // sir + 랜덤 10자리 얻음
 			
-			Cookie codeCookie = new Cookie("certcode", certcode);
-			codeCookie.setMaxAge(60*5); // 5분간 유지
-			response.addCookie(codeCookie);
-			
-			// cookie 에 email 값 저장할것 // 로그인 할때도 동일하게 저장해야됨
-			Cookie emailCookie = new Cookie("email", email);
-			emailCookie.setMaxAge(60*60*24*365); // 1년간 유지
-			response.addCookie(emailCookie);
+			// 생성된 code 값 cookie에 저장
+			CookieAction cookieAction = new CookieAction();
+			cookieAction.generateCertCode(request, response, certcode);
 
 			//registerOk.jsp에서 회원가입 완료 시켜줄 parameter 값 넘겨주기 위함
 			String addParam = "&certcode=" + certcode + "&email=" + email + "&pass=" + pass + "&name=" + name;

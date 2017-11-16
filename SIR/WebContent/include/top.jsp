@@ -1,4 +1,3 @@
-
 <%@page import="net.member.db.MemberDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -14,7 +13,9 @@
 	Cookie[] cookies = request.getCookies();
 	MemberDao memDao = new MemberDao();
 	String email = memDao.getEmailInCookie(cookies);
-
+	
+	System.out.println("email ID : " + email); // 확인용 좀있다 삭제 할 것
+	
 	if(email != null){ //email 값 있으니깐 로그인 화면으로
 %>
 <nav class="navbar navbar-expand-lg navbar-blue bg-blue">
@@ -43,9 +44,9 @@
 						<li><a href="#"><img src="./images/profile.jpg" style="height:150px; weight:150px;" align="center"></a></li>
 						<li><a href="#" style="font-size:20px;" align="center">회원정보조회</a></li>
 						<li><a href="#" style="font-size:20px;" align="center">회원정보수정</a></li>
-						<li><a href="#" style="font-size:20px;" align="center">로 그 아 웃</a></li>
+						<li><a href="./removeEmailId.cookie" style="font-size:20px;" align="center">로 그 아 웃</a></li>
 					</ul>
-					</button>	
+					</button>
 				</li>
    		 </ul>
    		 
@@ -60,7 +61,7 @@
 <nav class="navbar navbar-expand-lg navbar-blue bg-blue">
 <a class="navbar-brand" href="main.jsp"><img src="./images/sir.gif" height="100" width="200"></a>
 	<div class="collapse navbar-collapse" id="navbarColor01">
-    	<form class="form-inline login-1">
+    	<form class="form-inline login-1" action="./login.mem" method="post">
       	<div class="input-group">
       		<span class="input-group-addon"><img src="images/login.jpg"></span>
 			<input id="loginemail" type="email" class="form-control" name="loginemail" value="" placeholder="Email Address">                                        
