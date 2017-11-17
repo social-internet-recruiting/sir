@@ -62,7 +62,7 @@ public class EmailAction {
 	public boolean sendEmailToCertMethod(String email, String addParam) {
 		String subject = 	"반갑습니다. SIR 인증 메일 입니다.";
 		String content = 	"아래 링크를 클릭하세요<br/>"
-							+ "<a target='_blank' href='http://localhost/SIR/main.jsp?center=registerOk.jsp" + addParam + "'>인증받기</a><br/>"
+							+ "<a target='_blank' href='http://localhost:8080/SIR/main.jsp?center=registerOk.jsp" + addParam + "'>인증받기</a><br/>"
 							+ "5분 이내에 링크 클릭하세요. <br/>"
 							+ "로그인 완료된 창이 실행됩니다.";
 		boolean result = sendEmail(email, subject, content);
@@ -76,25 +76,22 @@ public class EmailAction {
 			sb.append(n);
 		}
 		String code = "sir" + sb.toString();
-		
-		// cookie 에  code 값이 있는지 확인할것, 값 중복이면 다시 생성할것
-		Cookie[] cookies = request.getCookies();
-		String check = getCertCodeInCookie(cookies, code);
-		if (check != null){ // 중복이면 재귀함수 호출, 테스트 케이스 검사는 어려움
-			getCertCode(request, response);  
-		}
+
 		return code;
 	}
 	
 	// 쿠키값에서 certcode 값 가져오는 logic
-	public String getCertCodeInCookie(Cookie[] cookies, String code){
+	// certCode 가져오는건 value를 비교해서 가져오는게 맞는거 같다. 
+	// 메일 두번 연속 보냈을경우 최신 메일의 코드만 유효하게 하려면 sirCertCode라는 이름의 cookie가 있는게 중요한게 아니고
+	// 마지막 메일 보낸 인증값이 있어야 되기 때문에
+	public String getCertCodeInCookie(Cookie[] cookies, String certcode){
 
 		if (cookies==null){
 			return null;
 		}
 		
 		for(Cookie cookie : cookies){
-			if(cookie.getValue().equals(code)){
+			if(cookie.getValue().equals(certcode)){
 				return cookie.getValue();
 			}
 		}

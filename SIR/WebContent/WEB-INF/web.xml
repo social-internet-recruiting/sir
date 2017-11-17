@@ -9,14 +9,12 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-  
   <resource-ref>
     <description>Connection</description>
     <res-ref-name>jdbc/sir</res-ref-name>
     <res-type>javax.sql.DataSource</res-type>
     <res-auth>Container</res-auth>
   </resource-ref>
-  
   <servlet>
     <servlet-name>EmailController</servlet-name>
     <servlet-class>net.email.action.EmailController</servlet-class>
@@ -25,5 +23,23 @@
     <servlet-name>EmailController</servlet-name>
     <url-pattern>*.email</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>CookieController</servlet-name>
+    <servlet-class>net.cookie.action.CookieController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CookieController</servlet-name>
+    <url-pattern>*.cookie</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>MemberFrontController</servlet-name>
+    <servlet-class>net.member.action.MemberFrontController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MemberFrontController</servlet-name>
+    <url-pattern>*.mem</url-pattern>
+  </servlet-mapping>  
   
 </web-app>
