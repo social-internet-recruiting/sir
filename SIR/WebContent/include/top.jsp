@@ -8,14 +8,14 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width" , initial-scale="1">
 <title>JSP 게시판 웹 사이트</title>
-<%-- <%
+<%
 	Cookie[] cookies = request.getCookies();
 	MemberDao memDao = new MemberDao();
 	String email = memDao.getEmailInCookie(cookies);
 
 	if(email != null){ //email 값 있으니깐 로그인 화면으로
 %>
- --%><nav class="navbar navbar-expand-lg navbar-blue bg-blue">
+<nav class="navbar navbar-expand-lg navbar-blue bg-blue">
 <a class="navbar-brand" href="main.jsp"><img src="images/sir.gif" height="100" width="200"></a>
     <ul class="navbar-nav mr-auto login-1">
     	<form class="form-inline my-2 my-lg-0">
@@ -48,7 +48,7 @@
    		 </ul>
    		 
 </nav>
-<%-- <%
+<%
 	} else { // 로그인 안된 화면
 %>
 
@@ -73,5 +73,5 @@
 </nav>
 <%
 	}
-%> --%>
+%>
 </html>
