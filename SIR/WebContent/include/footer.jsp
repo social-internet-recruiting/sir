@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<footer>
 	<hr>
 	<div align="center" id="copy">
 		All contents Copyright 2017 SIR 
@@ -14,4 +13,3 @@
 	<div align="right">
 	<button class="btn btn-outline-warning" type="button" onclick='location.href="calander.jsp"'>Calander</button>
 	</div>
-</footer>

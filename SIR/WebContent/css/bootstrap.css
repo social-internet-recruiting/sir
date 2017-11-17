@@ -143,7 +143,7 @@ body {
 .logo { width:235px; margin:50px auto 50px;}    
 .logo img { width:212px; height:76px;}
 .logo1 { width:235px; margin:50px auto 50px;}  
-.logo1 img { width:76px; height:76px;}
+.logo1 img { width:200px; height:200px;}
 
 [tabindex="-1"]:focus {
   outline: none !important;
@@ -654,7 +654,7 @@ pre code {
 }
 
 .container {
-  width: 20%;
+  width: 300px;
   padding-right: 15px;
   padding-left: 15px;
   margin: 0px auto 50px auto;
@@ -2508,6 +2508,7 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
           align-items: center;
 }
 
+
 .form-inline .form-check {
   width: 100%;
 }
@@ -2688,6 +2689,7 @@ fieldset[disabled] a.btn {
   color: #fff;
   background-color: #4469fd;
   border-color: #4469fd;
+  width: 70c%;
 	
 }
 
@@ -3281,10 +3283,10 @@ tbody.collapse.show {
   z-index: 1000;
   display: none;
   float: left;
-  min-width: 10rem;
+  min-width: 20rem;
   padding: 0.5rem 0;
   margin: 0.125rem 0 0;
-  font-size: 0.875rem;
+  font-size: 10rem;
   color: #919aa1;
   text-align: left;
   list-style: none;
@@ -7888,6 +7890,14 @@ a.bg-dark:focus, a.bg-dark:hover {
 .my-2 {
   margin-top: 0.5rem !important;
 }
+.login-1 {
+	position: absolute;
+	right: 16px;
+}
+.login-2 {
+	position: absolute;
+	float: right;
+}
 
 .mr-2,
 .mx-2 {
@@ -9411,8 +9421,9 @@ th {
 }
 
 .dropdown-menu {
-  font-size: 0.765625rem;
+  margin:auto;
   text-transform: none;
+  text-align: center;
 }
 
 
@@ -10150,14 +10161,107 @@ table.fc-header{
 	}
 
       
-	/*로그인박스*/
-.login_box  .login input {  
-width:100%; 
-height:55px; 
-background-color:#00a6de; 
-color:#fff; 
-font-size:16px; 
-padding:17px 0 16px; 
-border:0; 
-cursor:pointer; 
-font-family:'돋움';
+.dropdown {
+  position: relative;
+}
+.dropdown-toggle:focus {
+  outline: 0;
+}
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  display: none;
+  float: left;
+  min-width: 160px;
+  padding: 5px 0;
+  margin: 2px 0 0;
+  list-style: none;
+  font-size: 14px;
+  text-align: left;
+  background-color: #222222;
+  border: 1px solid #444444;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+  -webkit-background-clip: padding-box;
+          background-clip: padding-box;
+}
+.dropdown-menu.pull-right {
+  right: 0;
+  left: auto;
+}
+.dropdown-menu .divider {
+  height: 1px;
+  margin: 9px 0;
+  overflow: hidden;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.dropdown-menu > li > a {
+  display: block;
+  padding: 3px 20px;
+  clear: both;
+  font-weight: normal;
+  line-height: 1.42857143;
+  color: #ffffff;
+  white-space: nowrap;
+}
+.dropdown-menu > li > a:hover,
+.dropdown-menu > li > a:focus {
+  text-decoration: none;
+  color: #ffffff;
+  background-color: #2a9fd6;
+}
+.dropdown-menu > .active > a,
+.dropdown-menu > .active > a:hover,
+.dropdown-menu > .active > a:focus {
+  color: #ffffff;
+  text-decoration: none;
+  outline: 0;
+  background-color: #2a9fd6;
+}
+.dropdown-menu > .disabled > a,
+.dropdown-menu > .disabled > a:hover,
+.dropdown-menu > .disabled > a:focus {
+  color: #888888;
+}
+.dropdown-menu > .disabled > a:hover,
+.dropdown-menu > .disabled > a:focus {
+  text-decoration: none;
+  background-color: transparent;
+  background-image: none;
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+  cursor: not-allowed;
+}
+.open > .dropdown-menu {
+  display: block;
+}
+.open > a {
+  outline: 0;
+}
+.dropdown-menu-right {
+  left: auto;
+  right: 0;
+}
+.dropdown-menu-left {
+  left: 0;
+  right: auto;
+}
+.dropdown-header {
+  display: block;
+  padding: 3px 20px;
+  font-size: 12px;
+  line-height: 1.42857143;
+  color: #888888;
+  white-space: nowrap;
+}
+.dropdown-backdrop {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  z-index: 990;
+}
