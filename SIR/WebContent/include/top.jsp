@@ -2,7 +2,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width" , initial-scale="1">
@@ -17,12 +16,14 @@
 	if(email != null){ //email 값 있으니깐 로그인 화면으로
 %>
 <nav class="navbar navbar-expand-lg navbar-blue bg-blue">
+<div>
 <a class="navbar-brand" href="main.jsp"><img src="images/sir.gif" height="100" width="200"></a>
-    <ul class="navbar-nav mr-auto login-1">
-    	<form class="form-inline my-2 my-lg-0">
+</div>
+		<form class="form-inline search-1" style="float:left">
     	<input class="form-control mr-sm-2" type="text" placeholder="Search">
      	<button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
     	</form>
+    <ul class="navbar-nav mr-auto login-1" style="min-width:10px;">
 			<li class="nav-item active">
     	    	<a class="nav-link" href="main.jsp"style="margin-left:25px">Home</a>
     	  	</li>
@@ -40,15 +41,19 @@
 						aria-expanded="false" style="font-size:20px">회원정보<span class="caret"></span></a>
 					<ul class="dropdown-menu login-1" style="margin-top:50px">
 						<li><a href="#"><img src="./images/profile.jpg" style="height:150px; weight:150px;" align="center"></a></li>
-						<li><a href="#" style="font-size:20px;" align="center">회원정보조회</a></li>
-						<li><a href="#" style="font-size:20px;" align="center">회원정보수정</a></li>
+						<li><a href="myInfo.jsp" style="font-size:20px;" align="center">회원정보조회</a></li>
+						
+						<li><a href="main.jsp" style="font-size:20px;" align="center" data-toggle="modal" data-target="#mymodal">회원정보수정</a>							
+						</li>
+						
 						<li><a href="./removeEmailId.cookie" style="font-size:20px;" align="center">로 그 아 웃</a></li>
 					</ul>
-					</button>
-				</li>
+				</button>
+			</li>
    		 </ul>
-   		 
 </nav>
+
+
 <%
 	} else { // 로그인 안된 화면
 %>

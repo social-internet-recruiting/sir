@@ -51,9 +51,9 @@
     </div>
     <button class="btn btn-primary" type="submit">가입하기</button>
     <div>&nbsp;</div>
-    <div>
+<!--     <div>
       <button class="btn btn-facebook" href="#"><img src="./images/facebook2.png" height="30" weight="30">&nbsp;&nbsp;&nbsp;facebook으로 로그인하기</button>
-    </div>
+    </div> -->
     <div>&nbsp;</div>
   </fieldset>
 </form>

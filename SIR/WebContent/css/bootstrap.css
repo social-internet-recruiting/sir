@@ -5653,9 +5653,9 @@ button.close {
 
 .modal {
   position: fixed;
-  top: 0;
+  top: 100px;
   right: 0;
-  bottom: 0;
+  bottom: 100px;
   left: 0;
   z-index: 1050;
   display: none;
@@ -5722,6 +5722,7 @@ button.close {
   left: 0;
   z-index: 1040;
   background-color: #000;
+  opacity:0.3;
 }
 
 .modal-backdrop.fade {
@@ -10264,4 +10265,11 @@ table.fc-header{
   bottom: 0;
   top: 0;
   z-index: 990;
+}
+
+.search-1 {
+	float: left;
+	margin: 0 auto;
+	width: 30%;
+	
 }

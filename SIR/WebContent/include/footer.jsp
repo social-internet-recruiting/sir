@@ -7,9 +7,9 @@
 		Contact mail:social_recruiting@naver.com +82 051 123 4567
 		Fax +82 51 123 4567
 	</div>
-	<div align="center" id="social">
+	<!-- <div align="center" id="social">
 		<a><img src="./images/facebook.png" width="33" height="33" >&nbsp;Facebook</a>
-	</div>
+	</div> -->
 	<div align="right">
 	<button class="btn btn-outline-warning" type="button" onclick='location.href="calander.jsp"'>Calander</button>
 	</div>
