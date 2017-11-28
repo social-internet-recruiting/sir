@@ -1,7 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-
-<%--jstl core라이브러리 사용을 위한 선언 (jstl 태그 사용을 위한 선언) --%>    
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     
 <!DOCTYPE html>
@@ -16,11 +13,6 @@
 </head>
 <body>
 
-<c:set var="center" value="${param.center}"/>
-<c:if test="${center == null}">
-	<c:set var="center" value="/include/register.jsp"/>
-</c:if>
- 
 <!-- header 부분  시작-->
 <header>
 <jsp:include page="/include/top.jsp"/>
@@ -28,6 +20,12 @@
 <!-- header 부분 끝 -->
 	
 <!-- center 부분 시작-->
+
+<c:set var="center" value="${param.center}"/>
+<c:if test="${center == null}">
+	<c:set var="center" value="/include/register.jsp"/>
+</c:if>
+ 
 <center>
 <jsp:include page="${center}"/>
 </center>
