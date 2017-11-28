@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-	<hr>
-	<div align="center" id="copy">
+	<div align="center" id="copy" style="color:#e7e7e7">
 		All contents Copyright 2017 SIR 
 		Inc. all rights reserved<br>
 		Contact mail:social_recruiting@naver.com +82 051 123 4567

@@ -28,7 +28,7 @@
 </head>
 <body class="wrapper">
 <div class="logo1"><img src="./images/sir1.gif"></div>
-<center class="container" style="background-color:#E1F5FA">
+<center class="container1" style="background-color:#E1F5FA;">
 <form action="./SendEmailToCert.email" method="post" onsubmit="return checkForm();">
   	<div>&nbsp;</div>
   <fieldset>

@@ -1,7 +1,6 @@
 <%@page import="net.member.db.MemberDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width" , initial-scale="1">
@@ -16,44 +15,44 @@
 	if(email != null){ //email 값 있으니깐 로그인 화면으로
 %>
 <nav class="navbar navbar-expand-lg navbar-blue bg-blue">
-<div>
-<a class="navbar-brand" href="main.jsp"><img src="images/sir.gif" height="100" width="200"></a>
-</div>
-		<form class="form-inline search-1" style="float:left">
-    	<input class="form-control mr-sm-2" type="text" placeholder="Search">
-     	<button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-    	</form>
-    <ul class="navbar-nav mr-auto login-1" style="min-width:10px;">
-			<li class="nav-item active">
-    	    	<a class="nav-link" href="main.jsp"style="margin-left:25px">Home</a>
-    	  	</li>
-    	  	<li class="nav-item">
-    	    	<a class="nav-link" href="#">Job</a>
-   			</li>
-   			<li class="nav-item">
-    	    	<a class="nav-link" href="#">님 </a>
-   			</li>
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <div>
+		<a class="navbar-brand" href="main.jsp"><img src="images/sir.gif" height="50" width="100"></a>
+	  </div>
+    </div>
 
-            <li class="dropdown nav-item">
-            	<button class="btn btn-light" style="margin-top:10px">
-					<a href="#" class="dropdown-toggle"
-						data-toggle="dropdown" role="button" aria-haspopup="true"
-						aria-expanded="false" style="font-size:20px">회원정보<span class="caret"></span></a>
-					<ul class="dropdown-menu login-1" style="margin-top:50px">
-						<li><a href="#"><img src="./images/profile.jpg" style="height:150px; weight:150px;" align="center"></a></li>
-						<li><a href="myInfo.jsp" style="font-size:20px;" align="center">회원정보조회</a></li>
-						
-						<li><a href="main.jsp" style="font-size:20px;" align="center" data-toggle="modal" data-target="#mymodal">회원정보수정</a>							
-						</li>
-						
-						<li><a href="./removeEmailId.cookie" style="font-size:20px;" align="center">로 그 아 웃</a></li>
-					</ul>
-				</button>
-			</li>
-   		 </ul>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="margin-top:15px;">
+      <form class="navbar-form navbar-left">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+        <button type="submit" class="btn btn-light">Submit</button>
+      </form>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="main.jsp" style="color:black; font:bolder;" ><img src="./images/home.gif" style="height:35px; weight:35px; margin-top:-8px;" > &nbsp;Home</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="color:black;"><img src="./images/profile.jpg" style="height:35px; weight:35px; margin-top:-8px;"> &nbsp;회원정보 <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#"></a></li>
+            <li><a href="myInfo.jsp">My Page</a></li>
+            <li><a href="#">글 & 활동</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="./removeEmailId.cookie">로 그 아 웃</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
 </nav>
-
-
 <%
 	} else { // 로그인 안된 화면
 %>
@@ -61,9 +60,22 @@
 </head>
 <html>
 
+
 <nav class="navbar navbar-expand-lg navbar-blue bg-blue">
-<a class="navbar-brand" href="main.jsp"><img src="./images/sir.gif" height="100" width="200"></a>
-	<div class="collapse navbar-collapse" id="navbarColor01">
+<div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <div>
+		<a class="navbar-brand" href="main.jsp"><img src="images/sir.gif" height="50" width="100"></a>
+	  </div>
+    </div>
+	<div class="collapse navbar-collapse" id="navbarColor01" style="margin-top:22px; float:right">
     	<form class="form-inline login-1" action="./login.mem" method="post">
       	<div class="input-group">
       		<span class="input-group-addon"><img src="images/login.jpg"></span>
@@ -73,9 +85,12 @@
       		<span class="input-group-addon"><img src="images/password.jpg"></span>
          	<input id="loginpass" type="password" class="form-control" name="loginpass" value="" placeholder="Password">                                        
       	</div>
-	 	<button type="submit" class="btn btn-primary">Login</button>
+	 	<button type="submit" class="btn btn-light">Login</button>
     	</form>
 	</div>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+
 </nav>
 <%
 	}
