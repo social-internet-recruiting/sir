@@ -229,7 +229,7 @@ div.bhoechie-tab div.bhoechie-tab-content:not(.active){
     </div>
     <div id="menu2" class="tab-pane fade">
       <h3>경력 사항</h3>
-      <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+      <p>Sed ut perspiciatis unde omnis iste natus erron sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
     </div>
     <div id="menu3" class="tab-pane fade">
       <h3>공개 설정</h3>
