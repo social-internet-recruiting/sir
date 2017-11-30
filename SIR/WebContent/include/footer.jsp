@@ -9,6 +9,8 @@
 	<!-- <div align="center" id="social">
 		<a><img src="./images/facebook.png" width="33" height="33" >&nbsp;Facebook</a>
 	</div> -->
+	<!-- 
 	<div align="right">
 	<button class="btn btn-outline-warning" type="button" onclick='location.href="calander.jsp"'>Calander</button>
 	</div>
+	-->
