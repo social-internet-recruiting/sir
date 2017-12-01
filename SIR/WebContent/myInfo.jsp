@@ -1,6 +1,3 @@
-<%@page import="net.member.model.MemberDTO"%>
-<%@page import="net.member.model.MemberDAO"%>
-<%@page import="net.cookie.controller.CookieAction"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
         
@@ -122,6 +119,7 @@ div.bhoechie-tab div.bhoechie-tab-content:not(.active){
 	<jsp:include page="/include/top.jsp"/>
 	<header>
 	
+
 	<!-- 수정하면 먼저 서버에 이미지 업로드 부터 수행한다. 그뒤 ./imageUpload.image 여기서 ./reviseMyInfo.mem 으로 넘겨줄것 -->
 	<!-- 파일 선택 안했을 경우 img path값 null 로 변경한다. 따라서 넣어줌 ?img=${requestScope.mdto.img} -->
 	<form action="./imageUpload.image?img=${requestScope.mdto.img}" method="post" enctype="multipart/form-data" name="infoForm">
@@ -145,8 +143,8 @@ div.bhoechie-tab div.bhoechie-tab-content:not(.active){
 				<a>${requestScope.mdto.phone}</a>
 			</div>
 				<div style="margin-left:100px">
-					<button class="btn btn-outline-success" type="button"
-						data-toggle="modal" data-target="#myModal">정보수정</button>
+					<input class="btn btn-outline-success" type="button"
+						data-toggle="modal" data-target="#myModal" value="정보수정"/>
 				</div>
 
 				<!-- Modal -->
@@ -158,16 +156,16 @@ div.bhoechie-tab div.bhoechie-tab-content:not(.active){
 							<div class="modal-header" style="width:700px">
 							
 								<h2>회원정보 수정</h2>
-								<button type="button" class="close btn btn-danger" style="float:right; weight:100px; height:50px;" data-dismiss="modal">&nbsp;&nbsp;&nbsp;&times;&nbsp;&nbsp;&nbsp;</button>
+								<input type="button" class="close btn btn-danger" style="float:right; weight:100px; height:50px;" data-dismiss="modal" value="&nbsp;&times;&nbsp;">
 							</div>
 <div class="row" style="margin-top:20px">
 <div class="col-sm-2">							
 <div style="width:1000px;">
 	<div style="margin-right:30px">
-    <div class="active"><button class="btn btn-info" style="width:100px" data-toggle="tab" href="#home">프로필 수정</button></div>
-    <div style="margin-top:30px"><button class="btn btn-success" style="width:100px" data-toggle="tab" href="#menu1">추가 정보</button></div>
-    <div style="margin-top:30px"><button class="btn btn-danger" style="width:100px" data-toggle="tab" href="#menu2">경력 사항</button></div>
-    <div style="margin-top:30px"><button class="btn btn-warning" style="width:100px" data-toggle="tab" href="#menu3">공개 설정</button></div>
+    <div class="active"><input type="button" class="btn btn-info" style="width:100px" data-toggle="tab" href="#home" value="프로필 수정"></div>
+    <div style="margin-top:30px"><input type="button" class="btn btn-success" style="width:100px" data-toggle="tab" href="#menu1" value="추가 정보"></div>
+    <div style="margin-top:30px"><input type="button" class="btn btn-danger" style="width:100px" data-toggle="tab" href="#menu2" value="경력 사항"></div>
+    <div style="margin-top:30px"><input type="button" class="btn btn-warning" style="width:100px" data-toggle="tab" href="#menu3" value="공개 설정"></div>
 	</div>
 	</div>
 </div>
@@ -182,7 +180,7 @@ div.bhoechie-tab div.bhoechie-tab-content:not(.active){
     		<input type="file" name="profileImageFileButton" accept=".jpg,.png" id="profileImageFileButton"/><br/>
     	</div><br/>
     	<div>
-      		<a href="#" onclick="clickEvent();"><img src="${requestScope.mdto.img}" height="180px" weight="180px" id="profileImage" name="profileImg" ></a>
+      		<a href="#none" onclick="clickEvent();"><img src="${requestScope.mdto.img}" height="180px" weight="180px" id="profileImage" name="profileImg" ></a>
      	</div>
     	<div class="form-group" align="left">
      		<label for="name">이름</label>
@@ -190,7 +188,7 @@ div.bhoechie-tab div.bhoechie-tab-content:not(.active){
     	</div>
     	<div class="form-group" align="left">
      		<label for="introduction">소개</label>
-     		<td><textarea class="form-control" id="introduction" name="introductionArea" placeholder="introduction"  maxlength="2048" cols="40" rows="13" style="height:100px" >${requestScope.mdto.intro}</textarea></td>
+     		<td><textarea textarea style="resize: none;" class="form-control" id="introduction" name="introductionArea" placeholder="introduction"  maxlength="2048" cols="40" rows="3" style="height:100px" >${requestScope.mdto.intro}</textarea></td>
         </div>
         <div class="form-group" align="left">
      		<label for="gender">성별</label><div></div>
@@ -236,43 +234,43 @@ div.bhoechie-tab div.bhoechie-tab-content:not(.active){
 			<div class="highSchoolSearchResultWrap" id="highSchoolSearchResultWrap" style="display:none">
 				<ul class="highSchoolSearchResultBox" id="highSchoolSearchResultBox"> <!-- 10개만 입력 -->
 					<li class="highSchoolSearchResult" >
-						<a href="#" onclick="highSchoolSelect(0);"><span id="highSchoolSearchResultName_0">&nbsp;</span></a>
+						<a href="#none" onclick="highSchoolSelect(0);"><span id="highSchoolSearchResultName_0">&nbsp;</span></a>
 						<span id="highSchoolSearchResultCount_0">&nbsp;</span>
 					</li>
 					<li class="highSchoolSearchResult" >
-						<a href="#" onclick="highSchoolSelect(1);"><span id="highSchoolSearchResultName_1">&nbsp;</span></a>
+						<a href="#none" onclick="highSchoolSelect(1);"><span id="highSchoolSearchResultName_1">&nbsp;</span></a>
 						<span id="highSchoolSearchResultCount_1">&nbsp;</span>
 					</li>
 					<li class="highSchoolSearchResult" >
-						<a href="#" onclick="highSchoolSelect(2);"><span id="highSchoolSearchResultName_2">&nbsp;</span></a>
+						<a href="#none" onclick="highSchoolSelect(2);"><span id="highSchoolSearchResultName_2">&nbsp;</span></a>
 						<span id="highSchoolSearchResultCount_2">&nbsp;</span>
 					</li>
 					<li class="highSchoolSearchResult" >
-						<a href="#" onclick="highSchoolSelect(3);"><span id="highSchoolSearchResultName_3">&nbsp;</span></a>
+						<a href="#none" onclick="highSchoolSelect(3);"><span id="highSchoolSearchResultName_3">&nbsp;</span></a>
 						<span id="highSchoolSearchResultCount_3">&nbsp;</span>
 					</li>
 					<li class="highSchoolSearchResult" >
-						<a href="#" onclick="highSchoolSelect(4);"><span id="highSchoolSearchResultName_4">&nbsp;</span></a>
+						<a href="#none" onclick="highSchoolSelect(4);"><span id="highSchoolSearchResultName_4">&nbsp;</span></a>
 						<span id="highSchoolSearchResultCount_4">&nbsp;</span>
 					</li>
 					<li class="highSchoolSearchResult" >
-						<a href="#" onclick="highSchoolSelect(5);"><span id="highSchoolSearchResultName_5">&nbsp;</span></a>
+						<a href="#none" onclick="highSchoolSelect(5);"><span id="highSchoolSearchResultName_5">&nbsp;</span></a>
 						<span id="highSchoolSearchResultCount_5">&nbsp;</span>
 					</li>
 					<li class="highSchoolSearchResult" >
-						<a href="#" onclick="highSchoolSelect(6);"><span id="highSchoolSearchResultName_6">&nbsp;</span></a>
+						<a href="#none" onclick="highSchoolSelect(6);"><span id="highSchoolSearchResultName_6">&nbsp;</span></a>
 						<span id="highSchoolSearchResultCount_6">&nbsp;</span>
 					</li>
 					<li class="highSchoolSearchResult" >
-						<a href="#" onclick="highSchoolSelect(7);"><span id="highSchoolSearchResultName_7">&nbsp;</span></a>
+						<a href="#none" onclick="highSchoolSelect(7);"><span id="highSchoolSearchResultName_7">&nbsp;</span></a>
 						<span id="highSchoolSearchResultCount_7">&nbsp;</span>
 					</li>
 					<li class="highSchoolSearchResult" >
-						<a href="#" onclick="highSchoolSelect(8);"><span id="highSchoolSearchResultName_8">&nbsp;</span></a>
+						<a href="#none" onclick="highSchoolSelect(8);"><span id="highSchoolSearchResultName_8">&nbsp;</span></a>
 						<span id="highSchoolSearchResultCount_8">&nbsp;</span>
 					</li>
 					<li class="highSchoolSearchResult" >
-						<a href="#" onclick="highSchoolSelect(9);"><span id="highSchoolSearchResultName_9">&nbsp;</span></a>
+						<a href="#none" onclick="highSchoolSelect(9);"><span id="highSchoolSearchResultName_9">&nbsp;</span></a>
 						<span id="highSchoolSearchResultCount_9">&nbsp;</span>
 					</li>						
 				</ul>
@@ -283,43 +281,43 @@ div.bhoechie-tab div.bhoechie-tab-content:not(.active){
 			<div class="universitySearchResultWrap" id="universitySearchResultWrap" style="display:none">
 				<ul class="universitySearchResultBox" id="universitySearchResultBox"> <!-- 10개만 입력 -->
 					<li class="universitySearchResult" >
-						<a href="#" onclick="universitySelect(0);"><span id="universitySearchResultName_0">&nbsp;</span></a>
+						<a href="#none" onclick="universitySelect(0);"><span id="universitySearchResultName_0">&nbsp;</span></a>
 						<span id="universitySearchResultCount_0">&nbsp;</span>
 					</li>
 					<li class="universitySearchResult" >
-						<a href="#" onclick="universitySelect(1);"><span id="universitySearchResultName_1">&nbsp;</span></a>
+						<a href="#none" onclick="universitySelect(1);"><span id="universitySearchResultName_1">&nbsp;</span></a>
 						<span id="universitySearchResultCount_1">&nbsp;</span>
 					</li>
 					<li class="universitySearchResult" >
-						<a href="#" onclick="universitySelect(2);"><span id="universitySearchResultName_2">&nbsp;</span></a>
+						<a href="#none" onclick="universitySelect(2);"><span id="universitySearchResultName_2">&nbsp;</span></a>
 						<span id="universitySearchResultCount_2">&nbsp;</span>
 					</li>
 					<li class="universitySearchResult" >
-						<a href="#" onclick="universitySelect(3);"><span id="universitySearchResultName_3">&nbsp;</span></a>
+						<a href="#none" onclick="universitySelect(3);"><span id="universitySearchResultName_3">&nbsp;</span></a>
 						<span id="universitySearchResultCount_3">&nbsp;</span>
 					</li>
 					<li class="universitySearchResult" >
-						<a href="#" onclick="universitySelect(4);"><span id="universitySearchResultName_4">&nbsp;</span></a>
+						<a href="#none" onclick="universitySelect(4);"><span id="universitySearchResultName_4">&nbsp;</span></a>
 						<span id="universitySearchResultCount_4">&nbsp;</span>
 					</li>
 					<li class="universitySearchResult" >
-						<a href="#" onclick="universitySelect(5);"><span id="universitySearchResultName_5">&nbsp;</span></a>
+						<a href="#none" onclick="universitySelect(5);"><span id="universitySearchResultName_5">&nbsp;</span></a>
 						<span id="universitySearchResultCount_5">&nbsp;</span>
 					</li>
 					<li class="universitySearchResult" >
-						<a href="#" onclick="universitySelect(6);"><span id="universitySearchResultName_6">&nbsp;</span></a>
+						<a href="#none" onclick="universitySelect(6);"><span id="universitySearchResultName_6">&nbsp;</span></a>
 						<span id="universitySearchResultCount_6">&nbsp;</span>
 					</li>
 					<li class="universitySearchResult" >
-						<a href="#" onclick="universitySelect(7);"><span id="universitySearchResultName_7">&nbsp;</span></a>
+						<a href="#none" onclick="universitySelect(7);"><span id="universitySearchResultName_7">&nbsp;</span></a>
 						<span id="universitySearchResultCount_7">&nbsp;</span>
 					</li>
 					<li class="universitySearchResult" >
-						<a href="#" onclick="universitySelect(8);"><span id="universitySearchResultName_8">&nbsp;</span></a>
+						<a href="#none" onclick="universitySelect(8);"><span id="universitySearchResultName_8">&nbsp;</span></a>
 						<span id="universitySearchResultCount_8">&nbsp;</span>
 					</li>
 					<li class="universitySearchResult" >
-						<a href="#" onclick="universitySelect(9);"><span id="universitySearchResultName_9">&nbsp;</span></a>
+						<a href="#none" onclick="universitySelect(9);"><span id="universitySearchResultName_9">&nbsp;</span></a>
 						<span id="universitySearchResultCount_9">&nbsp;</span>
 					</li>						
 				</ul>
@@ -331,7 +329,6 @@ div.bhoechie-tab div.bhoechie-tab-content:not(.active){
     <div id="menu2" class="tab-pane fade">
       <h3>경력 사항</h3>
       <p>Sed ut perspiciatis unde omnis iste natus erron sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
-      <input type="text">
     </div>
     <div id="menu3" class="tab-pane fade">
       <h3>공개 설정</h3>
@@ -363,7 +360,7 @@ div.bhoechie-tab div.bhoechie-tab-content:not(.active){
 
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 	<script src="./js/bootstrap.js"></script>
-	
+
 	<script src="./js/jquery-1.6.1.min.js"></script>
 	<script src="./js/schoolSearch.js"></script>
 	
@@ -404,20 +401,22 @@ div.bhoechie-tab div.bhoechie-tab-content:not(.active){
 		}
 		
 		function checkForm(){
-			alert(event.keyCode);
-			// 엔터키 누르면 자동으로 button 실행되기 때문에 event의 enter 키를 빼야 될듯
-			if (event.keyCode != 13){ // 엔터 아닐때만 실행
-				
-				var phone = document.getElementById("m_phone1").value + document.getElementById("m_phone2").value + document.getElementById("m_phone3").value;
-				
+			
+			var phone1 = document.getElementById("m_phone1").value;
+			var phone2 = document.getElementById("m_phone2").value;
+			var phone3 = document.getElementById("m_phone3").value;
+			//alert("'" + phone1 + "','" + phone2 + "','" + phone2 + "'");
+			if (phone1.length == 0 && phone2.length == 0 && phone3.length == 0){// 전화 번호 수정을 안했다면 그냥 submit
+				document.infoForm.submit();
+			} else {  // 하나라도 입력이 되어있다면 아래 체크
+				var phone = phone1 + phone2 + phone3;
 				if (phone.length == 11 || (phone.length == 10 && document.getElementById("m_phone2").value.length == 3)){ 
 					//11자 이거나, 10자이면서 2번째 번호칸이 3자인경우
 					document.infoForm.submit();
 				} else { // 제대로 입력 되었다면
 					alert("번호를 쓰지말던가 입력하려면(10자, 11자) 제대로 입력 하세요");
 				}
-			} 
-		
+			}
 		}
 		
     </script>

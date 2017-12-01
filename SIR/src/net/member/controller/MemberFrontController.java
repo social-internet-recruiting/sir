@@ -93,13 +93,7 @@ public class MemberFrontController extends HttpServlet {
 				request.setAttribute("phone1", phone1);
 				request.setAttribute("phone2", phone2);
 				request.setAttribute("phone3", phone3);
-				
-				System.out.println("성별  : " + mdto.getGender());
-				System.out.println("성별  : " + mdto.getGender());
-				System.out.println("성별  : " + mdto.getGender());
-				System.out.println("성별  : " + mdto.getGender());
-				
-				
+
 				request.setAttribute("mdto", mdto);
 				RequestDispatcher dis = request.getRequestDispatcher("myInfo.jsp");
 				//getRequestDispatcher("main.jsp?center=myInfo.jsp"); center 값 바꿔서 갈라니깐
