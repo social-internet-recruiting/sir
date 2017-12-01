@@ -1,4 +1,4 @@
-package net.email.action;
+package net.email.controller;
 
 import javax.mail.Authenticator;
 import javax.mail.PasswordAuthentication;

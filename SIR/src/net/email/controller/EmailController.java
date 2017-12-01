@@ -1,4 +1,4 @@
-package net.email.action;
+package net.email.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -11,9 +11,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import net.cookie.action.CookieAction;
-import net.member.db.MemberDao;
+import net.cookie.controller.CookieAction;
+import net.member.model.MemberDAO;
 
+@WebServlet("*.email")
 public class EmailController extends HttpServlet {
 	
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -44,7 +45,7 @@ public class EmailController extends HttpServlet {
 			
 			// 생성된 code 값 cookie에 저장
 			CookieAction cookieAction = new CookieAction();
-			cookieAction.generateCertCode(request, response, certcode);
+			cookieAction.saveCertCode(request, response, certcode);
 
 			//registerOk.jsp에서 회원가입 완료 시켜줄 parameter 값 넘겨주기 위함
 			String addParam = "&certcode=" + certcode + "&email=" + email + "&pass=" + pass + "&name=" + name;
@@ -71,7 +72,7 @@ public class EmailController extends HttpServlet {
 		} else if ("/EmailDupCheck.email".equals(command)) {
 			
 			String email = request.getParameter("email");
-			MemberDao mdao = new MemberDao();
+			MemberDAO mdao = new MemberDAO();
 			boolean check = mdao.checkDupEmail(email);
 			out.println(check);
 			

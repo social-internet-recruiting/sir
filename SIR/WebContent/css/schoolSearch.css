@@ -1,0 +1,40 @@
+
+	.highSchoolSearchResultWrap, .universitySearchResultWrap{
+		border-style: solid;
+		border-width: 1px;
+		width: 500px;
+		border-radius: 5px;
+		border-color: #A6CAF0;
+	}
+	
+	.highSchoolSearchResultBox, .universitySearchResultBox{
+		list-style: none;
+		/* position: relative; */
+	}
+
+	.highSchoolSearchResult, .universitySearchResult{
+		position: absolute; left: 60px; width: 500px;
+	}
+
+	/* span 들 위치 지정 */
+ 	#highSchoolSearchResultName_0, #universitySearchResultName_0{position: absolute; margin-top:0px; left: 0px;}  	/* absolute 때문에 left: 0px; 해줘야지 highschool, university 모두 알맞게 정렬된다. */
+ 	#highSchoolSearchResultName_1, #universitySearchResultName_1{position: absolute; margin-top:20px; left: 0px;}  	/* 안그럼 university가 highschool 끝나는지점에 생심  */
+ 	#highSchoolSearchResultName_2, #universitySearchResultName_2{position: absolute; margin-top:40px; left: 0px;}
+ 	#highSchoolSearchResultName_3, #universitySearchResultName_3{position: absolute; margin-top:60px; left: 0px;}
+	#highSchoolSearchResultName_4, #universitySearchResultName_4{position: absolute; margin-top:80px; left: 0px;}
+	#highSchoolSearchResultName_5, #universitySearchResultName_5{position: absolute; margin-top:100px; left: 0px;}
+	#highSchoolSearchResultName_6, #universitySearchResultName_6{position: absolute; margin-top:120px; left: 0px;}
+	#highSchoolSearchResultName_7, #universitySearchResultName_7{position: absolute; margin-top:140px; left: 0px;}
+	#highSchoolSearchResultName_8, #universitySearchResultName_8{position: absolute; margin-top:160px; left: 0px;}
+	#highSchoolSearchResultName_9, #universitySearchResultName_9{position: absolute; margin-top:180px; left: 0px;}
+	
+ 	#highSchoolSearchResultCount_0, #universitySearchResultCount_0{position: absolute; margin-top:0px; left: 350px;}
+ 	#highSchoolSearchResultCount_1, #universitySearchResultCount_1{position: absolute; margin-top:20px; left: 350px;}
+ 	#highSchoolSearchResultCount_2, #universitySearchResultCount_2{position: absolute; margin-top:40px; left: 350px;}
+ 	#highSchoolSearchResultCount_3, #universitySearchResultCount_3{position: absolute; margin-top:60px; left: 350px;}
+	#highSchoolSearchResultCount_4, #universitySearchResultCount_4{position: absolute; margin-top:80px; left: 350px;}
+	#highSchoolSearchResultCount_5, #universitySearchResultCount_5{position: absolute; margin-top:100px; left: 350px;}
+	#highSchoolSearchResultCount_6, #universitySearchResultCount_6{position: absolute; margin-top:120px; left: 350px;}
+	#highSchoolSearchResultCount_7, #universitySearchResultCount_7{position: absolute; margin-top:140px; left: 350px;}
+	#highSchoolSearchResultCount_8, #universitySearchResultCount_8{position: absolute; margin-top:160px; left: 350px;}
+	#highSchoolSearchResultCount_9, #universitySearchResultCount_9{position: absolute; margin-top:180px; left: 350px;}

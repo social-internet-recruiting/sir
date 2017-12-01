@@ -1,7 +1,5 @@
-<%@page import="net.cookie.action.CookieController"%>
-<%@page import="net.cookie.action.CookieAction"%>
-<%@page import="net.member.db.MemberDao"%>
-<%@page import="net.email.action.EmailAction"%>
+<%@page import="net.member.model.MemberDAO"%>
+<%@page import="net.email.controller.EmailAction"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -15,10 +13,7 @@
 	// cookie값 확인
 	EmailAction emailAction = new EmailAction();
 	Cookie[] cookies = request.getCookies();
-	
-/* 	MemberDao m = new MemberDao(); 	// 쿠키값 확인용 곧 삭제
-	m.getEmailInCookie(cookies); 	// 쿠키값 확인용 곧 삭제 */
-	
+
 	String email = request.getParameter("email");
 	String pass = request.getParameter("pass");
 	String name = request.getParameter("name");
@@ -27,7 +22,7 @@
 	if (emailAction.getCertCodeInCookie(cookies, certcode) !=null){ // certcode 값이 있으면  아래 회원정보로 db에 insert
 
 		//member insert 로직 // 아래 자바스크립트 코드도 있으니 insert 만 여기서 처리 
-		MemberDao mdao = new MemberDao();
+		MemberDAO mdao = new MemberDAO();
 		boolean check = mdao.insertMember(name, email, pass);
 		if(!check){ // 회원 가입 오류
 %>

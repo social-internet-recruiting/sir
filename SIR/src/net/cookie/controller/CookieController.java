@@ -1,4 +1,4 @@
-package net.cookie.action;
+package net.cookie.controller;
 
 import java.io.IOException;
 
@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+@WebServlet("*.cookie")
 public class CookieController extends HttpServlet {
 
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -22,7 +23,7 @@ public class CookieController extends HttpServlet {
 		System.out.println(command);
 		CookieAction cookieAction = new CookieAction();
 		
-		if ("/generateCertCode.cookie".equals(command)){
+		if ("/saveCertCode.cookie".equals(command)){
 			// EmailController에서 간단하게 CookieAction 호출해서 처리함 
 			// why? 여기서 처리하면 메일 보내기 로직 또한 여기서 처리해야 된다. 번거롭다. 
 

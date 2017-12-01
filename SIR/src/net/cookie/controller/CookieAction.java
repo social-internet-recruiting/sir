@@ -1,4 +1,4 @@
-package net.cookie.action;
+package net.cookie.controller;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -10,7 +10,7 @@ public class CookieAction {
 	// 이게 더 귀찮을거 같다. setAttribute가 넘어오는거 확인하니깐 안넘어 온다. 
 	// controller에서 값 받고 싶으면 location.href="~~~?email=" + email 이런식으로 넘겨야 됨 
 	
-	public void generateCertCode(HttpServletRequest request, HttpServletResponse response, String certcode){
+	public void saveCertCode(HttpServletRequest request, HttpServletResponse response, String certcode){
 		// 회원가입 전 인증코드 받을때 사용
 		Cookie certCodeCookie = new Cookie("sirCertCode", certcode);
 		certCodeCookie.setMaxAge(60*5); 	// 5분 유지
@@ -32,5 +32,26 @@ public class CookieAction {
 		removeEmailCookie.setMaxAge(0); 			// 0초(삭제)
 		response.addCookie(removeEmailCookie); 	
 	}
+	
+	// 쿠키값에서 email 값 가져오는 logic
+	public String getEmailInCookie(Cookie[] cookies){
+
+		if (cookies==null){
+			return null;
+		}
+		
+		for(Cookie cookie : cookies){
+/*			System.out.println("getName  " + cookie.getName());
+			System.out.println("getComment  " + cookie.getComment());
+			System.out.println("getDomain  " + cookie.getDomain());
+			System.out.println("getValue  " + cookie.getValue());
+*/
+			if(cookie.getName().equals("sirEmailId")){
+				return cookie.getValue();
+			}
+		}
+		return null;
+	}
+	
 	
 }

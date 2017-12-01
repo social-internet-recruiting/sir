@@ -1,4 +1,4 @@
-package net.email.action;
+package net.email.controller;
 
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
@@ -16,7 +16,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import net.email.action.SMTPAuthenticator;
+import net.email.controller.SMTPAuthenticator;
 
 public class EmailAction {
 

@@ -1,4 +1,6 @@
-<%@page import="net.member.db.MemberDao"%>
+<%@page import="net.member.model.MemberDTO"%>
+<%@page import="net.member.model.MemberDAO"%>
+<%@page import="net.cookie.controller.CookieAction"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <head>
@@ -7,13 +9,36 @@
 <title>JSP 게시판 웹 사이트</title>
 <%
 	Cookie[] cookies = request.getCookies();
-	MemberDao memDao = new MemberDao();
-	String email = memDao.getEmailInCookie(cookies);
+	CookieAction cookieAction = new CookieAction();
+	String email = cookieAction.getEmailInCookie(cookies);
 	
 	System.out.println("email ID : " + email); // 확인용 좀있다 삭제 할 것
 	
 	if(email != null){ //email 값 있으니깐 로그인 화면으로
+		
+		// 해당 email 의 db 에 img 경로 저장되어있는지 확인
+		MemberDAO mdao = new MemberDAO();
+		MemberDTO mdto = mdao.getMemberInfoDTO(email);
+		String imgPath = mdto.getImg();
+	
+		if (imgPath != null && !"./uploadProfileImage/null".equals(imgPath)){
+			// DB 에 img 경로가 있으니깐 그걸 불러온다. 그냥 pass
+		} else {
+			// DB 에 img 경로가 없으니깐 noneProfile.jpg로 
+			imgPath = "./images/noneProfile.jpg";	
+		}
 %>
+<script type="text/javascript">
+		//DB에 있는 imgPath에 경로가 깨진경우 에러 발생하므로 아래로 강제로 물려줌
+		var files = new Image;
+		files.src = "<%=imgPath%>";
+		if (!files.complete){
+			<% 
+				imgPath = "./images/noneProfile.jpg"; 
+			%>
+		}
+</script>
+
 <nav class="navbar navbar-expand-lg navbar-blue bg-blue">
   <div class="container">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -40,10 +65,12 @@
       <ul class="nav navbar-nav navbar-right">
         <li><a href="main.jsp" style="color:black; font:bolder;" ><img src="./images/home.gif" style="height:35px; weight:35px; margin-top:-8px;" > &nbsp;Home</a></li>
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="color:black;"><img src="./images/profile.jpg" style="height:35px; weight:35px; margin-top:-8px;"> &nbsp;회원정보 <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="color:black;">	
+          	<img src=<%=imgPath%> style="height:35px; weight:35px; margin-top:-8px;"> &nbsp;회원정보 <span class="caret"></span>
+          </a>
           <ul class="dropdown-menu">
             <li><a href="#"></a></li>
-            <li><a href="myInfo.jsp">My Page</a></li>
+            <li><a href="./myInfo.mem">My Page</a></li>
             <li><a href="#">글 & 활동</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="./removeEmailId.cookie">로 그 아 웃</a></li>

@@ -1,4 +1,4 @@
-<%@page import="net.member.db.MemberDao"%>
+<%@page import="net.cookie.controller.CookieAction"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -9,15 +9,15 @@
 <title>JSP 게시판 웹 사이트</title>
 <%
 	Cookie[] cookies = request.getCookies();
-	MemberDao memDao = new MemberDao();
-	String email = memDao.getEmailInCookie(cookies);
+	CookieAction cookieAction = new CookieAction();
+	String email = cookieAction.getEmailInCookie(cookies);
 
 	if(email != null){ //email 값 있으니깐
 %>
 	<script type="text/javascript">
 		location.href="./main.jsp?center=snspage.jsp";
 	</script>
-<%
+<%	
 	} 
 %>  
 <!-- 	
@@ -40,14 +40,14 @@
    	<div class="form-group" align="left">
       <label for="email">이메일</label>
       <input class="form-control" id="email" name="email" type="email" placeholder="Enter email" onkeyup="checkId();" required />
-      <small class="form-text text-muted" id="emailHelp">아이디로 사용하실 이메일 주소를 작성해주세요.</small>
-      <span id="idCheck" >&nbsp;</span>
+      <small class="form-text text-muted" id="emailHelp">아이디로 사용하실 이메일 주소를 작성해주세요.</small><br/>
+      <span id="idCheck" style="display:none" >&nbsp;</span>
     </div>
     <div class="form-group" align="left">
       <label for="pass">비밀번호</label>
       <input class="form-control" id="pass" name="pass" type="password" placeholder="Password" onkeyup="checkPass();" required />
-      <small class="form-text text-muted" id="passHelp">비밀번호는 6자 이상으로 작성해주세요.</small>
-      <span id="passCheck" >&nbsp;</span>
+      <small class="form-text text-muted" id="passHelp">비밀번호는 6자 이상으로 작성해주세요.</small><br/>
+      <span id="passCheck" style="display:none" >&nbsp;</span>
     </div>
     <button class="btn btn-primary" type="submit">가입하기</button>
     <div>&nbsp;</div>
