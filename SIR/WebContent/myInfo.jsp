@@ -209,12 +209,12 @@ div.bhoechie-tab div.bhoechie-tab-content:not(.active){
      		<label for="phone">전화번호</label><div></div>
 					<select class="col-sm-3" id="m_phone1" name="m_phone1" style="height:30px;" size=1>
 								<option value="">TEL</option>
-								<option value="010" <c:if test="${phone1 eq '010'}" selected</c:if> >010</option>
-								<option value="011" <c:if test="${phone1 eq '011'}" selected</c:if> >011</option>
-								<option value="016" <c:if test="${phone1 eq '016'}" selected</c:if> >016</option>
-								<option value="017" <c:if test="${phone1 eq '017'}" selected</c:if> >017</option>
-								<option value="018" <c:if test="${phone1 eq '018'}" selected</c:if> >018</option>
-								<option value="019" <c:if test="${phone1 eq '019'}" selected</c:if> >019</option>
+								<option value="010" <c:if test="${phone1 eq '010'}"> selected</c:if> >010</option>
+								<option value="011" <c:if test="${phone1 eq '011'}"> selected</c:if> >011</option>
+								<option value="016" <c:if test="${phone1 eq '016'}"> selected</c:if> >016</option>
+								<option value="017" <c:if test="${phone1 eq '017'}"> selected</c:if> >017</option>
+								<option value="018" <c:if test="${phone1 eq '018'}"> selected</c:if> >018</option>
+								<option value="019" <c:if test="${phone1 eq '019'}"> selected</c:if> >019</option>
 					</select>
 							<div class="col-sm-1">-</div>
 							<input class="col-sm-3" type="text" id="m_phone2" name="m_phone2" value="${phone2}" style="height:30px;" size="4" maxlength="4" onkeypress="onlyNumber();">
