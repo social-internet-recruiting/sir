@@ -57,6 +57,7 @@
       </form>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="main.jsp" style="color:black; font:bolder;" ><img src="./images/home.gif" style="height:35px; weight:35px; margin-top:-8px;" > &nbsp;Home</a></li>
+        <li><a href="job.jsp" style="color:black; font:bolder;" ><img src="./images/job.gif" style="height:35px; weight:35px; margin-top:-8px;" > &nbsp;Job</a></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="color:black;">	
           	<img src="<%=imgPath%>" style="height:35px; weight:35px; margin-top:-8px;"> &nbsp;회원정보 <span class="caret"></span>
