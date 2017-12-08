@@ -67,7 +67,7 @@ public class ImageUploadToServer {
 		// 추가항목 발생하면 여기서 값 추가 해줄것
 		mdto.setImg(realFilePath);
 		mdto.setName(multi.getParameter("name"));
-		mdto.setIntro(multi.getParameter("introductionArea"));
+		mdto.setIntro(multi.getParameter("introductionArea").trim());
 		mdto.setGender(multi.getParameter("gender"));
 		mdto.setEmail(multi.getParameter("email"));
 		
@@ -77,8 +77,8 @@ public class ImageUploadToServer {
 		String phone = phone1 + phone2 + phone3;  
 		mdto.setPhone(phone);
 		
-		mdto.setHigh_school(multi.getParameter("highSchoolSearchText"));
-		mdto.setUniversity(multi.getParameter("universitySearchText"));
+		mdto.setHigh_school(multi.getParameter("highSchoolSearchText").trim());
+		mdto.setUniversity(multi.getParameter("universitySearchText").trim());
 		
 		return mdto;
 		

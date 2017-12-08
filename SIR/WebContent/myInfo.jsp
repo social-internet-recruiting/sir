@@ -122,7 +122,10 @@ div.bhoechie-tab div.bhoechie-tab-content:not(.active){
 
 	<!-- 수정하면 먼저 서버에 이미지 업로드 부터 수행한다. 그뒤 ./imageUpload.image 여기서 ./reviseMyInfo.mem 으로 넘겨줄것 -->
 	<!-- 파일 선택 안했을 경우 img path값 null 로 변경한다. 따라서 넣어줌 ?img=${requestScope.mdto.img} -->
-	<form action="./imageUpload.image?img=${requestScope.mdto.img}" method="post" enctype="multipart/form-data" name="infoForm">
+	<form action=	"./imageUpload.image?img=${requestScope.mdto.img}
+					&delhigh_school=${requestScope.mdto.high_school}
+					&deluniversity=${requestScope.mdto.university}"  
+					method="post" enctype="multipart/form-data" name="infoForm">
 	<div class="myInfo">
 	<div>
 		<div style="float:left">	

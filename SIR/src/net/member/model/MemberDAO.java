@@ -189,5 +189,100 @@ public class MemberDAO {
 			freeResource();
 		}
 	}
-	
+
+	public void reviseSchoolCount(String delHigh, String delUni, String high_school, String university) {
+		
+		try {
+			System.out.println("-1 고등학교 이름 : " + delHigh);
+			System.out.println("-1 대학교 이름 : " + delUni);
+			System.out.println("+1 고등학교 이름: " + high_school);
+			System.out.println("+1 대학교 이름 : " + university);
+
+			String sql="";
+			con = getConnection();
+			
+			// 고등학교 -1
+			sql = "update high_school set count = count - 1 where high_school=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, delHigh);
+			pstmt.executeUpdate();
+
+			// 고등학교 -1 하다가 0이면 삭제
+			sql = "select count from high_school where high_school=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, delHigh);
+			rs = pstmt.executeQuery();
+			if (rs.next()){
+				if (rs.getInt("count")==0){
+					sql = "delete from high_school where high_school=?";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, delHigh);
+					pstmt.executeUpdate();
+				}
+			}
+
+			// 대학교 -1			 
+			sql = "update university set count = count - 1 where university=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, delUni);
+			pstmt.executeUpdate();
+
+			// 대학교 -1 하다가 0이면 삭제			
+			sql = "select count from university where university=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, delUni);
+			rs = pstmt.executeQuery();
+			if (rs.next()){
+				if (rs.getInt("count")==0){
+					sql = "delete from university where university=?";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, delUni);
+					pstmt.executeUpdate();
+				}
+			}
+
+			// 고등학교 +1
+			if (!"".equals(high_school.trim())){ // 고등학교 입력값이 있으면
+				sql = "select count from high_school where high_school=?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, high_school);
+				rs = pstmt.executeQuery();
+				if (rs.next()){ // 추가 되어있으면 +1
+					sql = "update high_school set count = count + 1 where high_school=?";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, high_school);
+					pstmt.executeUpdate();
+				} else { // 없으면 row추가하고 1바로 줄것
+					sql = "insert into high_school values (?,1)";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, high_school);
+					pstmt.executeUpdate();
+				}
+			}
+
+			// 대학교 +1			
+			if (!"".equals(university.trim())){ // 대학교 입력값이 있으면
+				sql = "select count from university where university=?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, university);
+				rs = pstmt.executeQuery();
+				if (rs.next()){ // 추가 되어있으면 +1
+					sql = "update university set count = count + 1 where university=?";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, university);
+					pstmt.executeUpdate();
+				} else { // 없으면 row추가하고 1바로 줄것
+					sql = "insert into university values (?,1)";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, university);
+					pstmt.executeUpdate();
+				}
+			}
+			
+		} catch (Exception e) {
+			System.out.println("reviseSchoolCount()메서드에서 에러 : " + e);
+		} finally {
+			freeResource();
+		}
+	}
 }

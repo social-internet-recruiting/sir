@@ -107,15 +107,32 @@ public class MemberFrontController extends HttpServlet {
 
 			
 		} else if ("/reviseMyInfo.mem".equals(command)) {
+			// profileImage controller에서 넘어옴
 			// 수정 항목 추가 되는대로 업데이트 할 것
+			Cookie[] cookies = request.getCookies();
+			CookieAction cookieAction = new CookieAction();
+			// email 쿠키값 가져옴 
+			String email = cookieAction.getEmailInCookie(cookies);
+			System.out.println("Cookie Email : " + email);
 			
-			MemberDTO mdto = (MemberDTO)request.getAttribute("mdto");
-
-			mdao.reviseMyInfo(mdto);
-			
-			RequestDispatcher dis = request.getRequestDispatcher("./myInfo.mem");
-			dis.forward(request, response);
-			
+			if (email != null){ // email 쿠키값이 있으면 제대로 넘겨주고
+				MemberDTO mdto = (MemberDTO)request.getAttribute("mdto");
+				
+				String delHigh = request.getParameter("delhigh_school");
+				String delUni = request.getParameter("deluniversity");
+				
+				// 이전 입력된 고등학교, 대학교 카운트 줄이고, 새로 입력된 고등학교, 대학교 추가 및 카운트 올리기
+				mdao.reviseSchoolCount(delHigh, delUni, mdto.getHigh_school(), mdto.getUniversity());
+				
+				mdao.reviseMyInfo(mdto);
+				
+				RequestDispatcher dis = request.getRequestDispatcher("./myInfo.mem");
+				dis.forward(request, response);
+				
+			} else { // email 쿠키값이 없으면 main page로 넘겨라, 잘못된 접근이다.
+				RequestDispatcher dis = request.getRequestDispatcher("main.jsp");
+				dis.forward(request, response);
+			}
 		}
 		
 	}
