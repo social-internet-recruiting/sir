@@ -8,6 +8,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width" , initial-scale="1">
+<style type="text/css">
+	#profileImageSmall{
+		height: 35px;
+		width: 35px;
+	}
+</style>
+
 <title>JSP 게시판 웹 사이트</title>
 <%
 	Cookie[] cookies = request.getCookies();
@@ -69,7 +76,7 @@
         <li><a href="./job_main.job" style="color:black; font:bolder;" ><img src="./images/job.gif" style="height:35px; weight:35px; margin-top:-8px;" > &nbsp;Job</a></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="color:black;">	
-          	<img src="<%=imgPath%>" style="height:35px; weight:35px; margin-top:-8px;"> &nbsp;회원정보 <span class="caret"></span>
+          	<img src="<%=imgPath%>" style="margin-top:-8px;" id="profileImageSmall" > &nbsp;회원정보 <span class="caret"></span>
           </a>
           <ul class="dropdown-menu">
             <li><a href="#"></a></li>

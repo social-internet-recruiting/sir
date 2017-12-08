@@ -14,6 +14,12 @@
 <title>Insert title here</title>
 </head>
 <style>
+
+#profileImageMain{
+	height: 180px;
+	width: 180px;
+}
+
 .right {
     left: 10px;
     width: auto;
@@ -129,7 +135,7 @@ div.bhoechie-tab div.bhoechie-tab-content:not(.active){
 	<div class="myInfo">
 	<div>
 		<div style="float:left">	
-			<a><img src="${requestScope.mdto.img}" height="180px" weight="180px" title="사진변경하려면 정보수정에서 사진 클릭하세요" ></a>
+			<a><img src="${requestScope.mdto.img}" id="profileImageMain" title="사진변경하려면 정보수정에서 사진 클릭하세요" ></a>
 		</div>		
 		<div class="tag">
 			<div>
@@ -183,7 +189,7 @@ div.bhoechie-tab div.bhoechie-tab-content:not(.active){
     		<input type="file" name="profileImageFileButton" accept=".jpg,.png" id="profileImageFileButton"/><br/>
     	</div><br/>
     	<div>
-      		<a href="#none" onclick="clickEvent();"><img src="${requestScope.mdto.img}" height="180px" weight="180px" id="profileImage" name="profileImg" title="사진변경하려면 사진 클릭하세요"></a>
+      		<a href="#none" onclick="clickEvent();"><img src="${requestScope.mdto.img}" height="180px" width="180px" id="profileImage" name="profileImg" title="사진변경하려면 사진 클릭하세요"></a>
      	</div>
     	<div class="form-group" align="left">
      		<label for="name">이름</label>
@@ -423,5 +429,6 @@ div.bhoechie-tab div.bhoechie-tab-content:not(.active){
 		}
 		
     </script>
+    
 </body>
 </html>
