@@ -26,7 +26,7 @@ public class EmailController extends HttpServlet {
 		String contextPath=request.getContextPath();
 		//System.out.println(contextPath.length());
 		String command=RequestURI.substring(contextPath.length());
-		System.out.println(command);
+		//System.out.println(command);
 		
 		PrintWriter out=response.getWriter();
 		
