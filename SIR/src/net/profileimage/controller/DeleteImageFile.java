@@ -22,11 +22,13 @@ public class DeleteImageFile {
 			String fileName = pathArray[pathArray.length-1];
 			
 			ServletContext ctx = request.getServletContext();
-			/*업로드할 실제 서버경로 얻기 - upload 폴더명 맞추기*/
-			String realPath = ctx.getRealPath("uploadProfileImage/");
+			String folderPath = ctx.getRealPath("uploadProfileImage/");
+			String transForderPath = folderPath.replace("\\", "\\\\");
 	
-			File delFile = new File(realPath + fileName);
-			delFile.delete();	
+			File delFile = new File(transForderPath + fileName);
+			if (delFile.exists()){
+				delFile.delete();	
+			}
 		}
 	}
 }

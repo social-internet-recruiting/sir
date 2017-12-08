@@ -1,3 +1,5 @@
+<%@page import="net.profileimage.controller.CheckExistProfileInServer"%>
+<%@page import="java.io.File"%>
 <%@page import="net.member.model.MemberDTO"%>
 <%@page import="net.member.model.MemberDAO"%>
 <%@page import="net.cookie.controller.CookieAction"%>
@@ -13,7 +15,7 @@
 	String email = cookieAction.getEmailInCookie(cookies);
 	
 	System.out.println("email ID : " + email); // 확인용 좀있다 삭제 할 것
-	
+
 	if(email != null){ //email 값 있으니깐 로그인 화면으로
 		
 		// 해당 email 의 db 에 img 경로 저장되어있는지 확인
@@ -21,14 +23,21 @@
 		MemberDTO mdto = mdao.getMemberInfoDTO(email);
 		String imgPath = mdto.getImg();
 		
-		if (imgPath == "" || "./uploadProfileImage/null".equals(imgPath)){
-			// DB 에 img 경로가 없으니깐 noneProfile.jpg로 
-			imgPath = "./images/noneProfile.jpg";	
+		// 파일이 지워진 거면 noneProfile.jpg 띄워야 된다.
+		CheckExistProfileInServer checkExistProfile = new CheckExistProfileInServer();
+		boolean checkFile = checkExistProfile.checkProfile(request, response, mdto.getImg());
+		if (!checkFile){ // 파일이 없다고 뜨면
+			String realProfileFilePath = "./images/noneProfile.jpg";
+			mdto.setImg(realProfileFilePath);
+			mdao.reviseMyInfo(mdto); // DB값 바꾸기 위해서
+			// 이미지 경로 때문에 오류 나는부분, db 값만 바꿔주면 중복 구문 줄일수 있다. 
+			// memberController , top, myinfo 등등에서 써야 될 구문을 top 에서만 db에 실제 값 변경함으로써 체크 로직 줄일수 있다.
 
-		} else {
-			// DB 에 img 경로가 있으니깐 그걸 불러온다. 그냥 pass
-			imgPath = imgPath;
-		}
+			imgPath = mdto.getImg();
+			
+			// System.out.println("imgPath : " + imgPath);
+			
+		} // 파일이 있으면 별다른 수정 안한다.
 
 %>
 

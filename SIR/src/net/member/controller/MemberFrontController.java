@@ -1,5 +1,6 @@
 package net.member.controller;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Arrays;
@@ -15,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import net.cookie.controller.CookieAction;
 import net.member.model.MemberDAO;
 import net.member.model.MemberDTO;
+import net.profileimage.controller.CheckExistProfileInServer;
 
 @WebServlet("*.mem")
 public class MemberFrontController extends HttpServlet {
@@ -31,7 +33,7 @@ public class MemberFrontController extends HttpServlet {
 		System.out.println(command);
 		
 		MemberDAO mdao = new MemberDAO();
-		
+
 		if ("/login.mem".equals(command)){
 			
 			String email = request.getParameter("loginemail");
@@ -55,7 +57,7 @@ public class MemberFrontController extends HttpServlet {
 			// CookieController에서 바로 처리했음
 			
 		} else if ("/myInfo.mem".equals(command)) {
-			
+
 			Cookie[] cookies = request.getCookies();
 			CookieAction cookieAction = new CookieAction();
 			// email 쿠키값 가져옴 
@@ -93,7 +95,7 @@ public class MemberFrontController extends HttpServlet {
 				request.setAttribute("phone1", phone1);
 				request.setAttribute("phone2", phone2);
 				request.setAttribute("phone3", phone3);
-
+				
 				request.setAttribute("mdto", mdto);
 				RequestDispatcher dis = request.getRequestDispatcher("myInfo.jsp");
 				//getRequestDispatcher("main.jsp?center=myInfo.jsp"); center 값 바꿔서 갈라니깐
