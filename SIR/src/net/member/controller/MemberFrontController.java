@@ -2,7 +2,6 @@ package net.member.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Arrays;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,7 +14,6 @@ import javax.servlet.http.HttpServletResponse;
 import net.cookie.controller.CookieAction;
 import net.member.model.MemberDAO;
 import net.member.model.MemberDTO;
-import net.profileimage.controller.CheckExistProfileInServer;
 
 @WebServlet("*.mem")
 public class MemberFrontController extends HttpServlet {
