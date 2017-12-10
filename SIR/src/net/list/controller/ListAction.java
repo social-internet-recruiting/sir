@@ -1,4 +1,4 @@
-package net.schoollist.controller;
+package net.list.controller;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -8,7 +8,7 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
-public class SchoolListAction {
+public class ListAction {
 	Connection con = null;
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
@@ -85,5 +85,59 @@ public class SchoolListAction {
 		}
 		
 		return schoolList;
+	}
+
+	public ArrayList<String> getJobCode(String job1_name) {
+		
+	ArrayList<String> job2_name_list = new ArrayList<String>();
+
+		try {
+			con = getConnection();
+
+			String sql = "SELECT job2_name FROM jobcode WHERE job1_name=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, job1_name);
+			// System.out.println(job1_name);
+			// System.out.println(sql);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				job2_name_list.add(rs.getString(1));	// job2_name 
+			}
+
+		} catch(Exception e) {
+			System.out.println("getJobCode()메서드에서 에러 : " + e);
+		} finally {
+			freeResource();
+		}
+		
+		return job2_name_list;
+
+	}
+
+	public String getSelectedJob2(String email) {
+		String result = "";
+		
+		try {
+			con = getConnection();
+
+			String sql = "SELECT job2_name FROM member WHERE email=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, email);
+			// System.out.println(job1_name);
+			// System.out.println(sql);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				result = rs.getString(1);
+			}
+
+		} catch(Exception e) {
+			System.out.println("getSelectedJob2()메서드에서 에러 : " + e);
+		} finally {
+			freeResource();
+		}
+		
+		return result;
 	}
 }

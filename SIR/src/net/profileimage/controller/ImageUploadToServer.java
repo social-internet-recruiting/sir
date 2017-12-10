@@ -80,6 +80,16 @@ public class ImageUploadToServer {
 		mdto.setHigh_school(multi.getParameter("highSchoolSearchText").trim());
 		mdto.setUniversity(multi.getParameter("universitySearchText").trim());
 		
+		mdto.setJob1_name(multi.getParameter("job1_name"));
+		mdto.setJob2_name(multi.getParameter("job2_name"));
+		
+		String postcode = multi.getParameter("postcode");
+		String address = multi.getParameter("address");
+		String address2 = multi.getParameter("address2");
+		String sumAddress = postcode + "%%" + address + "%%" + address2; //%% 기준으로 합치고 나중에 이거 기준으로 짤라서 myinfo에 뿌려줄것
+		System.out.println("sumaddress : " + sumAddress);
+		mdto.setAddr(sumAddress);
+		
 		return mdto;
 		
 	}

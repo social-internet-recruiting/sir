@@ -88,12 +88,34 @@ public class MemberFrontController extends HttpServlet {
 						phone3 = phoneNumber.substring(6, 10);
 					}
 				}
-				
 				request.setAttribute("phone1", phone1);
 				request.setAttribute("phone2", phone2);
 				request.setAttribute("phone3", phone3);
 				
+				
+				// 주소 %% 기준으로 분할
+				String postcode = "";
+				String address = "";
+				String address2 = "";
+				if (!"".equals(mdto.getAddr())){
+					String [] addressArr = mdto.getAddr().split("%%");
+					if (addressArr.length==3){
+						postcode = addressArr[0];
+						address = addressArr[1];
+						address2 = addressArr[2];
+					} else {
+						postcode = addressArr[0];
+						address = addressArr[1];
+					}
+
+				}
+				request.setAttribute("postcode", postcode);
+				request.setAttribute("address", address);
+				request.setAttribute("address2", address2);
+				
+				
 				request.setAttribute("mdto", mdto);
+				
 				RequestDispatcher dis = request.getRequestDispatcher("myInfo.jsp");
 				//getRequestDispatcher("main.jsp?center=myInfo.jsp"); center 값 바꿔서 갈라니깐
 				//모달때문인지 에러 난다.
@@ -123,9 +145,9 @@ public class MemberFrontController extends HttpServlet {
 				
 				// 이전 입력된 고등학교, 대학교 카운트 줄이고, 새로 입력된 고등학교, 대학교 추가 및 카운트 올리기
 				mdao.reviseSchoolCount(delHigh, delUni, mdto.getHigh_school(), mdto.getUniversity());
-				
+				System.out.println("mdto.getAddr() : " + mdto.getAddr());
 				mdao.reviseMyInfo(mdto);
-				
+
 				RequestDispatcher dis = request.getRequestDispatcher("./myInfo.mem");
 				dis.forward(request, response);
 				

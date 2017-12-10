@@ -330,9 +330,41 @@ div.bhoechie-tab div.bhoechie-tab-content:not(.active){
 						<span id="universitySearchResultCount_9">&nbsp;</span>
 					</li>						
 				</ul>
-			</div>    		
+			</div>
+
     	</div>
     	
+    	<h4 align="left">희망직종</h4>
+		<div class="form-group" align="left">
+			<label for="name">희망 직종 1</label>
+			<select id="job1_name" name="job1_name" placeholder="job1_name" style="width:160px;">
+				<option value="의료" 		<c:if test="${requestScope.mdto.job1_name eq '의료'}"> selected</c:if> >의료</option>
+				<option value="IT/인터넷"	<c:if test="${requestScope.mdto.job1_name eq 'IT/인터넷'}"> selected</c:if> >IT/인터넷</option>
+				<option value="전문직" 	<c:if test="${requestScope.mdto.job1_name eq '전문직'}"> selected</c:if> >전문직</option>
+				<option value="미디어" 	<c:if test="${requestScope.mdto.job1_name eq '미디어'}"> selected</c:if> >미디어</option>
+				<option value="유통/무역" 	<c:if test="${requestScope.mdto.job1_name eq '유통/무역'}"> selected</c:if> >유통/무역</option>
+				<option value="경영/사무" 	<c:if test="${requestScope.mdto.job1_name eq '경영/사무'}"> selected</c:if> >경영/사무</option>
+				<option value="서비스" 	<c:if test="${requestScope.mdto.job1_name eq '서비스'}"> selected</c:if> >서비스</option>
+				<option value="생산/제조"	<c:if test="${requestScope.mdto.job1_name eq '생산/제조'}"> selected</c:if> >생산/제조</option>
+				<option value="교육" 		<c:if test="${requestScope.mdto.job1_name eq '교육'}"> selected</c:if> >교육</option>								
+			</select>
+			&nbsp;&nbsp;&nbsp;&nbsp;
+			<label for="name">희망 직종 2</label>
+			<select id="job2_name" name="job2_name" placeholder="job2_name" style="width:160px;">
+			</select>
+		</div>
+		
+		<h4 align="left">주소</h4>
+		<div class="form-group" align="left">
+		
+			<input type="text" name="postcode" id="postcode" placeholder="우편번호" style="width:240px;" value="${postcode}"/>&nbsp;
+			<input type="button" onclick="execDaumPostcode();" value="우편 번호 검색" class="btn" width="240px" />
+			<br/><br/>
+			<input type="text" name="address" id="address" placeholder="주소" readonly="readonly"  style="width:240px;" value="${address}"/> &nbsp;
+			<input type="text" name="address2" id="address2" placeholder="상세주소"  style="width:240px;" value="${address2}"/>
+			
+		</div>
+		
     	</center>
     </div>
     <div id="menu2" class="tab-pane fade">
@@ -372,6 +404,9 @@ div.bhoechie-tab div.bhoechie-tab-content:not(.active){
 
 	<script src="./js/jquery-1.6.1.min.js"></script>
 	<script src="./js/schoolSearch.js"></script>
+	<script src="./js/jobCode.js"></script>
+	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+	<script src="./js/postCode.js"></script>
 	
 	<script type="text/javascript">
     	

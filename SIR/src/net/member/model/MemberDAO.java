@@ -169,7 +169,8 @@ public class MemberDAO {
 		try {
 			con = getConnection();
 
-			String sql = "update member set name=?, intro=?, gender=?, phone=?, img=?, high_school=?, university=? where email=?";
+			String sql 	= "update member set name=?, intro=?, gender=?, phone=?, "
+						+ "img=?, high_school=?, university=?,job1_name=?,job2_name=?,addr=? where email=?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, mdto.getName());
 			pstmt.setString(2, mdto.getIntro());
@@ -178,8 +179,11 @@ public class MemberDAO {
 			pstmt.setString(5, mdto.getImg());
 			pstmt.setString(6, mdto.getHigh_school());
 			pstmt.setString(7, mdto.getUniversity());
+			pstmt.setString(8, mdto.getJob1_name());
+			pstmt.setString(9, mdto.getJob2_name());
+			pstmt.setString(10, mdto.getAddr());
 			
-			pstmt.setString(8, mdto.getEmail());
+			pstmt.setString(11, mdto.getEmail());
 
 			pstmt.executeUpdate();
 
