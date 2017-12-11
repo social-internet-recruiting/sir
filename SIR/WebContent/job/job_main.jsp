@@ -127,10 +127,6 @@
 </ul>
 
 <div class="tab-content">
-  <div role="tabpanel" class="tab-pane active" id="SE">
-  </div>
-  <div role="tabpanel" class="tab-pane" id="KK">
-  </div>
   <div role="tabpanel" class="tab-pane" id="IC">
   	<label for="IC_01">인천전체</label><input type="checkbox" id="IC_01" name="IC_01" value="IC_01"  />
   	<label for="IC_02">강화군</label><input type="checkbox" id="IC_02" name="IC_02" value="IC_02"  />
@@ -161,30 +157,31 @@
  	<label for="BS_14">연제구</label><input type="checkbox" id="BS_14" name="BS_14" value="BS_14"  />
  	<label for="BS_15">영도구</label><input type="checkbox" id="BS_15" name="BS_15" value="BS_15"  />
   </div>
-  <div role="tabpanel" class="tab-pane" id="E">
-  	<label for="check_EA">구매/자제/재고</label><input type="checkbox" id="check_EA" name="EA" value="EA"  />
-  	<label for="check_EB">물류/유통/운송</label><input type="checkbox" id="check_EB" name="EB" value="EB"  />
-  	<label for="check_EC">해외영업/무역영업</label><input type="checkbox" id="check_EC" name="EC" value="EC"  />
-  </div>
-  <div role="tabpanel" class="tab-pane" id="F">
-  	<label for="check_FA">외국어/어학원</label><input type="checkbox" id="check_FA" name="FA" value="FA"  />
-  	<label for="check_FB">유치원/보육</label><input type="checkbox" id="check_FB" name="FB" value="FB"  />
-  	<label for="check_FC">전문직업/IT강사</label><input type="checkbox" id="check_FC" name="FC" value="FC"  />
-  </div>
-  <div role="tabpanel" class="tab-pane" id="G">
-  	<label for="check_GA">경영분석/컨설턴트</label><input type="checkbox" id="check_GA" name="GA" value="GA"  />
-  	<label for="check_GB">세무회계/CPA</label><input type="checkbox" id="check_GB" name="GB" value="GB"  />
-  	<label for="check_GC">외국어/번역/통역</label><input type="checkbox" id="check_GC" name="GC" value="GC"  />
-  </div>
-  <div role="tabpanel" class="tab-pane" id="H">
-  	<label for="check_HA">웹개발</label><input type="checkbox" id="check_HA" name="HA" value="HA"  />
-  	<label for="check_HB">응용프로그램개발</label><input type="checkbox" id="check_HB" name="HB" value="HB"  />
-  	<label for="check_HC">게임</label><input type="checkbox" id="check_HC" name="HC" value="HC"  />
-  </div>
-  <div role="tabpanel" class="tab-pane" id="I">
-  	<label for="check_IA">공연/무대/스텝</label><input type="checkbox" id="check_IA" name="IA" value="IA"  />
-  	<label for="check_IB">영화/출판/편집</label><input type="checkbox" id="check_IB" name="IB" value="IB"  />
-  	<label for="check_IC">방송/연출/PD/감독</label><input type="checkbox" id="check_IC" name="IC" value="IC"  />
+  <div role="tabpanel" class="tab-pane" id="KN">
+ 	<label for="KN_01">경남전체</label><input type="checkbox" id="KN_01" name="KN_01" value="KN_01"  />
+ 	<label for="KN_02">거제시</label><input type="checkbox" id="KN_02" name="KN_02" value="KN_02"  />
+ 	<label for="KN_03">거창군</label><input type="checkbox" id="KN_03" name="KN_03" value="KN_03"  />
+ 	<label for="KN_04">고성군</label><input type="checkbox" id="KN_04" name="KN_04" value="KN_04"  />
+ 	<label for="KN_05">김해시</label><input type="checkbox" id="KN_05" name="KN_05" value="KN_05"  />
+ 	<label for="KN_06">남해군</label><input type="checkbox" id="KN_06" name="KN_06" value="KN_06"  />
+ 	<label for="KN_07">밀양시</label><input type="checkbox" id="KN_07" name="KN_07" value="KN_07"  />
+ 	<label for="KN_08">사천시</label><input type="checkbox" id="KN_08" name="KN_08" value="KN_08"  />
+ 	<label for="KN_09">산청군</label><input type="checkbox" id="KN_09" name="KN_09" value="KN_09"  />
+ 	<label for="KN_10">양산시</label><input type="checkbox" id="KN_10" name="KN_10" value="KN_10"  />
+ 	<label for="KN_11">의령군</label><input type="checkbox" id="KN_11" name="KN_11" value="KN_11"  />
+ 	<label for="KN_12">진주시</label><input type="checkbox" id="KN_12" name="KN_12" value="KN_12"  />
+ 	<label for="KN_13">창년군</label><input type="checkbox" id="KN_13" name="KN_13" value="KN_13"  />
+ 	<label for="KN_14">창원시</label><input type="checkbox" id="KN_14" name="KN_14" value="KN_14"  />
+ 	<label for="KN_15">창원시 마산합포구</label><input type="checkbox" id="KN_15" name="KN_15" value="KN_15"  />
+ 	<label for="KN_16">창원시 마산회원구</label><input type="checkbox" id="KN_16" name="KN_16" value="KN_16"  />
+ 	<label for="KN_17">창원시 성산구</label><input type="checkbox" id="KN_17" name="KN_17" value="KN_17"  />
+ 	<label for="KN_18">창원시 의창구</label><input type="checkbox" id="KN_18" name="KN_18" value="KN_18"  />
+ 	<label for="KN_19">창원시 진해구</label><input type="checkbox" id="KN_19" name="KN_19" value="KN_19"  />
+ 	<label for="KN_20">통영시</label><input type="checkbox" id="KN_20" name="KN_20" value="KN_20"  />
+ 	<label for="KN_21">하동군</label><input type="checkbox" id="KN_21" name="KN_21" value="KN_21"  />
+ 	<label for="KN_22">함안군</label><input type="checkbox" id="KN_22" name="KN_22" value="KN_22"  />
+ 	<label for="KN_23">함양군</label><input type="checkbox" id="KN_23" name="KN_23" value="KN_23"  />
+ 	<label for="KN_24">합천군</label><input type="checkbox" id="KN_24" name="KN_24" value="KN_24"  />
   </div>
 </div><!--End of tab-content--><hr/>
 <h3>경력</h3>
@@ -192,20 +189,46 @@
  <label for="career">경력</label><input type="checkbox" id="career" value="career" name="career"/>
  <select>
  	<option>1년</option>
+ 	<option>2년</option>
+ 	<option>3년</option>
+ 	<option>4년</option>
+ 	<option>5년</option>
+ 	<option>6년</option>
+ 	<option>7년</option>
+ 	<option>8년</option>
+ 	<option>9년</option>
+ 	<option>10년</option>
  </select>
 ~
 <select>
+ 	<option>1년</option>
  	<option>2년</option>
+ 	<option>3년</option>
+ 	<option>4년</option>
+ 	<option>5년</option>
+ 	<option>6년</option>
+ 	<option>7년</option>
+ 	<option>8년</option>
+ 	<option>9년</option>
+ 	<option>10년</option>
  </select>
  <label for="career_no">경력무관</label><input type="checkbox" class="career_no" value="career_no" name="career_no"/>
 <hr/>
 <h3>학력</h3>
 <select>
+	<option>중학교졸업</option>
  	<option>고등학교졸업</option>
+ 	<option>2년제 졸업</option>
+ 	<option>4년제 졸업</option>
+ 	<option>대학원 졸업</option>
  </select>
 ~
 <select>
+ 	<option>중학교졸업</option>
+ 	<option>고등학교졸업</option>
  	<option>2년제 졸업</option>
+ 	<option>4년제 졸업</option>
+ 	<option>대학원 졸업</option>
  </select>
  <label for="career_no">경력무관</label><input type="checkbox" class="career_no" value="career_no" name="career_no"/>
 <hr/>
@@ -215,7 +238,12 @@
  	<option>1400만원이상</option>
  	<option>1600만원이상</option>
  	<option>1800만원이상</option>
- 	<option>2000만원이상</option>
+ 	<option>2200만원이상</option>
+ 	<option>2400만원이상</option>
+ 	<option>2600만원이상</option>
+ 	<option>2800만원이상</option>
+ 	<option>3000만원이상</option>
+ 	
  </select>
 <label for="career_no">회사내규에 따름 포함</label><input type="checkbox" class="career_no" value="career_no" name="career_no"/>
 <hr/>
