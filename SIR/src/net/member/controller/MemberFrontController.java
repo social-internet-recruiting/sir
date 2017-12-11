@@ -113,9 +113,8 @@ public class MemberFrontController extends HttpServlet {
 				request.setAttribute("address", address);
 				request.setAttribute("address2", address2);
 				
-				
 				request.setAttribute("mdto", mdto);
-				
+
 				RequestDispatcher dis = request.getRequestDispatcher("myInfo.jsp");
 				//getRequestDispatcher("main.jsp?center=myInfo.jsp"); center 값 바꿔서 갈라니깐
 				//모달때문인지 에러 난다.
@@ -147,7 +146,7 @@ public class MemberFrontController extends HttpServlet {
 				mdao.reviseSchoolCount(delHigh, delUni, mdto.getHigh_school(), mdto.getUniversity());
 				System.out.println("mdto.getAddr() : " + mdto.getAddr());
 				mdao.reviseMyInfo(mdto);
-
+	
 				RequestDispatcher dis = request.getRequestDispatcher("./myInfo.mem");
 				dis.forward(request, response);
 				

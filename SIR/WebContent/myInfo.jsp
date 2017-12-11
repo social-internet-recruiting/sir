@@ -118,13 +118,26 @@ div.bhoechie-tab-content{
 div.bhoechie-tab div.bhoechie-tab-content:not(.active){
   display: none;
 }
+
+.container2 {
+  width: 600px;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin: 0px auto 50px auto;
+  opacity: 0.9; 
+  
+}
+
+.photosize {
+  width: 380px;
+  height: 380px;
+}
  
 </style>
 
-<body>
+<body style="background-color:gray;">
 	<jsp:include page="/include/top.jsp"/>
-	<header>
-	
+		
 
 	<!-- 수정하면 먼저 서버에 이미지 업로드 부터 수행한다. 그뒤 ./imageUpload.image 여기서 ./reviseMyInfo.mem 으로 넘겨줄것 -->
 	<!-- 파일 선택 안했을 경우 img path값 null 로 변경한다. 따라서 넣어줌 ?img=${requestScope.mdto.img} -->
@@ -132,18 +145,19 @@ div.bhoechie-tab div.bhoechie-tab-content:not(.active){
 					&delhigh_school=${requestScope.mdto.high_school}
 					&deluniversity=${requestScope.mdto.university}"  
 					method="post" enctype="multipart/form-data" name="infoForm">
-	<div class="myInfo">
-	<div>
-		<div style="float:left">	
+	<div class="container" style="background-color:#fff;margin-top:-20px">
+	<div class="row" style="margin:50px 0 50px 0">
+	<div class="col-sm-2"></div>
+		<div class="col-sm-3" style="margin:10px 0 10px 0;">	
 			<a><img src="${requestScope.mdto.img}" id="profileImageMain" title="사진변경하려면 정보수정에서 사진 클릭하세요" ></a>
 		</div>		
-		<div class="tag">
+		<div class="col-sm-2">
 			<div>
 				<h1>${requestScope.mdto.email}</h1>
 			</div>
-			<div style="margin:10px auto 10px auto;">
-				<span >게시물<span>0</span></span>
-				<span >친구<span>0</span></span>
+			<div style="margin:10px 0 10px 0;">
+				<span>게시물	 <span>0</span></span>
+				<span>친구 <span>0</span></span>
 			</div>
 			<div>
 				<a>${requestScope.mdto.name}</a>
@@ -151,11 +165,58 @@ div.bhoechie-tab div.bhoechie-tab-content:not(.active){
 			<div style="margin:10px auto 10px auto;">
 				<a>${requestScope.mdto.phone}</a>
 			</div>
-				<div style="margin-left:100px">
-					<input class="btn btn-outline-success" type="button"
-						data-toggle="modal" data-target="#myModal" value="정보수정"/>
-				</div>
-
+			<div style="margin-left:100px">
+				<input class="btn btn-outline-success" type="button" data-toggle="modal" data-target="#myModal" value="정보수정"/>
+			</div>
+		</div>
+	</div>
+	
+	<!-- 게시물 스크랩 -->
+	<div>
+	<div class="row">
+	<div class="col-sm-5"></div>
+		<ul class="nav nav-tabs" role="tablist" id="">
+		  <li role="presentation" class="active"><a href="#A" aria-controls="A" role="tab" data-toggle="tab" style="font-size:20px;">게시물</a></li>
+		  <li role="presentation"><a href="#B" aria-controls="B" role="tab" data-toggle="tab" style="font-size:20px;">스크랩</a></li>
+		</ul>
+	</div>
+	<div class="tab-content row">
+		  <div role="tabpanel" class="tab-pane active" id="A">
+		  	<div class="photosize col-sm-4" style="margin:5px; background-color:#ff8080">	
+				<a><img style="width:370px; height:370px; margin-left:-10px; margin-top:5px;" src="${requestScope.mdto.img}" id="profileImageMain" title="사진변경하려면 정보수정에서 사진 클릭하세요" ></a>
+			</div>
+			<div class="photosize col-sm-4" style="margin:5px; background-color:#ff8080">	
+				<a><img style="width:370px; height:370px; margin-left:-10px; margin-top:5px;" src="${requestScope.mdto.img}" id="profileImageMain" title="사진변경하려면 정보수정에서 사진 클릭하세요" ></a>
+			</div>
+			<div class="photosize col-sm-4" style="margin:5px; background-color:#ff8080">	
+				<a><img style="width:370px; height:370px; margin-left:-10px; margin-top:5px;" src="${requestScope.mdto.img}" id="profileImageMain" title="사진변경하려면 정보수정에서 사진 클릭하세요" ></a>
+			</div>
+			<div class="photosize col-sm-4" style="margin:5px; background-color:#ff8080">	
+				<a><img style="width:370px; height:370px; margin-left:-10px; margin-top:5px;" src="${requestScope.mdto.img}" id="profileImageMain" title="사진변경하려면 정보수정에서 사진 클릭하세요" ></a>
+			</div>
+			<div class="photosize col-sm-4" style="margin:5px; background-color:#ff8080">	
+				<a><img style="width:370px; height:370px; margin-left:-10px; margin-top:5px;" src="${requestScope.mdto.img}" id="profileImageMain" title="사진변경하려면 정보수정에서 사진 클릭하세요" ></a>
+			</div>
+			<div class="photosize col-sm-4" style="margin:5px; background-color:#ff8080">	
+				<a><img style="width:370px; height:370px; margin-left:-10px; margin-top:5px;" src="${requestScope.mdto.img}" id="profileImageMain" title="사진변경하려면 정보수정에서 사진 클릭하세요" ></a>
+			</div>
+			<div class="photosize col-sm-4" style="margin:5px; background-color:#ff8080">	
+				<a><img style="width:370px; height:370px; margin-left:-10px; margin-top:5px;" src="${requestScope.mdto.img}" id="profileImageMain" title="사진변경하려면 정보수정에서 사진 클릭하세요" ></a>
+			</div>
+			<div class="photosize col-sm-4" style="margin:5px; background-color:#ff8080">	
+				<a><img style="width:370px; height:370px; margin-left:-10px; margin-top:5px;" src="${requestScope.mdto.img}" id="profileImageMain" title="사진변경하려면 정보수정에서 사진 클릭하세요" ></a>
+			</div>
+			<div class="photosize col-sm-4" style="margin:5px; background-color:#ff8080">	
+				<a><img style="width:370px; height:370px; margin-left:-10px; margin-top:5px;" src="${requestScope.mdto.img}" id="profileImageMain" title="사진변경하려면 정보수정에서 사진 클릭하세요" ></a>
+			</div>
+		  </div>
+		  <div role="tabpanel" class="tab-pane" id="B">
+			<a>스크랩</a>
+		  </div>
+	</div><!--End of tab-content--><hr/>
+			<!-- End of job_check_one -->
+	</div>
+	
 				<!-- Modal -->
 				<div class="modal" id="myModal" role="dialog" >
 					<div class="modal-dialog">
@@ -164,8 +225,8 @@ div.bhoechie-tab div.bhoechie-tab-content:not(.active){
 						<div class="modal-content" style="width:700px">
 							<div class="modal-header" style="width:700px">
 							
-								<h2>회원정보 수정</h2>
-								<input type="button" class="close btn btn-danger" style="float:right; weight:100px; height:50px;" data-dismiss="modal" value="&nbsp;&times;&nbsp;">
+								<h2 style="float:left">회원정보 수정</h2>
+								<input type="button" class="close btn btn-danger" style="float:right; weight:120px; height:50px;" data-dismiss="modal" value="&nbsp;&times;&nbsp;">
 							</div>
 <div class="row" style="margin-top:20px">
 <div class="col-sm-2">							
@@ -184,6 +245,7 @@ div.bhoechie-tab div.bhoechie-tab-content:not(.active){
     <div id="home" class="tab-pane fade in active">
       <h3 style="text-align:center">프로필 수정</h3>
         <center style="width:500px; margin-left:auto; margin-right:auto;">
+        <hr>
         <!-- 사진 클릭하면 file upload 창 open 될수 있게  안보이게 처리함-->
         <div id="hiddenDiv" style="display:none">
     		<input type="file" name="profileImageFileButton" accept=".jpg,.png" id="profileImageFileButton"/><br/>
@@ -216,19 +278,21 @@ div.bhoechie-tab div.bhoechie-tab-content:not(.active){
     	
     	<div class="form-group" align="left">
      		<label for="phone">전화번호</label><div></div>
-					<select class="col-sm-3" id="m_phone1" name="m_phone1" style="height:30px;" size=1>
-								<option value="">TEL</option>
-								<option value="010" <c:if test="${phone1 eq '010'}"> selected</c:if> >010</option>
-								<option value="011" <c:if test="${phone1 eq '011'}"> selected</c:if> >011</option>
-								<option value="016" <c:if test="${phone1 eq '016'}"> selected</c:if> >016</option>
-								<option value="017" <c:if test="${phone1 eq '017'}"> selected</c:if> >017</option>
-								<option value="018" <c:if test="${phone1 eq '018'}"> selected</c:if> >018</option>
-								<option value="019" <c:if test="${phone1 eq '019'}"> selected</c:if> >019</option>
-					</select>
-							<div class="col-sm-1">-</div>
-							<input class="col-sm-3" type="text" id="m_phone2" name="m_phone2" value="${phone2}" style="height:30px;" size="4" maxlength="4" onkeypress="onlyNumber();">
-							<div class="col-sm-1">-</div>
-				    		<input class="col-sm-3" type="text" id="m_phone3" name="m_phone3" value="${phone3}" style="height:30px;" size="4" maxlength="4" onkeypress="onlyNumber();">
+     		<div class="form-group row" style="margin-left:0px">
+     			<select class="form-control col-sm-3" id="m_phone1" name="m_phone1" placeholder="" style="width:139px;">
+					<option value="">TEL</option>
+					<option value="010" <c:if test="${phone1 eq '010'}"> selected</c:if> >010</option>
+					<option value="011" <c:if test="${phone1 eq '011'}"> selected</c:if> >011</option>
+					<option value="016" <c:if test="${phone1 eq '016'}"> selected</c:if> >016</option>
+					<option value="017" <c:if test="${phone1 eq '017'}"> selected</c:if> >017</option>
+					<option value="018" <c:if test="${phone1 eq '018'}"> selected</c:if> >018</option>
+					<option value="019" <c:if test="${phone1 eq '019'}"> selected</c:if> >019</option>
+				</select>
+			<div class="col-sm-1">-</div>
+			<input class="form-control col-sm-3" type="text" id="m_phone2" name="m_phone2" value="${phone2}" maxlength="4" onkeypress="onlyNumber();" style="width:139px;">
+			<div class="col-sm-1">-</div>
+			<input class="form-control col-sm-3" type="text" id="m_phone3" name="m_phone3" value="${phone3}" maxlength="4" onkeypress="onlyNumber();" style="width:139px;">
+			</div>
 		</div>
     	</center>
     	
@@ -236,6 +300,7 @@ div.bhoechie-tab div.bhoechie-tab-content:not(.active){
     <div id="menu1" class="tab-pane fade">
     <center style="width:500px; margin-left:auto; margin-right:auto;">
       <h3>추가 정보</h3>
+      <hr>
       <h4 align="left">학력</h4>
 		<div class="form-group" align="left">
      		<label for="name">고등학교</label>
@@ -338,15 +403,15 @@ div.bhoechie-tab div.bhoechie-tab-content:not(.active){
 		<div class="form-group" align="left">
 			<label for="name">희망 직종 1</label>
 			<select id="job1_name" name="job1_name" placeholder="job1_name" style="width:160px;">
-				<option value="의료" 		<c:if test="${requestScope.mdto.job1_name eq '의료'}"> selected</c:if> >의료</option>
+				<option value="의료" 	<c:if test="${requestScope.mdto.job1_name eq '의료'}"> selected</c:if> >의료</option>
 				<option value="IT/인터넷"	<c:if test="${requestScope.mdto.job1_name eq 'IT/인터넷'}"> selected</c:if> >IT/인터넷</option>
 				<option value="전문직" 	<c:if test="${requestScope.mdto.job1_name eq '전문직'}"> selected</c:if> >전문직</option>
 				<option value="미디어" 	<c:if test="${requestScope.mdto.job1_name eq '미디어'}"> selected</c:if> >미디어</option>
-				<option value="유통/무역" 	<c:if test="${requestScope.mdto.job1_name eq '유통/무역'}"> selected</c:if> >유통/무역</option>
-				<option value="경영/사무" 	<c:if test="${requestScope.mdto.job1_name eq '경영/사무'}"> selected</c:if> >경영/사무</option>
+				<option value="유통/무역" <c:if test="${requestScope.mdto.job1_name eq '유통/무역'}"> selected</c:if> >유통/무역</option>
+				<option value="경영/사무" <c:if test="${requestScope.mdto.job1_name eq '경영/사무'}"> selected</c:if> >경영/사무</option>
 				<option value="서비스" 	<c:if test="${requestScope.mdto.job1_name eq '서비스'}"> selected</c:if> >서비스</option>
 				<option value="생산/제조"	<c:if test="${requestScope.mdto.job1_name eq '생산/제조'}"> selected</c:if> >생산/제조</option>
-				<option value="교육" 		<c:if test="${requestScope.mdto.job1_name eq '교육'}"> selected</c:if> >교육</option>								
+				<option value="교육" 	<c:if test="${requestScope.mdto.job1_name eq '교육'}"> selected</c:if> >교육</option>								
 			</select>
 			&nbsp;&nbsp;&nbsp;&nbsp;
 			<label for="name">희망 직종 2</label>
@@ -367,13 +432,114 @@ div.bhoechie-tab div.bhoechie-tab-content:not(.active){
 		
     	</center>
     </div>
-    <div id="menu2" class="tab-pane fade">
+    <div id="menu2" class="tab-pane fade" >
+    <center style="width:500px; margin-left:auto; margin-right:auto;">
       <h3>경력 사항</h3>
-      <p>Sed ut perspiciatis unde omnis iste natus erron sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+      <hr>
+      	<h4 align="left">경력</h4>
+		<div class="form-group" align="left">
+     		<label for="name">회사</label>
+     		<input class="form-control"  id="prev_company" name="prev_company" type="text" placeholder="company" value="${mdto.prev_company}" autocomplete="off" />
+		</div>
+		<div class="form-group" align="left">
+     		<label for="name">직함</label>
+     		<input class="form-control"  id="prev_title" name="prev_title" type="text" placeholder="job title" value="${mdto.prev_title}" autocomplete="off" />
+		</div>
+		<div class="form-group" align="left">	
+			<label for="phone">입사일</label><div></div>
+			<div class="form-group row" style="margin-left:0px">
+			<input type="date" value="${requestScope.mdto.prev_startdate}" id="prev_startdate" name="prev_startdate" />
+			</div>
+		</div>
+		<div class="form-group" align="left">	
+			<label for="phone">퇴사일</label><div></div>
+			
+			<div class="form-group row" style="margin-left:0px">
+			<input type="date" value="${requestScope.mdto.prev_finishdate}" id="prev_finishdate" name="prev_finishdate" />
+			</div>
+		</div>
+		<div class="form-group" align="left">
+     		<label for="introduction">직무내용</label>
+     		<td><textarea textarea style="resize: none;" id="prev_jobcontent" name="prev_jobcontent" class="form-control" placeholder="job specifications"  maxlength="2048" cols="40" rows="3" style="height:100px" >${requestScope.mdto.prev_jobcontent}</textarea></td>
+        </div>
+	</center>	
     </div>
     <div id="menu3" class="tab-pane fade">
-      <h3>공개 설정</h3>
-      <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>    </div>
+    <center style="width:500px; margin-left:auto; margin-right:auto;">
+      	<h3>공개 설정</h3>
+      	<hr>
+    	<div class="form-group row" align="left" style="font-size:15px;">
+     		<label class="col-sm-3" for="">전화번호</label>
+     		<div class="btn-group" data-toggle="buttons"></div>
+     		<label class="active col-sm-2">
+     		<input type="radio" id="public_phone" name="public_phone" autocomplete="off" value=1 <c:if test="${mdto.public_phone eq 1}"> checked</c:if> > 공개
+     		</label>
+     		<label class="col-sm-3">
+     		<input type="radio" id="public_phone" name="public_phone" autocomplete="off" value=0 <c:if test="${mdto.public_phone eq 0}"> checked</c:if> > 비공개
+     		</label>
+    	</div>
+    	<div class="form-group row" align="left" style="font-size:15px;">
+     		<label class="col-sm-3" for="">주소</label>
+     		<div class="btn-group" data-toggle="buttons"></div>
+     		<label class="active col-sm-2">
+     		<input type="radio" id="public_addr" name="public_addr" autocomplete="off" value=1 <c:if test="${mdto.public_addr eq 1}"> checked</c:if> > 공개
+     		</label>
+     		<label class="col-sm-3">
+     		<input type="radio" id="public_addr" name="public_addr" autocomplete="off" value=0 <c:if test="${mdto.public_addr eq 0}"> checked</c:if> > 비공개
+     		</label>
+    	</div>
+    	<div class="form-group row" align="left" style="font-size:15px;">
+     		<label class="col-sm-3" for="">학력</label>
+     		<div class="btn-group" data-toggle="buttons"></div>
+     		<label class="active col-sm-2">
+     		<input type="radio" id="public_school" name="public_school" autocomplete="off" value=1 <c:if test="${mdto.public_school eq 1}"> checked</c:if> > 공개
+     		</label>
+     		<label class="col-sm-3">
+     		<input type="radio" id="public_school" name="public_school" autocomplete="off" value=0 <c:if test="${mdto.public_school eq 0}"> checked</c:if> > 비공개
+     		</label>
+    	</div>
+    	<div class="form-group row" align="left" style="font-size:15px;">
+     		<label class="col-sm-3" for="">관심분야</label>
+     		<div class="btn-group" data-toggle="buttons"></div>
+     		<label class="active col-sm-2">
+     		<input type="radio" id="public_interest" name="public_interest" autocomplete="off" value=1 <c:if test="${mdto.public_interest eq 1}"> checked</c:if> > 공개
+     		</label>
+     		<label class="col-sm-3">
+     		<input type="radio" id="public_interest" name="public_interest" autocomplete="off" value=0 <c:if test="${mdto.public_interest eq 0}"> checked</c:if> > 비공개
+     		</label>
+    	</div>
+    	<div class="form-group row" align="left" style="font-size:15px;">
+     		<label class="col-sm-3" for="">자격증&어학</label>
+     		<div class="btn-group" data-toggle="buttons"></div>
+     		<label class="active col-sm-2">
+     		<input type="radio" id="public_cert" name="public_cert" autocomplete="off" value=1 <c:if test="${mdto.public_cert eq 1}"> checked</c:if> > 공개
+     		</label>
+     		<label class="col-sm-3">
+     		<input type="radio" id="public_cert" name="public_cert" autocomplete="off" value=0 <c:if test="${mdto.public_cert eq 0}"> checked</c:if> > 비공개
+     		</label>
+    	</div>
+    	<div class="form-group row" align="left" style="font-size:15px;">
+     		<label class="col-sm-3" for="">자기소개</label>
+     		<div class="btn-group" data-toggle="buttons"></div>
+     		<label class="active col-sm-2">
+     		<input type="radio" id="public_intro" name="public_intro" autocomplete="off" value=1 <c:if test="${mdto.public_intro eq 1}"> checked</c:if> > 공개
+     		</label>
+     		<label class="col-sm-3">
+     		<input type="radio" id="public_intro" name="public_intro" autocomplete="off" value=0 <c:if test="${mdto.public_intro eq 0}"> checked</c:if> > 비공개
+     		</label>
+    	</div>
+    	<div class="form-group row" align="left" style="font-size:15px;">
+     		<label class="col-sm-3" for="">경력사항</label>
+     		<div class="btn-group" data-toggle="buttons"></div>
+     		<label class="active col-sm-2">
+     		<input type="radio" id="public_career" name="public_career" autocomplete="off" value=1 <c:if test="${mdto.public_career eq 1}"> checked</c:if> > 공개
+     		</label>
+     		<label class="col-sm-3">
+     		<input type="radio" id="public_career" name="public_career" autocomplete="off" value=0 <c:if test="${mdto.public_career eq 0}"> checked</c:if> > 비공개
+     		</label>
+    	</div>
+    </center>
+    </div>
   </div>
 </div>
 </div>							
@@ -383,20 +549,15 @@ div.bhoechie-tab div.bhoechie-tab-content:not(.active){
 								<input type="button" class="btn btn-outline-dark" value="수정"  onclick="checkForm();"/>
 								<!-- 유효성 체크를 위해 submit에서 button으로 변경하고 checkForm() 에서 submit 시켜준다. -->
 								<!-- 수정하면 먼저 서버에 이미지 업로드 부터 수행한다. 그뒤 ./imageUpload.image 여기서 ./reviseMyInfo.mem 으로 넘겨줄것 -->
-								-->
 							</div>
 						</div>
 
 					</div>
 				</div>
-
-			</div>
-	</div>
-	</div>
 	
+	</div>
 	</form>
 	
-	</header>
 	<jsp:include page="/include/footer.jsp"/>
 
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>

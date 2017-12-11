@@ -3,7 +3,7 @@ package net.member.model;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Timestamp;
+import java.sql.Date;
 import java.util.Vector;
 
 import javax.naming.Context;
@@ -149,9 +149,19 @@ public class MemberDAO {
 				mdto.setGrade3(rs.getString(27));                                     
 				mdto.setPrev_company(rs.getString(28));                               
 				mdto.setPrev_title(rs.getString(29));                                 
-				mdto.setPrev_startdate(rs.getTimestamp(30));                          
-				mdto.setPrev_finishdate(rs.getTimestamp(31));                         
-				mdto.setPrev_jobcontent(rs.getString(32));                            
+				mdto.setPrev_startdate(rs.getDate(30));                          
+				mdto.setPrev_finishdate(rs.getDate(31));                         
+				mdto.setPrev_jobcontent(rs.getString(32));
+				
+				// 공개 비공개 설정
+				mdto.setPublic_phone(rs.getInt(33)); 
+				mdto.setPublic_addr(rs.getInt(34));
+				mdto.setPublic_school(rs.getInt(35));
+				mdto.setPublic_interest(rs.getInt(36));
+				mdto.setPublic_cert(rs.getInt(37));
+				mdto.setPublic_intro(rs.getInt(38));
+				mdto.setPublic_career(rs.getInt(39));
+				
 			}
 
 		} catch(Exception e) {
@@ -170,7 +180,11 @@ public class MemberDAO {
 			con = getConnection();
 
 			String sql 	= "update member set name=?, intro=?, gender=?, phone=?, "
-						+ "img=?, high_school=?, university=?,job1_name=?,job2_name=?,addr=? where email=?";
+						+ "img=?, high_school=?, university=?,job1_name=?,job2_name=?,addr=?, "
+						+ "prev_company=?, prev_title=?, prev_startdate=?, prev_finishdate=?, prev_jobcontent=?, "
+						+ "public_phone=?, public_addr=?, public_school=?, public_interest=?, "
+						+ "public_cert=?, public_intro=?, public_career=? "
+						+ "where email=?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, mdto.getName());
 			pstmt.setString(2, mdto.getIntro());
@@ -183,7 +197,23 @@ public class MemberDAO {
 			pstmt.setString(9, mdto.getJob2_name());
 			pstmt.setString(10, mdto.getAddr());
 			
-			pstmt.setString(11, mdto.getEmail());
+			// 전직장 정보
+			pstmt.setString(11, mdto.getPrev_company());
+			pstmt.setString(12, mdto.getPrev_title());
+			pstmt.setDate(13, mdto.getPrev_startdate());
+			pstmt.setDate(14, mdto.getPrev_finishdate());
+			pstmt.setString(15, mdto.getPrev_jobcontent());
+
+			// 공개 비공개 설정
+			pstmt.setInt(16, mdto.getPublic_phone());
+			pstmt.setInt(17, mdto.getPublic_addr());
+			pstmt.setInt(18, mdto.getPublic_school());
+			pstmt.setInt(19, mdto.getPublic_interest());
+			pstmt.setInt(20, mdto.getPublic_cert());
+			pstmt.setInt(21, mdto.getPublic_intro());
+			pstmt.setInt(22, mdto.getPublic_career());
+
+			pstmt.setString(23, mdto.getEmail());
 
 			pstmt.executeUpdate();
 

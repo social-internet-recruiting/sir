@@ -33,9 +33,61 @@ public class MemberDTO {
 	private String grade3;
 	private String prev_company;
 	private String prev_title;
-	private Timestamp prev_startdate;
-	private Timestamp prev_finishdate;
+	private Date prev_startdate;
+	private Date prev_finishdate;
 	private String prev_jobcontent;
+	
+	// 공개 비공개 설정
+	private int public_phone;
+	private int public_addr;
+	private int public_school;
+	private int public_interest;
+	private int public_cert;
+	private int public_intro;
+	private int public_career;
+
+	public int getPublic_phone() {
+		return public_phone;
+	}
+	public void setPublic_phone(int public_phone) {
+		this.public_phone = public_phone;
+	}
+	public int getPublic_addr() {
+		return public_addr;
+	}
+	public void setPublic_addr(int public_addr) {
+		this.public_addr = public_addr;
+	}
+	public int getPublic_school() {
+		return public_school;
+	}
+	public void setPublic_school(int public_school) {
+		this.public_school = public_school;
+	}
+	public int getPublic_interest() {
+		return public_interest;
+	}
+	public void setPublic_interest(int public_interest) {
+		this.public_interest = public_interest;
+	}
+	public int getPublic_cert() {
+		return public_cert;
+	}
+	public void setPublic_cert(int public_cert) {
+		this.public_cert = public_cert;
+	}
+	public int getPublic_intro() {
+		return public_intro;
+	}
+	public void setPublic_intro(int public_intro) {
+		this.public_intro = public_intro;
+	}
+	public int getPublic_career() {
+		return public_career;
+	}
+	public void setPublic_career(int public_career) {
+		this.public_career = public_career;
+	}
 	public int getIdx() {
 		return Idx;
 	}
@@ -210,16 +262,16 @@ public class MemberDTO {
 	public void setPrev_title(String prev_title) {
 		this.prev_title = prev_title;
 	}
-	public Timestamp getPrev_startdate() {
+	public Date getPrev_startdate() {
 		return prev_startdate;
 	}
-	public void setPrev_startdate(Timestamp prev_startdate) {
+	public void setPrev_startdate(Date prev_startdate) {
 		this.prev_startdate = prev_startdate;
 	}
-	public Timestamp getPrev_finishdate() {
+	public Date getPrev_finishdate() {
 		return prev_finishdate;
 	}
-	public void setPrev_finishdate(Timestamp prev_finishdate) {
+	public void setPrev_finishdate(Date prev_finishdate) {
 		this.prev_finishdate = prev_finishdate;
 	}
 	public String getPrev_jobcontent() {

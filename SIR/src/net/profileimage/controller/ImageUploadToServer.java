@@ -2,6 +2,7 @@ package net.profileimage.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.sql.Date;
 import java.util.Enumeration;
 
 import javax.servlet.RequestDispatcher;
@@ -90,6 +91,22 @@ public class ImageUploadToServer {
 		System.out.println("sumaddress : " + sumAddress);
 		mdto.setAddr(sumAddress);
 		
+		// 경력 사항
+		mdto.setPrev_company(multi.getParameter("prev_company"));
+		mdto.setPrev_title(multi.getParameter("prev_title"));
+		mdto.setPrev_startdate(Date.valueOf(multi.getParameter("prev_startdate")));
+		mdto.setPrev_finishdate(Date.valueOf(multi.getParameter("prev_finishdate")));
+		mdto.setPrev_jobcontent(multi.getParameter("prev_jobcontent"));
+		
+		// 공개, 비공개 설정
+		mdto.setPublic_phone(Integer.parseInt(multi.getParameter("public_phone")));
+		mdto.setPublic_addr(Integer.parseInt(multi.getParameter("public_addr")));
+		mdto.setPublic_school(Integer.parseInt(multi.getParameter("public_school")));
+		mdto.setPublic_interest(Integer.parseInt(multi.getParameter("public_interest")));
+		mdto.setPublic_cert(Integer.parseInt(multi.getParameter("public_cert")));
+		mdto.setPublic_intro(Integer.parseInt(multi.getParameter("public_intro")));
+		mdto.setPublic_career(Integer.parseInt(multi.getParameter("public_career")));
+
 		return mdto;
 		
 	}
