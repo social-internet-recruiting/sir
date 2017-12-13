@@ -72,14 +72,15 @@ public class JobDAO {
 				dto.setForm(rs.getString(25));
 				dto.setReception(rs.getString(26));
 				dto.setJob_process(rs.getString(27));
+				v.add(dto);
 			}
 			
 		} catch (Exception e) {
 			System.out.println("getAllList 메소드 오류" + e);
 		} finally {
-			
+			freeResource();
 		}
-		return null;
+		return v;
 	}
 
 }

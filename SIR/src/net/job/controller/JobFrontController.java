@@ -40,15 +40,12 @@ public class JobFrontController extends HttpServlet {
 			RequestDispatcher dis = 
 					request.getRequestDispatcher("./job/job_main.jsp");
 			dis.forward(request, response);
-		} else if("/every_search.job".equals(command)) {
-			JobDAO dao = new JobDAO();
-			
-		} else if("/check_search.job".equals(command)) {
+		}  else if("/check_search.job".equals(command)) {
 			JobDAO dao = new JobDAO();
 			
 			Vector<jobDTO> v = dao.getAllList();
 			
-			
+			request.setAttribute("v",v);
 			RequestDispatcher dis = request.getRequestDispatcher("./job/job_main.jsp");
 		
 			dis.forward(request, response);
