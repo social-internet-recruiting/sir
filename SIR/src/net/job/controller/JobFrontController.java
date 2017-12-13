@@ -1,6 +1,7 @@
 package net.job.controller;
 
 import java.io.IOException;
+import java.util.Vector;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -8,6 +9,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import net.job.model.JobDAO;
+import net.job.model.jobDTO;
 
 @WebServlet("*.job")
 public class JobFrontController extends HttpServlet {
@@ -35,6 +39,18 @@ public class JobFrontController extends HttpServlet {
 		if("/job_main.job".equals(command)) {
 			RequestDispatcher dis = 
 					request.getRequestDispatcher("./job/job_main.jsp");
+			dis.forward(request, response);
+		} else if("/every_search.job".equals(command)) {
+			JobDAO dao = new JobDAO();
+			
+		} else if("/check_search.job".equals(command)) {
+			JobDAO dao = new JobDAO();
+			
+			Vector<jobDTO> v = dao.getAllList();
+			
+			
+			RequestDispatcher dis = request.getRequestDispatcher("./job/job_main.jsp");
+		
 			dis.forward(request, response);
 		}
 	}
