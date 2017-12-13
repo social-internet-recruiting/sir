@@ -16,12 +16,14 @@ public class JobDAO {
 	ResultSet rs = null;
 	DataSource ds = null;
 	
+	/* DB 연결 */
 	private Connection getConnection() throws Exception {
 		Context ctx = new InitialContext();
 		ds = (DataSource)ctx.lookup("java:comp/env/jdbc/sir");
 		return ds.getConnection();
 	}
 	
+	/* 자원 해제 */
 	private void freeResource() {
 		try {
 			if(con != null) con.close();
@@ -32,13 +34,14 @@ public class JobDAO {
 		}
 	}
 
+	/* 전체 리스트 출력 */
 	public Vector<jobDTO> getAllList() {
 		Vector<jobDTO> v =new Vector<jobDTO>();
 		jobDTO dto = null;
 		
 		try {
 			
-			con = getConnection();
+			con = getConnection(); 
 			String sql = "select * from jobs";
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();

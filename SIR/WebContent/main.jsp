@@ -18,7 +18,7 @@
 <jsp:include page="/include/top.jsp"/>
 </header>
 <!-- header 부분 끝 -->
-	
+
 <!-- center 부분 시작-->
 
 <c:set var="center" value="${param.center}"/>
@@ -31,7 +31,7 @@
 </center>
 
 <!-- center 부분 끝 -->
-	
+<!-- ddd -->
 <!-- footer 부분 시작 -->
 <footer>
 <jsp:include page="/include/footer.jsp"/>
