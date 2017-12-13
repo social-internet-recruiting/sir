@@ -46,7 +46,7 @@ public class JobDAO {
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			
-			if(rs.next()) {
+			while(rs.next()) {
 				dto = new jobDTO();
 				dto.setJob_idx(rs.getInt(1));
 				dto.setJob1_code(rs.getString(2));
