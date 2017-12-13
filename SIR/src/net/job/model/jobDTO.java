@@ -3,6 +3,7 @@ package net.job.model;
 import java.sql.Date;
 
 public class jobDTO {
+	private int job_idx;
 	private String job1_code; //job1_code varchar(3),
 	private String job2_code; //job2_code varchar(3),
 	private String co_title; //co_title varchar(30), -- 회사명
@@ -31,6 +32,13 @@ public class jobDTO {
 	private String form; //form varchar(30), -- 지원양식
 	private String reception; //reception varchar(30), -- 접수방법
 	private String job_process; //job_process varchar(50) -- 전형절차
+	
+	public int getJob_idx() {
+		return job_idx;
+	}
+	public void setJob_idx(int job_idx) {
+		this.job_idx = job_idx;
+	}
 	
 	public String getJob1_code() {
 		return job1_code;
