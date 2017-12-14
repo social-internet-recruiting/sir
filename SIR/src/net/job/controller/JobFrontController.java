@@ -1,6 +1,7 @@
 package net.job.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Vector;
 
 import javax.servlet.RequestDispatcher;
@@ -61,6 +62,15 @@ public class JobFrontController extends HttpServlet {
 
 			dis.forward(request, response);
 
+		} else if("/job_detail.job".equals(command)) {
+			String idx = request.getParameter("job_idx");
+			System.out.println("출력:" +idx);
+			JobDAO dao = new JobDAO();
+			jobDTO dto = dao.getSelectList(idx);
+			request.setAttribute("dto", dto);
+			
+			RequestDispatcher dis = request.getRequestDispatcher("./job/job_detail.jsp");
+			dis.forward(request, response);
 		}
 	}
 

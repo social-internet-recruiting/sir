@@ -23,7 +23,7 @@
 		<c:forEach var="v" items="${requestScope.v}">
 			<tr align="center">
 				<td>${v.co_title}</td>
-				<td>${v.recruit_notice}</td>
+				<td><a href="#" onclick="window.open('job_detail.job?job_idx=${v.job_idx}','${v.recruit_notice}','width=700,height=900,location=no,status=no,scrollbars=yes');">${v.recruit_notice}</a></td>
 				<td>${v.qualify_school1}| ${v.qualify_career1}</td>
 				<td>${v.position}<br/> ${v.salary1} ~ ${v.salary2}
 				</td>
