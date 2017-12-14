@@ -248,6 +248,27 @@
 
 <div class="job_list">
 <jsp:include page="/job/job_list.jsp" />
+<table class="table">
+	<!-- 	<tr align="center">
+			<th>기업명</th>
+			<th>제목</th>
+			<th>지원자격</th>
+			<th>근무조건</th>
+			<th>마감일</th>
+		</tr> -->
+<%-- 	<c:forEach var="v" items="${requestScope.v}">
+	
+      <tr align="center">
+         <td>${v.co_title}</td>
+         <td>${v.recruit_notice}</td>
+         <td>${v.qualify_school1} | ${v.qualify_career1}</td>
+         <td>${v.position}<br/>
+            ${v.salary1} ~ ${v.salary2}
+         </td>
+         <td>${v.applicate_period2}<Br/></td>
+      </tr>
+      </c:forEach> --%>
+</table>
 </div><!-- End of job_list -->
 </form><!-- End of check_search.job -->
 </div><!-- End of container -->
