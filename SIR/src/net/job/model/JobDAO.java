@@ -17,32 +17,35 @@ public class JobDAO {
 	ResultSet rs = null;
 	DataSource ds = null;
 	
-	/* DB 연결 */
+	/* DB 연결*/
 	private Connection getConnection() throws Exception {
 		Context ctx = new InitialContext();
 		ds = (DataSource)ctx.lookup("java:comp/env/jdbc/sir");
 		return ds.getConnection();
-	}
+	} // end Connection getConnection()
 	
-	/* 자원 해제 */
+	
+	/* 자원해제 */
 	private void freeResource() {
 		try {
 			if(con != null) con.close();
 			if(pstmt != null) pstmt.close();
 			if(rs != null) rs.close();
 		} catch(Exception e) {
-			System.out.println("freeResource()메서드에서 에러 : " + e);
+			System.out.println("freeResource() 메소드 오류 : " + e);
 		}
-	}
+	} // end void freeResource()
 
-	/* 전체 리스트 출력 */
+	
+	/* 전체List 출력 */
 	public Vector<jobDTO> getAllList() {
 		Vector<jobDTO> v =new Vector<jobDTO>();
 		jobDTO dto = null;
 		
 		try {
 			
-			con = getConnection(); 
+			con = getConnection();
+			
 			String sql = "select * from jobs";
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
@@ -81,15 +84,17 @@ public class JobDAO {
 			}
 			
 		} catch (Exception e) {
-			System.out.println("getAllList 메소드 오류" + e);
+			System.out.println("getAllList() error : " + e);
 		} finally {
 			freeResource();
 		}
 		return v;
-	}
-
+	} // end Vector<jobDTO> getAllList()
+	
+	
+	/* 검색 list 출력 */
 	public jobDTO getSelectList(String idx) {
-		System.out.println("출력:" + idx);
+		System.out.println("번호:" + idx);
 		jobDTO dto = null;
 		try {
 			con = getConnection(); 
@@ -131,12 +136,43 @@ public class JobDAO {
 			}
 			
 		} catch (Exception e) {
-			System.out.println("getSelectList 메소드 오류" + e);
+			System.out.println("getSelectList() error : " + e);
 		} finally {
 			freeResource();
 		}
 		
 		return dto;
-	}
+	} // end jobDTO getSelectList(String idx)
+	
+	
+	
+	
+	/* 총 기업List 숫자 */
+	public int getTotalCount(){
+		String sql = null;
+		int jobTotalCount = 0;
+		try {
+			con = getConnection(); 
+//			if(keyWord.equals("null")||keyWord.equals("")){
+				sql = "select count(job_idx) from jobs";
+				pstmt = con.prepareStatement(sql);
+//			}else{
+//				sql = "select count(job_idx) from jobs "+ "where " + keyField + " like ?";
+//				pstmt = con.prepareStatement(sql);
+//				pstmt.setString(1, "%"+keyWord+"%");
+//			}
+			rs = pstmt.executeQuery();
+			if(rs.next())
+				jobTotalCount = rs.getInt(1);
+		} catch (Exception e) {
+			System.out.println("getTotalCount() error : " + e);
+		} finally {
+			freeResource();
+		}
+		return jobTotalCount;
+	} // end int getTotalCount()
 
-}
+} // end class JobDAO
+
+
+

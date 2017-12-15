@@ -43,8 +43,10 @@ public class JobFrontController extends HttpServlet {
 
 			JobDAO dao = new JobDAO();
 			Vector<jobDTO> v = dao.getAllList();
-			
 			request.setAttribute("v", v);
+			
+			int jobTotalCount = dao.getTotalCount();
+			request.setAttribute("totalCount", jobTotalCount);
 			
 			RequestDispatcher dis = request.getRequestDispatcher("./job/job_main.jsp");
 			
@@ -62,9 +64,10 @@ public class JobFrontController extends HttpServlet {
 
 			dis.forward(request, response);
 
+			
 		} else if("/job_detail.job".equals(command)) {
 			String idx = request.getParameter("job_idx");
-			System.out.println("출력:" +idx);
+			System.out.println("��ȣ :" +idx);
 			JobDAO dao = new JobDAO();
 			jobDTO dto = dao.getSelectList(idx);
 			request.setAttribute("dto", dto);
