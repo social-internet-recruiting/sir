@@ -46,7 +46,7 @@ public class JobDAO {
 			
 			con = getConnection();
 			
-			String sql = "select * from jobs";
+			String sql = "select * from jobs order by job_idx desc";
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			
@@ -153,14 +153,8 @@ public class JobDAO {
 		int jobTotalCount = 0;
 		try {
 			con = getConnection(); 
-//			if(keyWord.equals("null")||keyWord.equals("")){
-				sql = "select count(job_idx) from jobs";
-				pstmt = con.prepareStatement(sql);
-//			}else{
-//				sql = "select count(job_idx) from jobs "+ "where " + keyField + " like ?";
-//				pstmt = con.prepareStatement(sql);
-//				pstmt.setString(1, "%"+keyWord+"%");
-//			}
+			sql = "select count(*) from jobs";
+			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			if(rs.next())
 				jobTotalCount = rs.getInt(1);

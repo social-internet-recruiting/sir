@@ -40,13 +40,24 @@ public class JobFrontController extends HttpServlet {
 		// System.out.println(command);
 
 		if ("/job_main.job".equals(command)) {
-
-			JobDAO dao = new JobDAO();
-			Vector<jobDTO> v = dao.getAllList();
-			request.setAttribute("v", v);
 			
-			int jobTotalCount = dao.getTotalCount();
-			request.setAttribute("totalCount", jobTotalCount);
+			try{
+				JobDAO dao = new JobDAO();
+				Vector<jobDTO> v = dao.getAllList();
+				
+				request.setAttribute("v", v);
+				
+				request.setAttribute("Count", dao.getTotalCount());
+				
+				// 현재 보여질 페이지 번호 저장
+				request.setAttribute("nowpage", request.getParameter("nowPage"));
+				// 현재 보여질 블럭 번호 저장
+				request.setAttribute("nowBolck", request.getParameter("nowBlock"));
+				
+			}catch(Exception e){
+				System.out.println("/job_main.job error " + e);
+			}
+			
 			
 			RequestDispatcher dis = request.getRequestDispatcher("./job/job_main.jsp");
 			
@@ -59,6 +70,8 @@ public class JobFrontController extends HttpServlet {
 			Vector<jobDTO> v = dao.getAllList();
 			
 			request.setAttribute("v", v);
+
+			
 			
 			RequestDispatcher dis = request.getRequestDispatcher("./job/job_list.jsp");
 
