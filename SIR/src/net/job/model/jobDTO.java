@@ -18,13 +18,15 @@ public class jobDTO {
 	private String position; //position varchar(10), -- 근무형태
 	private int recruit_volume; //recruit_volume int(3), -- 모집인원
 	private int applicant; //applicant int(3), -- 지원자
-	private int salary1; //salary1 int(10), -- 급여시작
-	private int salary2; //salary2 int(10), -- 급여끝
+	private String salary_up; // -- 급여이상
+	private String salary_check; // -- 급여 선택
 	//-- 지원자격
 	private String qualify_school1; //qualify_school1 varchar(10), -- 학력
 	private String qualify_school2; //qualify_school2 varchar(10),
+	private String school_check; //학력 체크
 	private String qualify_career1;  //varchar(10), -- 경력
 	private String qualify_career2; //qualify_career2 varchar(10),
+	private String career_check; //경력 체크
 	private String qualify_license; //qualify_license varchar(50), -- 자격증
 	private String prefer; //prefer varchar(50), -- 우대사항
 	private Date applicate_period1; //applicate_period1 date, -- 접수기간시작
@@ -39,7 +41,6 @@ public class jobDTO {
 	public void setJob_idx(int job_idx) {
 		this.job_idx = job_idx;
 	}
-	
 	public String getJob1_code() {
 		return job1_code;
 	}
@@ -124,17 +125,17 @@ public class jobDTO {
 	public void setApplicant(int applicant) {
 		this.applicant = applicant;
 	}
-	public int getSalary1() {
-		return salary1;
+	public String getSalary_up() {
+		return salary_up;
 	}
-	public void setSalary1(int salary1) {
-		this.salary1 = salary1;
+	public void setSalary_up(String salary_up) {
+		this.salary_up = salary_up;
 	}
-	public int getSalary2() {
-		return salary2;
+	public String getSalary_check() {
+		return salary_check;
 	}
-	public void setSalary2(int salary2) {
-		this.salary2 = salary2;
+	public void setSalary_check(String salary_check) {
+		this.salary_check = salary_check;
 	}
 	public String getQualify_school1() {
 		return qualify_school1;
@@ -148,6 +149,12 @@ public class jobDTO {
 	public void setQualify_school2(String qualify_school2) {
 		this.qualify_school2 = qualify_school2;
 	}
+	public String getSchool_check() {
+		return school_check;
+	}
+	public void setSchool_check(String school_check) {
+		this.school_check = school_check;
+	}
 	public String getQualify_career1() {
 		return qualify_career1;
 	}
@@ -159,6 +166,12 @@ public class jobDTO {
 	}
 	public void setQualify_career2(String qualify_career2) {
 		this.qualify_career2 = qualify_career2;
+	}
+	public String getCareer_check() {
+		return career_check;
+	}
+	public void setCareer_check(String career_check) {
+		this.career_check = career_check;
 	}
 	public String getQualify_license() {
 		return qualify_license;
@@ -202,6 +215,8 @@ public class jobDTO {
 	public void setJob_process(String job_process) {
 		this.job_process = job_process;
 	}
+	
+	
 	
 	
 }

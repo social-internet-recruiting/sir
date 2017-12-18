@@ -49,8 +49,8 @@
 </head>
 <body>
 
-	<h2>총 게시글 : ${requestScope.Count }</h2>
-	<h2>총 게시글2: <%=totalCount%></h2>
+	<!--<h2>총 게시글 : ${requestScope.Count}</h2>-->
+	<h2>총 게시글: <%=totalCount%></h2>
 
 
 	<table class="table">
@@ -76,8 +76,7 @@
 			String qualify_school1 = dto.getQualify_school1();
 			String qualify_career1 = dto.getQualify_career1();
 			String position = dto.getPosition();
-			int salary1 = dto.getSalary1();
-			int salary2 = dto.getSalary2();
+			String salary1 = dto.getSalary_up();
 			Date applicate_period2 = dto.getApplicate_period2();
 		%>
 			<tr align="center">
@@ -85,7 +84,7 @@
 				<td><%=co_title %></td>
 				<td><%=recruit_notice %></td>
 				<td><%=qualify_school1 %> | <%=qualify_career1 %></td>
-				<td><%=position %><br/><%=salary1 %> ~ <%=salary2 %></td>
+				<td><%=position %><br/><%=salary1 %>▲ </td>
 				<td><%=applicate_period2 %><br/></td>
 			</tr>
 			<%-- <tr align="center">

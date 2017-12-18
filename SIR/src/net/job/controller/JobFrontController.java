@@ -66,8 +66,39 @@ public class JobFrontController extends HttpServlet {
 			
 			
 		} else if ("/check_search.job".equals(command)) {
+			 String[] check_job = request.getParameterValues("Check_job"); //1차 2차 직업 분류 조건
+			// for(String out : check_job) {
+			// System.out.println(out);
+			// }
+			 String[] check_region = request.getParameterValues("Check_region"); //지역 분류 조건
+			// for(String out : check_region) {
+			// System.out.println(out);
+			// }
+			 String[] check_career = request.getParameterValues("career"); // 경력 체크 조건
+			// for(String out : check_career) {
+			// System.out.println(out);
+			// }
+			 String career_up = request.getParameter("career_up"); //경력 이상 조건
+			// System.out.println(career_up);
+			 String career_down = request.getParameter("career_down"); //경력 이하 조건
+			// System.out.println(career_down);
+			 String qualify_school1 = request.getParameter("qualify_school1"); //학력 이상 조건
+			// System.out.println(qualify_school1);
+			 String qualify_school2 = request.getParameter("qualify_school2"); //학력 이하 조건
+			// System.out.println(qualify_school2);
+			 String check_school = request.getParameter("School"); //학력 무관 조건
+			// System.out.println(school);
+			 String income_up = request.getParameter("income_up"); //연봉 이상  조건
+			// System.out.println(income_up);
+			 String income = request.getParameter("income"); //연봉 체크 조건
+			// System.out.println(income);
+			 
+			
 			JobDAO dao = new JobDAO();
-			Vector<jobDTO> v = dao.getAllList();
+			Vector<jobDTO> v = dao.getCheckList(check_job,check_region,
+												check_career,career_up,career_down,
+												qualify_school1,qualify_school2,check_school,
+												income_up,income);
 			
 			request.setAttribute("v", v);
 
