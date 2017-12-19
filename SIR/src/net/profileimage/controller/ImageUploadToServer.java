@@ -87,7 +87,12 @@ public class ImageUploadToServer {
 		String postcode = multi.getParameter("postcode");
 		String address = multi.getParameter("address");
 		String address2 = multi.getParameter("address2");
-		String sumAddress = postcode + "%%" + address + "%%" + address2; //%% 기준으로 합치고 나중에 이거 기준으로 짤라서 myinfo에 뿌려줄것
+		String sumAddress = "";
+		if (!"".equals(postcode.trim())){ // 우편번호 등록 되어있으면
+			sumAddress = postcode + "%%" + address + "%%" + address2; //%% 기준으로 합치고 나중에 이거 기준으로 짤라서 myinfo에 뿌려줄것	
+		} else { // 우편번호 등록 안되어있으면
+			sumAddress = ""; 
+		}
 		System.out.println("sumaddress : " + sumAddress);
 		mdto.setAddr(sumAddress);
 		
