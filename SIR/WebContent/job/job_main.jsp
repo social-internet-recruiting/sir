@@ -260,6 +260,7 @@
 <div class="job_list">
 <jsp:include page="/job/job_list.jsp" />
 <table class="table">
+	
 	<!-- 	<tr align="center">
 			<th>기업명</th>
 			<th>제목</th>

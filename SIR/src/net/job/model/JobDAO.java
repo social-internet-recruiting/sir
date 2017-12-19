@@ -31,21 +31,24 @@ public class JobDAO {
 			if(pstmt != null) pstmt.close();
 			if(rs != null) rs.close();
 		} catch(Exception e) {
-			System.out.println("freeResource() 메소드 오류 : " + e);
+			System.out.println("freeResource() 메소드 오류");
+			e.printStackTrace();
 		}
 	} // end void freeResource()
 
 	
 	/* 전체List 출력 */
-	public Vector<jobDTO> getAllList() {
+	public Vector<jobDTO> getAllList(int starRow, int pageSize) {
 		Vector<jobDTO> v =new Vector<jobDTO>();
 		jobDTO dto = null;
 		
 		try {
 			
 			con = getConnection();
-			String sql = "select * from jobs order by job_idx desc";
+			String sql = "select * from jobs order by job_idx desc limit ?,?";
 			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, starRow);
+			pstmt.setInt(2, pageSize);
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
@@ -84,7 +87,7 @@ public class JobDAO {
 			}
 			
 		} catch (Exception e) {
-			System.out.println("getAllList() error : " + e);
+			System.out.println("getAllList() error");
 			e.printStackTrace();
 		} finally {
 			freeResource();
@@ -139,7 +142,8 @@ public class JobDAO {
 			}
 			
 		} catch (Exception e) {
-			System.out.println("getSelectList() error : " + e);
+			System.out.println("getSelectList() error");
+			e.printStackTrace();
 		} finally {
 			freeResource();
 		}
@@ -162,7 +166,8 @@ public class JobDAO {
 			if(rs.next())
 				jobTotalCount = rs.getInt(1);
 		} catch (Exception e) {
-			System.out.println("getTotalCount() error : " + e);
+			System.out.println("getTotalCount() error");
+			e.printStackTrace();
 		} finally {
 			freeResource();
 		}
@@ -240,7 +245,7 @@ public class JobDAO {
 				}
 			}
 		} catch (Exception e) {
-			System.out.println("getCheckList() error : " + e);
+			System.out.println("getCheckList() error");
 			e.printStackTrace();
 		} finally {
 			freeResource();

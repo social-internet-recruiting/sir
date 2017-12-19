@@ -42,20 +42,24 @@ public class JobFrontController extends HttpServlet {
 		if ("/job_main.job".equals(command)) {
 			
 			try{
-				JobDAO dao = new JobDAO();
-				Vector<jobDTO> v = dao.getAllList();
+//				JobDAO dao = new JobDAO();
 				
-				request.setAttribute("v", v);
+//				Vector<jobDTO> v = dao.getAllList();
 				
-				request.setAttribute("Count", dao.getTotalCount());
+//				request.setAttribute("v", v);
+				
+				
+				
+//				request.setAttribute("count", dao.getTotalCount());
 				
 				// 현재 보여질 페이지 번호 저장
-				request.setAttribute("nowpage", request.getParameter("nowPage"));
+//				request.setAttribute("nowpage", request.getParameter("nowPage"));
 				// 현재 보여질 블럭 번호 저장
-				request.setAttribute("nowBolck", request.getParameter("nowBlock"));
+//				request.setAttribute("nowBolck", request.getParameter("nowBlock"));
 				
 			}catch(Exception e){
 				System.out.println("/job_main.job error " + e);
+				e.printStackTrace();
 			}
 			
 			
@@ -117,6 +121,16 @@ public class JobFrontController extends HttpServlet {
 			request.setAttribute("dto", dto);
 			
 			RequestDispatcher dis = request.getRequestDispatcher("./job/job_detail.jsp");
+			dis.forward(request, response);
+		
+		} else if("/job_search.job".equals(command)) {
+			
+			JobDAO dao = new JobDAO();
+			
+			String search = (String)request.getAttribute("search");
+			System.out.println(search);
+			
+			RequestDispatcher dis = request.getRequestDispatcher("./job/job_main.jsp");
 			dis.forward(request, response);
 		}
 	}

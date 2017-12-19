@@ -1,3 +1,4 @@
+<%@page import="net.job.model.JobDAO"%>
 <%@page import="java.util.Date"%>
 <%@page import="net.job.model.jobDTO"%>
 <%@page import="java.util.Vector"%>
@@ -5,7 +6,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-
+<%-- 
 <%
 	int totalCount = 0; // job total 개수
 	int numPerPage = 5; // 한페이지당 보여질 글 개수
@@ -36,7 +37,32 @@
 	}
 	
 	totalBlock = (int)Math.ceil((double)totalPage / pagePerBlock);
-%>	
+%>	 
+--%>
+<%
+	JobDAO jobdao = new JobDAO();
+
+	int count = jobdao.getTotalCount();
+	
+	int pageSize = 5; //보여줄 글 갯수
+	String pageNum = request.getParameter("pageNum"); //현재 페이지
+	if(pageNum == null){
+		pageNum = "1";
+	}
+	
+	int currentPage = Integer.parseInt(pageNum); // 현재 페이지
+	
+	int startRow = (currentPage-1) * pageSize; // 시작 글번호
+	
+	Vector<jobDTO> v = null;
+	
+	if(count > 0){
+		v = jobdao.getAllList(startRow, pageSize); 	
+	}
+	
+	
+	
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -50,10 +76,15 @@
 <body>
 
 	<!--<h2>총 게시글 : ${requestScope.Count}</h2>-->
-	<h2>총 게시글: <%=totalCount%></h2>
-
-
+	<div align="left">
+	총 게시글: <%= count %>
+	<form action="job_search.job" method="post">
+		<input type="text" id="search" name="search">
+		<input type="submit" value="검색">
+	</form>
+	</div>
 	<table class="table">
+		
 		<tr align="center">
 			<td>번호</td>
 			<td>기업명</td>
@@ -62,8 +93,26 @@
 			<td>근무조건</td>
 			<td>마감일</td>
 		</tr>
+		<%
+			if(count > 0){
+				for(int i=0; i<v.size(); i++){
+				jobDTO dto = v.get(i);	
+		%>
+			<tr align="center">
+				<td><%=dto.getJob_idx() %></td>
+				<td><%=dto.getCo_title() %></td>
+				<td><%=dto.getRecruit_notice() %></td>
+				<td><%=dto.getQualify_school1() %> | <%=dto.getQualify_career1() %></td>
+				<td><%=dto.getPosition() %><br/><%=dto.getSales() %>▲ </td>
+				<td><%=dto.getApplicate_period2() %><br/></td>
+			</tr>
+		<%			
+				}
+			}
+		%>
 <%-- 		<c:set var="v" value="${requestScope.v }" />	 --%>
 <%-- 		<c:forEach var="v" items="${requestScope.v}"> --%>
+<%--
 		<%
 		for(int i=beginPerPage; i<(beginPerPage+numPerPage); i++){
 			if(i == totalCount){
@@ -87,7 +136,7 @@
 				<td><%=position %><br/><%=salary1 %>▲ </td>
 				<td><%=applicate_period2 %><br/></td>
 			</tr>
-			<%-- <tr align="center">
+			<tr align="center">
 				<td>${v.job_idx}</td>
 				<td>${v.co_title}</td>
 				<td><a href="#" onclick="window.open('job_detail.job?job_idx=${v.job_idx}','${v.recruit_notice}','width=700,height=700,left=250,right=150,resize=no,scrollbars=yes');">${v.recruit_notice}</a></td>
@@ -95,13 +144,14 @@
 				<td>${v.position}<br/> ${v.salary1} ~ ${v.salary2}
 				</td>
 				<td>${v.applicate_period2}<br/></td>
-			</tr> --%>
+			</tr>
 		<%
 		}
-		%>	
+		%>	 
+--%>
 <%-- 		</c:forEach> --%>
 		
-		<tr>
+<%-- 		<tr>
 			<td colspan="3" align="center">
 				go to page
 				<% if(totalCount != 0){ %>
@@ -122,7 +172,40 @@
 					<%} %>
 				<%} %>	
 			</td>
-		</tr>
+		</tr> --%>
+		<%
+			
+		%>
+		<%
+		if(count > 0){
+			int pageCount = count / pageSize+(count%pageSize==0?0:1);
+			int pageBlock=1; 
+			
+			int startPage = ((currentPage/pageBlock)-(currentPage%pageBlock==0?1:0))*pageBlock+1;
+			
+			int endPage = startPage+pageBlock-1;
+			
+			if(endPage > pageCount){
+				endPage = pageCount;
+			}
+			
+			if(startPage > pageBlock){
+		%>
+				<a href="job_main.job?pageNum=<%=startPage-pageBlock%>">[이전]</a>
+		<%
+			}
+			for(int i=startPage; i<=endPage; i++){
+		%>
+				<a href="job_main.job?pageNum=<%=i%>">[<%=i %>]</a>
+		<%
+			}
+			if(endPage < pageCount){
+		%>
+				<a href="job_main.job?pageNum=<%=startPage+pageBlock%>">[다음]</a>
+		<%		
+			}
+		}
+		%>
 	</table>
 
 
