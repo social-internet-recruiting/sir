@@ -97,6 +97,8 @@ public class MemberFrontController extends HttpServlet {
 				String postcode = "";
 				String address = "";
 				String address2 = "";
+				System.out.println("mdto.getAddr() : " + mdto.getAddr());
+				
 				if (!"".equals(mdto.getAddr())){
 					String [] addressArr = mdto.getAddr().split("%%");
 					if (addressArr.length==3){
@@ -106,7 +108,7 @@ public class MemberFrontController extends HttpServlet {
 					} else {
 						postcode = addressArr[0];
 						address = addressArr[1];
-					}
+					} 
 
 				}
 				request.setAttribute("postcode", postcode);
@@ -114,11 +116,11 @@ public class MemberFrontController extends HttpServlet {
 				request.setAttribute("address2", address2);
 				
 				request.setAttribute("mdto", mdto);
-
+ 
 				RequestDispatcher dis = request.getRequestDispatcher("myInfo.jsp");
 				//getRequestDispatcher("main.jsp?center=myInfo.jsp"); center 값 바꿔서 갈라니깐
 				//모달때문인지 에러 난다.
-				
+				  
 				dis.forward(request, response);
 				
 			} else { // email 쿠키값이 없으면 main page로 넘겨라, 잘못된 접근이다.
