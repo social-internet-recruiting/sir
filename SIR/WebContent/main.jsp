@@ -26,7 +26,7 @@
 <c:if test="${center == null}">
 	<c:set var="center" value="/include/register.jsp"/>
 </c:if>
- 
+  
 <center>
 <jsp:include page="${center}"/>
 </center>
