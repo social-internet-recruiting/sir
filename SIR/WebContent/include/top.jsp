@@ -5,9 +5,14 @@
 <%@page import="net.cookie.controller.CookieAction"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
+<html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width" , initial-scale="1">
+<title>JSP 게시판 웹 사이트</title>
+</head>
+
 <style type="text/css">
 	#profileImageSmall{
 		height: 35px;
@@ -22,7 +27,6 @@
 }
 </style>
 
-<title>JSP 게시판 웹 사이트</title>
 <%
 	Cookie[] cookies = request.getCookies();
 	CookieAction cookieAction = new CookieAction();
@@ -101,9 +105,6 @@
 	} else { // 로그인 안된 화면
 %>
 
-</head>
-<html>
-
 
 <nav class="navbar navbar-expand-lg navbar-blue bg-blue">
 <div class="container">
@@ -131,7 +132,6 @@
       	</div>
 	 	<button type="submit" class="btn btn-light">Login</button>
     	</form>
-	</div>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 
