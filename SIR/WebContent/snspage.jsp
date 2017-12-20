@@ -12,7 +12,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-        <script>
+<!--         <script>
         var tweets = 1;
         $(document).ready(function (event){
         $(window).scroll(function(){
@@ -54,44 +54,92 @@
         });
         });
         
-    </script>
+    </script> -->
 </head>
+
 <style>
-.container2 {
-  width: 600px;
+.container1 {
   padding-right: 15px;
   padding-left: 15px;
-  margin: 0px auto 50px auto;
-  opacity: 0.9; 
-  
+  margin-right: auto;
+  margin-left: auto;
 }
+.fixedboard {
+
+    position: fixed;
+	
+    z-index: 999;
+
+}
+.list-group-item-img {
+    position: relative;
+    display: block;
+    padding: 0;
+    margin-bottom: -1px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+}
+
 </style>
 
 <body style="background-color:gray;">
+
+
 <div class="container" style="background-color:white;margin-top:-20px;">
-<div style="background-color:white;margin-left:15px;margin-right:15px;">
-<div class="" style="width:64%; float:left;">
-<h2>SNS</h2>
-</div>
-<div class="row">
-    <div class="" style="width:64%; float:left;" id="cool">
-    <ul class="list-group">
- 	 	<li class="list-group-item">
-	      	<textarea style="resize: none;" class="form-control" id="content" name="content" rows="10"></textarea>
-	    </li>
-  		<li class="list-group-item">
-			<input type="submit" class="btn btn-default" value="작성완료"/>
-	    </li>
-	</ul>
+
+	<!-- 친구목록 영역 -->
+	<div class="container fixedboard" style="margin-left:-15px;">
+		<div class="" style="width:64%; float:left;">
+		</div>
+		<div class="" style="width:34%; float:right;" >
+		<ul class="list-group">
+	 	 	<li class="list-group-item">Friends List</li>
+			<c:forEach items="${fList}" var="fLists">
+				<a onclick=""><li class="list-group-item">${fLists}</li></a>
+			</c:forEach>
+		</ul>
+		</div>
 	</div>
-	<div class="container"style="width:64%;float:left;">
-	<div class="row">
-		<div class="">
+	<!-- 친구목록 영역 끝 -->
+
+<div style="background-color:white;margin-left:15px;margin-right:15px;">
+
+
+	<!-- 대문 이름 -->
+	<div class="" style="width:64%; float:left;">
+		<h2>SNS</h2>
+	</div>
+	<!-- 대문 이름  끝-->
+	
+	<!-- 작성 툴 -->	
+	<div class="">
+    <div style="width:64%; float:left;" id="cool">
+    <div class="list-group">
+ 	 	<div class="list-group-item" style="height:280px;">
+ 	 		<span class="list-group-item-img" style="float:left; width:35%">
+ 	 			<span style="height:220px;">
+				<a><img src="./images/noneProfile.jpg" style="width:100%; height:234px; padding-left:-15px; " ></a>
+				</span>
+			</span>
+			<span class="list-group-item" style="float:right; width:65%">
+				<textarea style="resize: none;" class="form-control" id="contents" name="contents" rows="10"></textarea>
+			</span>	      	
+	    </div>
+  		<div class="list-group-item" style="margin-top:-17px;">
+			<input type="submit" class="btn btn-default" value="작성완료"/>
+	    </div>
+	</div>
+	</div>
+	<!-- 작성 툴  끝-->	
+	
+	<!-- 글 목록-->
+	<div class="">
+	<div style="width:64%;float:left;">
 		<div class="list-group">
 			<div class="list-group-item" align="left">
 				<a><img src="./images/noneProfile.jpg" style="height:50px; weight:50px;" > abced@naver.com</a>		
 			</div>
-			<a align="left" style="height:400px;" class="list-group-item"><img src="./images/back3.jpg" style="width:104%; height:400px; margin-left:-15px; margin-top:-10px;"></a>
+			<a align="left" style="height:400px;" class="list-group-item-img"><img src="./images/back3.jpg" style="width:100%; height:400px;"></a>
 			<div class="list-group-item" align="left">
 				<a href="#"><img src="./images/좋아요.gif" style="height:25px; weight:25px;"><br/>좋아요 **개</a>
 				<br/>
@@ -105,12 +153,13 @@
 				<button class="btn btn-light" style="width:100%">댓글 더 보기</button>
 			</div>
 		</div>
-		</div>
 	</div>
 	</div>
-
 	
-	<!-- 기본 트윗 5개 -->
+	<!-- 글 목록 끝-->
+
+<%-- 	
+	<!-- 기본 트윗 5개 좀있다 SNSList 불러올것 -->
 		<c:forEach items="${SNSList}" var="dto">
 			<ul>
 			<li class="list-group-item">
@@ -123,38 +172,9 @@
 	      		${dto.bonmun}
 	    	</li>
 	   		</ul>
-		</c:forEach>
-	  
+		</c:forEach> --%>
 
-	
-    <!-- 친구목록 영역 -->
-    <div style="width:34%; float:right;background-color:white; margin-top:-250px;">
-    <ul class="list-group">
- 	 	<li class="list-group-item">Friends List</li>
-  		<li class="list-group-item">Friend 1</li>
-  		<li class="list-group-item">Friend 2</li>
-  		<li class="list-group-item">Friend 3</li>
-  		<li class="list-group-item">Friend 4</li>
-  		<li class="list-group-item">Friend 5</li>
-  		<li class="list-group-item">Friend 6</li>
-  		<li class="list-group-item">Friend 7</li>
-  		<li class="list-group-item">Friend 8</li>
-  		<li class="list-group-item">Friend 9</li>
-  		<li class="list-group-item">Friend 10</li>
-  		<li class="list-group-item">Friend 11</li>
-  		<li class="list-group-item">Friend 12</li>
-  		<li class="list-group-item">Friend 13</li>
-  		<li class="list-group-item">Friend 14</li>
-  		<li class="list-group-item">Friend 15</li>
-  		<li class="list-group-item">Friend 16</li>
-  		<li class="list-group-item">Friend 17</li>
-  		<li class="list-group-item">Friend 18</li>
-  		<li class="list-group-item">Friend 19</li>
-  		<li class="list-group-item">Friend 20</li>
-	</ul>
-	</div>
-	
-  </div>
+</div>	 
 </div>
 </div>
 </body>

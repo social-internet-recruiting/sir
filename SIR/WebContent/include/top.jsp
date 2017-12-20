@@ -13,6 +13,14 @@
 		height: 35px;
 		width: 35px;
 	}
+	
+	.fixedboard {
+
+    position: fixed;
+	
+    z-index: 999;
+
+}
 </style>
 
 <title>JSP 게시판 웹 사이트</title>
@@ -48,7 +56,7 @@
 
 %>
 
-<nav class="navbar navbar-expand-lg navbar-blue bg-blue">
+<nav class="navbar navbar-expand-lg navbar-blue bg-blue" style="z-index:10000;">
   <div class="container">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -72,7 +80,7 @@
         <button type="submit" class="btn btn-light">Search</button>
       </form>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="main.jsp" style="color:black; font:bolder;" ><img src="./images/home.gif" style="height:35px; weight:35px; margin-top:-8px;" > &nbsp;Home</a></li>
+        <li><a href="./snspage.snsboard" style="color:black; font:bolder;" ><img src="./images/home.gif" style="height:35px; weight:35px; margin-top:-8px;" > &nbsp;Home</a></li>
         <li><a href="./job_main.job" style="color:black; font:bolder;" ><img src="./images/job.gif" style="height:35px; weight:35px; margin-top:-8px;" > &nbsp;Job</a></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="color:black;">	
