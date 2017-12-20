@@ -11,7 +11,7 @@ function fileUpload() {
 
 			// alert(result);
 	    	// 이미지 업로드 성공해야지 message(게시글) 전송 할것
-	    	inputMessage = document.getElementById('textArea'); 
+	    	inputMessage = document.getElementById('contents'); 
 	        webSocket.send(inputMessage.value); 
 	        inputMessage.value = ""; 
 	        

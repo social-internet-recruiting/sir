@@ -10,6 +10,12 @@
 <link rel="stylesheet" href="./css/custom.css">
 
 <title>Insert title here</title>
+
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script src="./js/jquery.form.js"></script>
+<script src="./js/ajaxSnsImageUpload.js"></script>
+<script src="./js/websocket.js"></script>
+
 </head>
 <body>
 <!--         <script>
@@ -88,12 +94,14 @@
 <div class="container" style="background-color:white;margin-top:-20px;">
 
 	<!-- 친구목록 영역 -->
-	<div class="container fixedboard" style="margin-left:-15px;">
+	<div class="container fixedboard" style="margin-left:-15px; z-index: auto;">
+	<!-- z-index auto 하면 안가려지고 뒤로 간다. -->
 		<div class="" style="width:74%; float:left;">
 		</div>
 		<div class="" style="width:25%; float:right;" >
 		<ul class="list-group">
-	 	 	<li class="list-group-item" style="border-width: medium;">Friends List</li>
+	 	 	<li class="list-group-item" 
+	 	 	style="border-width: medium; font-size: large; font-style: italic; font-weight: bold;">Friends List</li>
 	 	 	<ul class="list-group" style="height:300px; overflow: auto;">
 			<c:forEach items="${fList}" var="fLists">
 				<a onclick="" align="left"><li class="list-group-item">${fLists}</li></a>
@@ -108,19 +116,28 @@
 
 
 	<!-- 대문 이름 -->
-	<div class="" style="width:74%; float:left;">
+	<div class="" style="width:74%; float:left;" id="snsmaintitle">
 		<h2>SNS</h2>
 	</div>
 	<!-- 대문 이름  끝-->
 	
 	<!-- 작성 툴 -->	
+	<form  id="fileForm" name="fileForm" >
+		<div style="display:none">
+			<input type="file" id="uploadSnsImage" name="uploadSnsImage" accept=".jpg,.png" /><br/>
+		</div>
+	</form> <!-- 이미지 올리는 form -->
+	
 	<div class="">
     <div style="width:74%; float:left;" id="cool">
     <div class="list-group">
  	 	<div class="list-group-item" style="height:280px;">
  	 		<span class="list-group-item-img" style="float:left; width:35%">
  	 			<span style="height:220px;">
-				<a><img src="./images/noneProfile.jpg" style="width:100%; height:234px; padding-left:-15px; " ></a>
+				<a style="cursor:pointer" onclick="uploadImage();" >
+				<img src="./images/noneImage.jpg" id="snsImageUpload" name="snsImageUpload" 
+				style="width:100%; height:234px; padding-left:-15px; " >
+				</a>
 				</span>
 			</span>
 			<span class="list-group-item" style="float:right; width:65%">
@@ -128,11 +145,12 @@
 			</span>	      	
 	    </div>
   		<div class="list-group-item" style="margin-top:-17px;">
-			<input type="submit" class="btn btn-default" value="작성완료"/>
+			<input type="submit" class="btn btn-default" value="작성완료" onclick="send();"/>
 	    </div>
 	</div>
 	</div>
 	<!-- 작성 툴  끝-->	
+	
 	
 	<!-- 글 목록-->
 	<div class="">

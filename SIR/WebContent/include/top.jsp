@@ -48,7 +48,7 @@
 
 %>
 
-<nav class="navbar navbar-expand-lg navbar-blue bg-blue" style="z-index:10000;">
+<nav class="navbar navbar-expand-lg navbar-blue bg-blue" style="z-index:1035;">
   <div class="container">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
