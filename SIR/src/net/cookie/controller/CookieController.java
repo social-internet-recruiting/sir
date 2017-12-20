@@ -31,7 +31,7 @@ public class CookieController extends HttpServlet {
 			// 회원 가입, 로그인시 처리
 			String email = request.getParameter("email");
 			cookieAction.saveEmailId(request, response, email);
-			response.sendRedirect("./main.jsp?center=snspage.jsp");
+			response.sendRedirect("./snspage.snsboard");
 			
 		} else if ("/removeEmailId.cookie".equals(command)) {
 			// 회원 탈퇴, 로그아웃시 처리

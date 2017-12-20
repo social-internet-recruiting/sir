@@ -89,31 +89,33 @@
 
 	<!-- 친구목록 영역 -->
 	<div class="container fixedboard" style="margin-left:-15px;">
-		<div class="" style="width:64%; float:left;">
+		<div class="" style="width:74%; float:left;">
 		</div>
-		<div class="" style="width:34%; float:right;" >
+		<div class="" style="width:25%; float:right;" >
 		<ul class="list-group">
-	 	 	<li class="list-group-item">Friends List</li>
+	 	 	<li class="list-group-item" style="border-width: medium;">Friends List</li>
+	 	 	<ul class="list-group" style="height:300px; overflow: auto;">
 			<c:forEach items="${fList}" var="fLists">
-				<a onclick=""><li class="list-group-item">${fLists}</li></a>
+				<a onclick="" align="left"><li class="list-group-item">${fLists}</li></a>
 			</c:forEach>
+			</ul>
 		</ul>
 		</div>
 	</div>
 	<!-- 친구목록 영역 끝 -->
-
+	
 <div style="background-color:white;margin-left:15px;margin-right:15px;">
 
 
 	<!-- 대문 이름 -->
-	<div class="" style="width:64%; float:left;">
+	<div class="" style="width:74%; float:left;">
 		<h2>SNS</h2>
 	</div>
 	<!-- 대문 이름  끝-->
 	
 	<!-- 작성 툴 -->	
 	<div class="">
-    <div style="width:64%; float:left;" id="cool">
+    <div style="width:74%; float:left;" id="cool">
     <div class="list-group">
  	 	<div class="list-group-item" style="height:280px;">
  	 		<span class="list-group-item-img" style="float:left; width:35%">
@@ -134,7 +136,7 @@
 	
 	<!-- 글 목록-->
 	<div class="">
-	<div style="width:64%;float:left;">
+	<div style="width:74%;float:left;">
 		<div class="list-group">
 			<div class="list-group-item" align="left">
 				<a><img src="./images/noneProfile.jpg" style="height:50px; weight:50px;" > abced@naver.com</a>		
