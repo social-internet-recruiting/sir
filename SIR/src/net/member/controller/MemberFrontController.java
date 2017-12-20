@@ -2,6 +2,7 @@ package net.member.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -14,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import net.cookie.controller.CookieAction;
 import net.member.model.MemberDAO;
 import net.member.model.MemberDTO;
+import net.sns.model.SNSDAO;
 
 @WebServlet("*.mem")
 public class MemberFrontController extends HttpServlet {
@@ -116,11 +118,11 @@ public class MemberFrontController extends HttpServlet {
 				request.setAttribute("address2", address2);
 				
 				request.setAttribute("mdto", mdto);
- 
+
 				RequestDispatcher dis = request.getRequestDispatcher("myInfo.jsp");
 				//getRequestDispatcher("main.jsp?center=myInfo.jsp"); center 값 바꿔서 갈라니깐
 				//모달때문인지 에러 난다.
-				  
+				
 				dis.forward(request, response);
 				
 			} else { // email 쿠키값이 없으면 main page로 넘겨라, 잘못된 접근이다.

@@ -15,7 +15,7 @@
 	if(email != null){ //email 값 있으니깐
 %>
 	<script type="text/javascript">
-		location.href="./main.jsp?center=snspage.jsp";
+		location.href="./snspage.snsboard";
 	</script>
 <%	
 	} 
