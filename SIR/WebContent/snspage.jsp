@@ -11,56 +11,9 @@
 
 <title>Insert title here</title>
 
-<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-<script src="./js/jquery.form.js"></script>
-<script src="./js/ajaxSnsImageUpload.js"></script>
-<script src="./js/websocket.js"></script>
-
 </head>
 <body>
-<!--         <script>
-        var tweets = 1;
-        $(document).ready(function (event){
-        $(window).scroll(function(){
-        var scrollHeight = $(window).scrollTop() + $(window).height();
-        var documentHeight = $(document).height();
-		
-        //스크롤이 맨아래로 갔는지 아닌지 확인하는 if문
-        if(scrollHeight == documentHeight){
-        	tweets++;
-        	$.ajax({ 
-        		url:'sns_list.bbs?tweets='+tweets,
-                type:'get', 
-                success : function(t){ 
-                    	$('#cool').append(
-                    			'<c:forEach items="${SNSList}" var="dto">'
-                    			+'<ul>'
-                    			+'<li class="list-group-item">'
-                    			+'MEMBER_IMAGE, MEMBER_NAME AREA ${dto.idx}'
-                    	   		+'</li>'
-                    			+'<li class="list-group-item">'
-                    			+'TWEET_IMAGE AREA ${dto.jemok}'
-                    	   		+'</li>'
-                    			+'<li class="list-group-item">'
-                    	      	+'${dto.bonmun}'
-                    	    	+'</li>'
-                    	   		+'</ul>'
-                    	   		+'</c:forEach>'
-                    	);
-                 } , 
-                 
-                 error : function(){ 
-                              alert('실패 '); 
-                  } 
-           }); 
-        	   
 
-        }
-        
-        });
-        });
-        
-    </script> -->
 </head>
 
 <style>
@@ -86,6 +39,12 @@
     border: 1px solid #ddd;
 }
 
+	/* authimg(게시자 프로필 사진) 크기가 깨지길래... */
+	#authImgId{
+		height: 50px;
+		width: 50px;
+	} 
+	
 </style>
 
 <body style="background-color:gray;">
@@ -116,88 +75,75 @@
 
 
 	<!-- 대문 이름 -->
-	<div class="" style="width:74%; float:left;" id="snsmaintitle">
+	<div class="" style="width:74%; float:left;" >
 		<h2>SNS</h2>
 	</div>
 	<!-- 대문 이름  끝-->
 	
-	<!-- 작성 툴 -->	
-	<form  id="fileForm" name="fileForm" >
+	<!-- 이미지 올리는 form -->
+	<form  action=	"" id="fileForm" name="fileForm" method="post" enctype="multipart/form-data" >
 		<div style="display:none">
 			<input type="file" id="uploadSnsImage" name="uploadSnsImage" accept=".jpg,.png" /><br/>
+			<input type="hidden" name="email" id="email" value="${email}" />
 		</div>
-	</form> <!-- 이미지 올리는 form -->
-	
-	<div class="">
-    <div style="width:74%; float:left;" id="cool">
-    <div class="list-group">
- 	 	<div class="list-group-item" style="height:280px;">
- 	 		<span class="list-group-item-img" style="float:left; width:35%">
- 	 			<span style="height:220px;">
-				<a style="cursor:pointer" onclick="uploadImage();" >
-				<img src="./images/noneImage.jpg" id="snsImageUpload" name="snsImageUpload" 
-				style="width:100%; height:234px; padding-left:-15px; " >
-				</a>
-				</span>
-			</span>
-			<span class="list-group-item" style="float:right; width:65%">
-				<textarea style="resize: none;" class="form-control" id="contents" name="contents" rows="10"></textarea>
-			</span>	      	
-	    </div>
-  		<div class="list-group-item" style="margin-top:-17px;">
-			<input type="submit" class="btn btn-default" value="작성완료" onclick="send();"/>
-	    </div>
-	</div>
-	</div>
-	<!-- 작성 툴  끝-->	
-	
-	
+		<!-- 작성 툴 -->
+		<div class="">
+		    <div style="width:74%; float:left;" id="cool">
+				<div class="list-group">
+			 	 	<div class="list-group-item" style="height:280px;">
+			 	 		<span class="list-group-item-img" style="float:left; width:35%">
+			 	 			<span style="height:220px;">
+							<a style="cursor:pointer" onclick="uploadImage();" >
+							<img src="./images/noneImage.jpg" id="snsImageUpload" name="snsImageUpload" 
+							style="width:100%; height:234px; padding-left:-15px; " >
+							</a>
+							</span>
+						</span>
+						<span class="list-group-item" style="float:right; width:65%">
+							<textarea style="resize: none;" class="form-control" id="contents" name="contents" rows="10"></textarea>
+						</span>	      	
+				    </div>
+			  		<div class="list-group-item" style="margin-top:-17px;">
+						<input type="button" class="btn btn-default" value="작성완료" onclick="send();"/>
+				    </div>
+				</div>
+			</div>
+		</div> <!-- 작성 툴  끝-->
+	</form> <!-- 이미지 올리는 form 끝 -->
+		
 	<!-- 글 목록-->
 	<div class="">
 	<div style="width:74%;float:left;">
-		<div class="list-group">
-			<div class="list-group-item" align="left">
-				<a><img src="./images/noneProfile.jpg" style="height:50px; weight:50px;" > abced@naver.com</a>		
-			</div>
-			<a align="left" style="height:400px;" class="list-group-item-img"><img src="./images/back3.jpg" style="width:100%; height:400px;"></a>
-			<div class="list-group-item" align="left">
-				<a href="#"><img src="./images/좋아요.gif" style="height:25px; weight:25px;"><br/>좋아요 **개</a>
-				<br/>
-				<a>fgijk@naver.com</a>
-				&nbsp;&nbsp;&nbsp;<a>가나다라</a>
-			</div>
-			<div class="list-group-item" align="left">
-				<button class="btn btn-light" style="width:50%">댓글 달기</button><button class="btn btn-light" style="width:50%">댓글 추가</button>
-			</div>
-			<div class="list-group-item" align="left">
-				<button class="btn btn-light" style="width:100%">댓글 더 보기</button>
-			</div>
-		</div>
-	</div>
-	</div>
 	
+		<!-- 실시간 추가 삽입 부분 -->
+		<div class="list-group" id="snsSynchronizationAdd">
+		</div>
+		
+		<!-- 
+			초기 게시물(원래 있던 본문 내용)은 무한 스크롤 초기 로드로 대체 한다. 
+			이래야지 무한스크롤 할때 초기값 한번 더 로드하는 오류 방지 
+		-->
+		
+		<!-- 무한 스크롤 추가 삽입 부분 -->
+		<div class="list-group" id="snsScrollAdd">
+		</div>
+		<!-- 무한 스크롤 추가 삽입 부분 끝 -->
+		
+	</div>	
 	<!-- 글 목록 끝-->
-
-<%-- 	
-	<!-- 기본 트윗 5개 좀있다 SNSList 불러올것 -->
-		<c:forEach items="${SNSList}" var="dto">
-			<ul>
-			<li class="list-group-item">
-				MEMBER_IMAGE, MEMBER_NAME AREA ${dto.idx}
-	   		</li>
-			<li class="list-group-item">
-				TWEET_IMAGE AREA ${dto.jemok}
-	   		</li>
-			<li class="list-group-item">
-	      		${dto.bonmun}
-	    	</li>
-	   		</ul>
-		</c:forEach> --%>
-
+	
 </div>	 
 </div>
 </div>
 </body>
+
+<!-- script src 부분 이 위치에 있어야지 제대로 작동하네 거지같네 -->
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script src="./js/jquery.form.js"></script>
+<script src="./js/ajaxSnsImageUpload.js"></script>
+<script src="./js/forwardPost.js"></script>
+<script src="./js/infiniteScroll.js"></script>
+<script src="./js/forwardComment.js"></script>
 
 </html>
 

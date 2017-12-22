@@ -38,7 +38,6 @@ public class SNSImageController extends HttpServlet {
 		if ("/uploadSnsImage.snsimage".equals(command)){
 
 			SNSImageUploadToServer imgUpload = new SNSImageUploadToServer();
-
 			SNSDTO sdto = imgUpload.saveSnsImage(request, response);
 			
 			String img = sdto.getImg();

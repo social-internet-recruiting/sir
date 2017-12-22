@@ -16,6 +16,7 @@ import net.cookie.controller.CookieAction;
 import net.member.model.MemberDAO;
 import net.member.model.MemberDTO;
 import net.sns.model.SNSDAO;
+import net.sns.model.SNSDTO;
 
 @WebServlet("*.snsboard")
 public class SNSBoardController extends HttpServlet {
@@ -29,14 +30,20 @@ public class SNSBoardController extends HttpServlet {
 		//System.out.println(contextPath.length());
 		String command=RequestURI.substring(contextPath.length());
 		System.out.println(command);
-
-		if ("/snspage.snsboard".equals(command)){
+		
+		Cookie[] cookies = request.getCookies();
+		CookieAction cookieAction = new CookieAction();
+		// email 쿠키값 가져옴 
+		String email = cookieAction.getEmailInCookie(cookies);
+		
+		String viewpage = "";
+		
+		if (email != null){ // email 값 없으면 main 페이지로
 			
-			Cookie[] cookies = request.getCookies();
-			CookieAction cookieAction = new CookieAction();
-			// email 쿠키값 가져옴 
-			String email = cookieAction.getEmailInCookie(cookies);
-			if (email != null){
+			if ("/snspage.snsboard".equals(command)){
+
+				request.setAttribute("email", email);
+				
 				// 친구 리스트 얻기
 				SNSDAO sdao = new SNSDAO();
 				ArrayList<String> friendsList = sdao.getFriendsList(email);
@@ -45,22 +52,26 @@ public class SNSBoardController extends HttpServlet {
 					friendsList.add("친구가 없습니다.");
 				}
 				request.setAttribute("fList", friendsList);
-				
-				// 초기 게시물 얻기
-				
-				
-				
-				RequestDispatcher dis = request.getRequestDispatcher("main.jsp?center=snspage.jsp");
-				dis.forward(request, response);
-				
-				
-			} else { // email 쿠키값이 없으면 main page로 넘겨라, 잘못된 접근이다.
-				RequestDispatcher dis = request.getRequestDispatcher("main.jsp");
-				dis.forward(request, response);
+
+				viewpage = "main.jsp?center=snspage.jsp";
+
+			} else if ("/infiniteScroll.snsboard".equals(command)){ // 무한 스크롤 할때 작동
+				SNSGetPostList slist = new SNSGetPostList();
+				ArrayList<SNSDTO> slistArr = slist.getList(request, response);
+				SNSTransStringForInfiniteScroll ts = new SNSTransStringForInfiniteScroll();
+				String resultString = ts.getString(slistArr);
+				PrintWriter out = response.getWriter();
+				out.println(resultString);
+				return; // 밑에 RequestDispatcher dis = request.getRequestDispatcher(viewpage); 이거 때문에 return 해야지 오류 없이 됨
+						// 안그럼 페이지 이동 하려고 함
 			}
 			
+		} else { // email 쿠키값이 없으면 main page로 넘겨라, 잘못된 접근이다.
+			viewpage = "main.jsp";
 		}
 		
+		RequestDispatcher dis = request.getRequestDispatcher(viewpage);
+		dis.forward(request, response);
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

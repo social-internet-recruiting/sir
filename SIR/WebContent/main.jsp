@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-    
 
 <!DOCTYPE html>
 <html>
@@ -26,19 +25,22 @@
 <c:if test="${center == null}">
 	<c:set var="center" value="/include/register.jsp"/>
 </c:if>
-  
+
 <center>
 <jsp:include page="${center}"/>
 </center>
 
-<!-- center 부분 끝 -->
+<!-- center 부분 끝 -->		
 
 <!-- footer 부분 시작 -->
 <footer>
-<jsp:include page="/include/footer.jsp"/>
+<jsp:include page="/include/footer.jsp" />
 </footer>	
 <!-- footer 부분 끝 -->
-	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-	<script src="./js/bootstrap.js"></script>
 </body>
+	<!--
+		이거 없애니깐 ajaxForm 에러는 안나는데.. 
+		<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script> 
+	-->
+	<script src="./js/bootstrap.js"></script>
 </html>

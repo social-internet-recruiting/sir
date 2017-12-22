@@ -55,7 +55,7 @@ public class SNSImageUploadToServer {
 		
 		String realFilePath = "./uploadSnsImage/" + fileName;
 		if (realFilePath.contains("null")){ // 사진 선택을 안하고 submit을 하면~ 
-			realFilePath = "./uploadSnsImage/noneImage.jpg";
+			realFilePath = "./images/noneImage.jpg";
 		}
 		
 		SNSDTO mdto = new SNSDTO();
@@ -64,10 +64,7 @@ public class SNSImageUploadToServer {
 		// 추가항목 발생하면 여기서 값 추가 해줄것
 		mdto.setImg(realFilePath);
 		
-		// Auth 저장위해 email 쿠키값 가져옴 
-		Cookie[] cookies = request.getCookies();
-		CookieAction cookieAction = new CookieAction();
-		String email = cookieAction.getEmailInCookie(cookies);
+		String email = multi.getParameter("email");
 		mdto.setAuth(email);
 		
 		String contents = multi.getParameter("contents");
