@@ -9,7 +9,7 @@ public class SNSMakePost {
 		// ms 필요없어서 짜르기
 		String timeS = sdto.getTime().toString();
 		timeS = timeS.substring(0,timeS.length()-2);
-		
+
 		// 실시간으로 업로드 하는거랑, 무한 스크롤 두군대 동일 한 코드 때문에 Post 을 만드는 method 분리함
 		String result = "";
 		result 	+= 	"<div class='list-group'>"

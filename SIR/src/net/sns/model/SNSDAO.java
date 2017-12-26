@@ -42,6 +42,10 @@ public class SNSDAO {
 	public void insertSnsBoard(String img, String contents, String hashtag, String auth) {
 		
 		try {
+			
+			// enter 값 <br/> 로 변경
+			contents = contents.replace("\n", "<br/>");
+			
 			con = getConnection();
 			
 			// comments 는 text 타입이기 때문에 default 값을 줄수 없다 그래서 여기서 '' 바로 줌
