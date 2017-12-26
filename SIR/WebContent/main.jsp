@@ -40,7 +40,7 @@
 </body>
 	<!--
 		이거 없애니깐 ajaxForm 에러는 안나는데.. 
-		<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script> 
+		<script src="./js/jquery-3.1.1.min.js"></script> 
 	-->
 	<script src="./js/bootstrap.js"></script>
 </html>

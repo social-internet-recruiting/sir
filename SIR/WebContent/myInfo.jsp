@@ -560,13 +560,13 @@ div.bhoechie-tab div.bhoechie-tab-content:not(.active){
 	
 	<jsp:include page="/include/footer.jsp"/>
 
-	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+	<script src="./js/jquery-3.1.1.min.js"></script>
 	<script src="./js/bootstrap.js"></script>
 
 	<script src="./js/jquery-1.6.1.min.js"></script>
 	<script src="./js/schoolSearch.js"></script>
 	<script src="./js/jobCode.js"></script>
-	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+	<script src="./js/postcode.v2.js"></script>
 	<script src="./js/postCode.js"></script>
 	
 	<script type="text/javascript">

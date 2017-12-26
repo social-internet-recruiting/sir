@@ -39,7 +39,7 @@ public class SNSForwardComment {
 		LocalTime time = LocalTime.now();
 		String dateS = date.toString();
 		String timeS = time.toString();
-		timeS = timeS.substring(0,timeS.length()-2);
+		timeS = timeS.substring(0,timeS.length()-4);
 		
 		int idx = Integer.parseInt(messageArr[0]);
 		String commentAuth = messageArr[1];

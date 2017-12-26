@@ -5,24 +5,30 @@ import net.sns.model.SNSDTO;
 public class SNSMakePost {
 
 	public String getPost(SNSDTO sdto) { 
+
+		// ms 필요없어서 짜르기
+		String timeS = sdto.getTime().toString();
+		timeS = timeS.substring(0,timeS.length()-2);
+		
 		// 실시간으로 업로드 하는거랑, 무한 스크롤 두군대 동일 한 코드 때문에 Post 을 만드는 method 분리함
 		String result = "";
 		result 	+= 	"<div class='list-group'>"
 				+ 	"<div class='list-group-item' align='left'>"
-				+ 	"<img src='" + sdto.getAuthimg() + "' id='authImgId' > &nbsp;&nbsp; <a>" + sdto.getAuth() + "</a> &nbsp;&nbsp;" + "<span style='float:right'> No. : " + sdto.getIdx() + "</span>" 
+				+ 	"<img src='" + sdto.getAuthimg() + "' id='authImgId' > &nbsp;&nbsp; <a style='word-break: break-all;'>" + sdto.getAuth() + "</a> &nbsp;&nbsp;" + "<span style='float:right'> No. : " + sdto.getIdx() + "</span>" 
 				+ 	"</div>"
 				+ 	"<a align='left' style='height:400px;' class='list-group-item-img'><img src='" + sdto.getImg() + "' style='width:100%; height:400px;'></a>"
 				+ 	"<div class='list-group-item' align='left'><br/>"
 				+	"<span style='float:left; font-size: medium; font-weight: bold; font-style: italic;'>Contents</span><br/><br/>"
 				+ 	sdto.getContents()
-				+ 	"<hr/>"
+				+ 	"<br/>"
+				+ 	"<hr style='margin:10px 0 10px 0;'/>"
 				+	"<span style='float:left; font-size: medium; font-weight: bold; font-style: italic;'>Comments</span><br/><br/>"
+				+ 	"<div style='align:left;' id='snsCommentsAdd_" + sdto.getIdx() + "'>"
 				+ 	sdto.getComments()
-				+ 	"<div class='list-group' id='snsCommentsAdd_" + sdto.getIdx() + "'>"
-				+ 	"</div>"
-				+ 	"<hr/>"
+				+	"</div>"
+				+ 	"<hr style='margin:10px 0 10px 0;'/>"
 				+ 	"<a style='cursor:pointer;' ><img src='./images/좋아요.gif' style='height:25px; weight:25px;'>좋아요  &nbsp;" + sdto.getLikecount() + "개</a>"
-				+	"<span style='float:right'> 글 작성시간 : " + sdto.getTime() + "</span>"
+				+	"<span style='float:right'> 글 작성시간 : " + timeS + "</span>"
 				+ 	"<br/>"
 				+ 	"</div>"
 				+ 	"<div class='list-group-item' style='height:78px;'>"
@@ -34,6 +40,7 @@ public class SNSMakePost {
 				+	"</span>"
 				+ 	"</div>"
 				+ 	"</div>";
+
 		return result;
 	}
 

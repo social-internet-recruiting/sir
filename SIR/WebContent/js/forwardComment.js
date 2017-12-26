@@ -18,7 +18,7 @@
     	addComment = textArr[0];
     	idx = textArr[1];
     	addTag = "#snsCommentsAdd_"+idx;
-    	$(addTag).before(addComment);
+    	$(addTag).append(addComment);
     } 
  
     function onOpen(event) {

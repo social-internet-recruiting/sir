@@ -138,7 +138,7 @@
 </body>
 
 <!-- script src 부분 이 위치에 있어야지 제대로 작동하네 거지같네 -->
-<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script src="./js/jquery-3.1.1.min.js"></script>
 <script src="./js/jquery.form.js"></script>
 <script src="./js/ajaxSnsImageUpload.js"></script>
 <script src="./js/forwardPost.js"></script>
