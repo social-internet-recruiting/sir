@@ -1,5 +1,7 @@
-	var webSocketComment = new WebSocket('ws://localhost:8080/SIR/forwardComment'); // webservlet 주소 = forwardComment
-	    
+	//var webSocketComment = new WebSocket('ws://localhost:8080/SIR/forwardComment'); // webservlet 주소 = forwardComment
+	//var webSocketComment = new WebSocket('ws://192.168.4.224:8080/SIR/forwardComment'); // webservlet 주소 = forwardComment
+	var webSocketComment = new WebSocket('ws://192.168.0.9:8080/SIR/forwardComment'); // webservlet 주소 = forwardComment
+	
 	webSocketComment.onerror = function(event) {
     	onError(event);
     }; 

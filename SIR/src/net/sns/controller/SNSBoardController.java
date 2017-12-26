@@ -57,15 +57,28 @@ public class SNSBoardController extends HttpServlet {
 
 			} else if ("/infiniteScroll.snsboard".equals(command)){ // 무한 스크롤 할때 작동
 				SNSGetPostList slist = new SNSGetPostList();
-				ArrayList<SNSDTO> slistArr = slist.getList(request, response);
+				ArrayList<SNSDTO> slistArr = slist.getSnsList(request, response);
 				SNSTransStringForInfiniteScroll ts = new SNSTransStringForInfiniteScroll();
 				String resultString = ts.getString(slistArr);
 				PrintWriter out = response.getWriter();
 				out.println(resultString);
 				return; // 밑에 RequestDispatcher dis = request.getRequestDispatcher(viewpage); 이거 때문에 return 해야지 오류 없이 됨
 						// 안그럼 페이지 이동 하려고 함
+			} else if ("/infiniteScrollInfo.snsboard".equals(command)){ // 무한 스크롤 (info) 할때 작동
+				SNSGetPostList slist = new SNSGetPostList();
+				System.out.println("friend request 값 : " + request.getParameter("friend"));
+				if (request.getParameter("friend") != null){ // friend 가 null 이 아니면 친구 글 조회상태, 
+					email = request.getParameter("friend");
+				} else { 
+					// friend 가 null 이면 본인 글 조회 상태  email 값 변동 없음
+				}
+				ArrayList<SNSDTO> slistArr = slist.getInfoList(request, response, email);
+				SNSTransStringForInfiniteScroll ts = new SNSTransStringForInfiniteScroll();
+				String resultString = ts.getInfoString(slistArr);
+				PrintWriter out = response.getWriter();
+				out.println(resultString);
+				return;
 			}
-			
 		} else { // email 쿠키값이 없으면 main page로 넘겨라, 잘못된 접근이다.
 			viewpage = "main.jsp";
 		}

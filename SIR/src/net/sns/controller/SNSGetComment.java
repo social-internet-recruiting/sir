@@ -10,7 +10,7 @@ public class SNSGetComment {
 		String result = "";
 
 		result += "<div>"
-				+ "<div style='width: 20%; display:inline-block; vertical-align:top; word-break: break-all;'><a>" + commentAuth + "</a></div>"
+				+ "<div style='width: 20%; display:inline-block; vertical-align:top; word-break: break-all;'><a href='./friendInfo.mem?friend=" + commentAuth + "'>" + commentAuth + "</a></div>"
 				+ "<div style='width: 1%; display:inline-block; vertical-align:top;'></div>"
 				+ "<div style='width: 53%; display:inline-block; word-break: break-all;'>" +  comment + "	</div>"
 				+ "<div style='width: 1%; display:inline-block; vertical-align:top;'></div>"

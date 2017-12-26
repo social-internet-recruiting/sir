@@ -14,7 +14,9 @@ public class SNSMakePost {
 		String result = "";
 		result 	+= 	"<div class='list-group'>"
 				+ 	"<div class='list-group-item' align='left'>"
-				+ 	"<img src='" + sdto.getAuthimg() + "' id='authImgId' > &nbsp;&nbsp; <a style='word-break: break-all;'>" + sdto.getAuth() + "</a> &nbsp;&nbsp;" + "<span style='float:right'> No. : " + sdto.getIdx() + "</span>" 
+				+ 	"<img src='" + sdto.getAuthimg() + "' id='authImgId' > &nbsp;&nbsp; "
+				+ 	"<a href='./friendInfo.mem?friend=" + sdto.getAuth() + "' style='cursor:pointer; word-break: break-all;'>" + sdto.getAuth() + "</a>" 
+				+ 	"&nbsp;&nbsp;" + "<span style='float:right'> No. : " + sdto.getIdx() + "</span>" 
 				+ 	"</div>"
 				+ 	"<a align='left' style='height:400px;' class='list-group-item-img'><img src='" + sdto.getImg() + "' style='width:100%; height:400px;'></a>"
 				+ 	"<div class='list-group-item' align='left'><br/>"

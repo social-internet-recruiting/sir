@@ -118,7 +118,7 @@ public class MemberFrontController extends HttpServlet {
 				request.setAttribute("address2", address2);
 				
 				request.setAttribute("mdto", mdto);
-
+				
 				RequestDispatcher dis = request.getRequestDispatcher("myInfo.jsp");
 				//getRequestDispatcher("main.jsp?center=myInfo.jsp"); center 값 바꿔서 갈라니깐
 				//모달때문인지 에러 난다.
@@ -158,6 +158,18 @@ public class MemberFrontController extends HttpServlet {
 				RequestDispatcher dis = request.getRequestDispatcher("main.jsp");
 				dis.forward(request, response);
 			}
+		} else if ("/friendInfo.mem".equals(command)) { // 다른 사람 id 누르면 그사람 정보 조회 
+			
+			// 그사람 정보, 그사람 글정보 뿌려줄것
+			// 그사람 정보는 js 무한 스크롤로 뿌려줄거고, 그사람 정보만 저장하면 된다.
+			String friend = request.getParameter("friend"); // snspage에서 id의 href 값으로 넘어오는 값
+			System.out.println("friend : " + friend);
+			MemberDTO mdto = new MemberDTO();
+			mdto = mdao.getMemberInfoDTO(friend);
+			request.setAttribute("mdto", mdto);
+			
+			RequestDispatcher dis = request.getRequestDispatcher("main.jsp?center=friendInfo.jsp");
+			dis.forward(request, response);
 		}
 		
 	}

@@ -63,7 +63,7 @@
 	 	 	style="border-width: medium; font-size: large; font-style: italic; font-weight: bold;">Friends List</li>
 	 	 	<ul class="list-group" style="height:300px; overflow: auto;">
 			<c:forEach items="${fList}" var="fLists">
-				<a onclick="" align="left"><li class="list-group-item">${fLists}</li></a>
+				<a style="cursor:pointer;" align="left"><li class="list-group-item">${fLists}</li></a>
 			</c:forEach>
 			</ul>
 		</ul>
@@ -93,7 +93,7 @@
 			 	 	<div class="list-group-item" style="height:280px;">
 			 	 		<span class="list-group-item-img" style="float:left; width:35%">
 			 	 			<span style="height:220px;">
-							<a style="cursor:pointer" onclick="uploadImage();" >
+							<a style="cursor:pointer;" onclick="uploadImage();" >
 							<img src="./images/noneImage.jpg" id="snsImageUpload" name="snsImageUpload" 
 							style="width:100%; height:234px; padding-left:-15px; " >
 							</a>

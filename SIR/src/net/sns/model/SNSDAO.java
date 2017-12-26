@@ -160,7 +160,43 @@ public class SNSDAO {
 			}
 
 		} catch(Exception e) {
-			System.out.println("GetSNSList()메서드에서 에러 : " + e);
+			System.out.println("GetSNSList(sns)메서드에서 에러 : " + e);
+		} finally {
+			freeResource();
+		}
+		
+		return result;
+	}
+	
+	// myinfo 나 friendinfo 볼때 조회하고 싶은 사람
+	// 게시글 list 얻기 (매개변수 두개로 구분) (초기 로딩, 무한 스크롤 로딩)
+	public ArrayList<SNSDTO> GetSNSList(int idxnuminfo, String email) {
+		
+		ArrayList<SNSDTO> result = new ArrayList<SNSDTO>(); 
+	
+		try {
+			con = getConnection();
+
+			// authimg 때문에 join 해서 가져옴
+			String sql 	= "select * from snsboard where idx<? and auth=? order by 1 desc limit 0,9;"; 
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, idxnuminfo);
+			pstmt.setString(2, email);
+			rs = pstmt.executeQuery();
+			while(rs.next()){
+				SNSDTO sdto = new SNSDTO();
+				sdto.setIdx(rs.getInt(1));
+				sdto.setImg(rs.getString(2));
+				sdto.setContents(rs.getString(3));
+				sdto.setComments(rs.getString(4));
+				sdto.setAuth(rs.getString(8));
+				sdto.setTime(rs.getTimestamp(9));
+				// sdto.setAuthimg(rs.getString(10)); // db 에는 없는값, sdto에만 있는값 
+				result.add(sdto);
+			}
+
+		} catch(Exception e) {
+			System.out.println("GetSNSList(info)메서드에서 에러 : " + e);
 		} finally {
 			freeResource();
 		}
