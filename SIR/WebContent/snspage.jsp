@@ -50,17 +50,14 @@
 <body style="background-color:gray;">
 
 
-<div class="container" style="background-color:white;margin-top:-20px;">
+<div class="container" style="background-color:white;margin-top:30px;">
 
 	<!-- 친구목록 영역 -->
-	<div class="container fixedboard" style="margin-left:-15px; z-index: auto;">
+	<div class="container fixedboard" style="margin-left:-15px;margin-top:62px; z-index: auto;">
 	<!-- z-index auto 하면 안가려지고 뒤로 간다. -->
-		<div class="" style="width:74%; float:left;">
-		</div>
 		<div class="" style="width:25%; float:right;" >
 		<ul class="list-group">
-	 	 	<li class="list-group-item" 
-	 	 	style="border-width: medium; font-size: large; font-style: italic; font-weight: bold;">Friends List</li>
+	 	 	<li class="list-group-item" style="border-width: medium; font-size: large; font-style: italic; font-weight: bold;">Friends List</li>
 	 	 	<ul class="list-group" style="height:300px; overflow: auto;">
 			<c:forEach items="${fList}" var="fLists">
 				<a style="cursor:pointer;" align="left"><li class="list-group-item">${fLists}</li></a>
@@ -75,8 +72,7 @@
 
 
 	<!-- 대문 이름 -->
-	<div class="" style="width:74%; float:left;" >
-		<h2>SNS</h2>
+	<div class="" style="width:74%; float:left; height:62px;" >
 	</div>
 	<!-- 대문 이름  끝-->
 	
@@ -94,8 +90,7 @@
 			 	 		<span class="list-group-item-img" style="float:left; width:35%">
 			 	 			<span style="height:220px;">
 							<a style="cursor:pointer;" onclick="uploadImage();" >
-							<img src="./images/noneImage.jpg" id="snsImageUpload" name="snsImageUpload" 
-							style="width:100%; height:234px; padding-left:-15px; " >
+							<img src="./images/noneImage.jpg" id="snsImageUpload" name="snsImageUpload" style="width:100%; height:234px; padding-left:-15px; " >
 							</a>
 							</span>
 						</span>
