@@ -6,9 +6,9 @@ $(document).ready(function (event){
 	$(window).scroll(function(){
         var scrollHeight = $(window).scrollTop() + $(window).height();
         var documentHeight = $(document).height();
-		
+        var subtract = documentHeight - scrollHeight; 
         //스크롤이 맨아래로 갔는지 아닌지 확인하는 if문
-        if(scrollHeight == documentHeight){
+        if(subtract<3){
         	infiniteScrollInfoAjaxMethod();	
         }
         
