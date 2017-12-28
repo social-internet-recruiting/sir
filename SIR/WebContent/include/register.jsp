@@ -24,7 +24,9 @@
 	[정영현 17.11.12 일 22:36] onsubmit 으로 비밀번호, emailId 중복체크 하기 위해 로직 삽입함, 
 	체크후 글자 뿌려줘야 되니깐 span도 삽입함 
 -->
+<script src="./js/jquery-3.1.1.min.js"></script>
 <script type="text/javascript" src="./js/register.js"></script>
+
 </head>
 <body class="wrapper">
 <div class="logo1"><img src="./images/sir1.gif"></div>

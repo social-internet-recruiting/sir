@@ -160,10 +160,10 @@ div.bhoechie-tab div.bhoechie-tab-content:not(.active){
 				<span>친구 <span>0</span></span>
 			</div>
 			<div>
-				<a>${requestScope.mdto.name}</a>
+				<a style="cursor:pointer;">${requestScope.mdto.name}</a>
 			</div>
 			<div style="margin:10px auto 10px auto;">
-				<a>${requestScope.mdto.phone}</a>
+				<a style="cursor:pointer;">${requestScope.mdto.phone}</a>
 			</div>
 			<div style="margin-left:100px">
 				<input class="btn btn-outline-success" type="button" data-toggle="modal" data-target="#myModal" value="정보수정"/>
@@ -176,43 +176,18 @@ div.bhoechie-tab div.bhoechie-tab-content:not(.active){
 	<div class="row">
 	<div class="col-sm-5"></div>
 		<ul class="nav nav-tabs" role="tablist" id="">
-		  <li role="presentation" class="active"><a href="#A" aria-controls="A" role="tab" data-toggle="tab" style="font-size:20px;">게시물</a></li>
+		  <li role="presentation" class="active"><a href="#snsScrollAddInfo" aria-controls="snsScrollAddInfo" role="tab" data-toggle="tab" style="font-size:20px;">게시물</a></li>
 		  <li role="presentation"><a href="#B" aria-controls="B" role="tab" data-toggle="tab" style="font-size:20px;">스크랩</a></li>
 		</ul>
 	</div>
 	<div class="tab-content row">
-		  <div role="tabpanel" class="tab-pane active" id="A">
-		  	<div class="photosize col-sm-4" style="margin:5px; background-color:#ff8080">	
-				<a><img style="width:370px; height:370px; margin-left:-10px; margin-top:5px;" src="${requestScope.mdto.img}" id="profileImageMain" title="사진변경하려면 정보수정에서 사진 클릭하세요" ></a>
-			</div>
-			<div class="photosize col-sm-4" style="margin:5px; background-color:#ff8080">	
-				<a><img style="width:370px; height:370px; margin-left:-10px; margin-top:5px;" src="${requestScope.mdto.img}" id="profileImageMain" title="사진변경하려면 정보수정에서 사진 클릭하세요" ></a>
-			</div>
-			<div class="photosize col-sm-4" style="margin:5px; background-color:#ff8080">	
-				<a><img style="width:370px; height:370px; margin-left:-10px; margin-top:5px;" src="${requestScope.mdto.img}" id="profileImageMain" title="사진변경하려면 정보수정에서 사진 클릭하세요" ></a>
-			</div>
-			<div class="photosize col-sm-4" style="margin:5px; background-color:#ff8080">	
-				<a><img style="width:370px; height:370px; margin-left:-10px; margin-top:5px;" src="${requestScope.mdto.img}" id="profileImageMain" title="사진변경하려면 정보수정에서 사진 클릭하세요" ></a>
-			</div>
-			<div class="photosize col-sm-4" style="margin:5px; background-color:#ff8080">	
-				<a><img style="width:370px; height:370px; margin-left:-10px; margin-top:5px;" src="${requestScope.mdto.img}" id="profileImageMain" title="사진변경하려면 정보수정에서 사진 클릭하세요" ></a>
-			</div>
-			<div class="photosize col-sm-4" style="margin:5px; background-color:#ff8080">	
-				<a><img style="width:370px; height:370px; margin-left:-10px; margin-top:5px;" src="${requestScope.mdto.img}" id="profileImageMain" title="사진변경하려면 정보수정에서 사진 클릭하세요" ></a>
-			</div>
-			<div class="photosize col-sm-4" style="margin:5px; background-color:#ff8080">	
-				<a><img style="width:370px; height:370px; margin-left:-10px; margin-top:5px;" src="${requestScope.mdto.img}" id="profileImageMain" title="사진변경하려면 정보수정에서 사진 클릭하세요" ></a>
-			</div>
-			<div class="photosize col-sm-4" style="margin:5px; background-color:#ff8080">	
-				<a><img style="width:370px; height:370px; margin-left:-10px; margin-top:5px;" src="${requestScope.mdto.img}" id="profileImageMain" title="사진변경하려면 정보수정에서 사진 클릭하세요" ></a>
-			</div>
-			<div class="photosize col-sm-4" style="margin:5px; background-color:#ff8080">	
-				<a><img style="width:370px; height:370px; margin-left:-10px; margin-top:5px;" src="${requestScope.mdto.img}" id="profileImageMain" title="사진변경하려면 정보수정에서 사진 클릭하세요" ></a>
-			</div>
-		  </div>
-		  <div role="tabpanel" class="tab-pane" id="B">
+		<!-- 본인 게시글 -->
+		<div role="tabpanel" class="tab-pane active" id="snsScrollAddInfo">  
+		</div>
+		  
+		<div role="tabpanel" class="tab-pane" id="B">
 			<a>스크랩</a>
-		  </div>
+		</div>
 	</div><!--End of tab-content--><hr/>
 			<!-- End of job_check_one -->
 	</div>
@@ -251,7 +226,7 @@ div.bhoechie-tab div.bhoechie-tab-content:not(.active){
     		<input type="file" name="profileImageFileButton" accept=".jpg,.png" id="profileImageFileButton"/><br/>
     	</div><br/>
     	<div>
-      		<a href="#none" onclick="clickEvent();"><img src="${requestScope.mdto.img}" height="180px" width="180px" id="profileImage" name="profileImg" title="사진변경하려면 사진 클릭하세요"></a>
+      		<a style="cursor:pointer;" onclick="clickEvent();"><img src="${requestScope.mdto.img}" height="180px" width="180px" id="profileImage" name="profileImg" title="사진변경하려면 사진 클릭하세요"></a>
      	</div>
     	<div class="form-group" align="left">
      		<label for="name">이름</label>
@@ -560,14 +535,15 @@ div.bhoechie-tab div.bhoechie-tab-content:not(.active){
 	
 	<jsp:include page="/include/footer.jsp"/>
 
-	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+	<script src="./js/jquery-3.1.1.min.js"></script>
 	<script src="./js/bootstrap.js"></script>
 
 	<script src="./js/jquery-1.6.1.min.js"></script>
 	<script src="./js/schoolSearch.js"></script>
 	<script src="./js/jobCode.js"></script>
-	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+	<script src="./js/postcode.v2.js"></script>
 	<script src="./js/postCode.js"></script>
+	<script src="./js/infiniteScrollInfo.js"></script>
 	
 	<script type="text/javascript">
     	

@@ -1,8 +1,7 @@
 function fileUpload() {
 
 	$('#fileForm').ajaxForm({
-		
-		// url full 경로 해야지 되네 좆같네 
+
 		url: "./uploadSnsImage.snsimage",
 		
 		enctype: "multipart/form-data", 
@@ -11,13 +10,14 @@ function fileUpload() {
 
 			// alert(result);
 	    	// 이미지 업로드 성공해야지 message(게시글) 전송 할것
-	    	inputMessage = document.getElementById('textArea'); 
-	        webSocket.send(inputMessage.value); 
-	        inputMessage.value = ""; 
+	    	inputContents = document.getElementById('contents'); 
+	    	email = document.getElementById('email').value;
+	    	webSocketPost.send(email + "#%&@#" + inputContents.value); //#%&@# 내가 막 정한 구분자다.
+	        inputContents.value = "";
 	        
 	        // 원복 시킬 것 
 	        img = document.getElementById("snsImageUpload");
-	        img.src = "./uploadSnsImage/noneImage.jpg";
+	        img.src = "./images/noneImage.jpg";
 	        $('#uploadSnsImage').val("");
 	        	
 		}

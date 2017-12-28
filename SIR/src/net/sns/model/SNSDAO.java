@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Timestamp;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Vector;
@@ -40,6 +42,10 @@ public class SNSDAO {
 	public void insertSnsBoard(String img, String contents, String hashtag, String auth) {
 		
 		try {
+			
+			// enter 값 <br/> 로 변경
+			contents = contents.replace("\n", "<br/>");
+			
 			con = getConnection();
 			
 			// comments 는 text 타입이기 때문에 default 값을 줄수 없다 그래서 여기서 '' 바로 줌
@@ -59,21 +65,34 @@ public class SNSDAO {
 		}
 	}
 
-	public SNSDTO getLastPost() { // 방금 자기가 쓴글 뿌리는 로직... 수정 요함
+	public SNSDTO getLastPost(String email) { // 방금 자기가 쓴글 뿌리는 로직... 
 		SNSDTO sdto = new SNSDTO();
 		try {
 			con = getConnection();
 			
-			String sql = "select * from snsboard where idx = (select max(idx) from snsboard)";
+			// 본인글중 제일 최신꺼 ... 실시간으로 뿌리기 위해서 
+			// authimg 때문에 join 해서 가져옴
+			String sql 	= "select s.*, m.img " 
+						+ "from snsboard s join member m "
+						+ "on s.auth  = m.email "
+						+ "where s.auth = ? "
+						+ "order by 1 desc limit 0,1;";
+
+			
 			pstmt = con.prepareStatement(sql);
-			System.out.println("sql : " + sql);
+			pstmt.setString(1, email);
+			System.out.println("last post sql : " + sql);
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()){
 				System.out.println("SNSDAO img : " + rs.getString(2));
+				sdto.setIdx(Integer.parseInt(rs.getString(1)));
 				sdto.setImg(rs.getString(2));
-				sdto.setAuth(rs.getString(7));
-				sdto.setTime(rs.getTimestamp(8));
+				sdto.setContents(rs.getString(3));
+				sdto.setComments(rs.getString(4));
+				sdto.setAuth(rs.getString(8));
+				sdto.setTime(rs.getTimestamp(9));
+				sdto.setAuthimg(rs.getString(10));
 			}
 
 		} catch(Exception e) {
@@ -114,8 +133,100 @@ public class SNSDAO {
 		return friendsList;
 	}
 	
-	// sns list 얻기
+	// sns list 얻기 (초기 로딩, 무한 스크롤 로딩)
+	public ArrayList<SNSDTO> GetSNSList(int idxnum) {
+		
+		ArrayList<SNSDTO> result = new ArrayList<SNSDTO>(); 
 	
+		try {
+			con = getConnection();
+
+			// authimg 때문에 join 해서 가져옴
+			String sql 	= "select s.*, m.img " 
+						+ "from snsboard s join member m "
+						+ "on s.auth  = m.email "
+						+ "where s.idx<? "
+						+ "order by 1 desc limit 0, 5;";
+			
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, idxnum);
+			rs = pstmt.executeQuery();
+			while(rs.next()){
+				SNSDTO sdto = new SNSDTO();
+				sdto.setIdx(rs.getInt(1));
+				sdto.setImg(rs.getString(2));
+				sdto.setContents(rs.getString(3));
+				sdto.setComments(rs.getString(4));
+				sdto.setAuth(rs.getString(8));
+				sdto.setTime(rs.getTimestamp(9));
+				sdto.setAuthimg(rs.getString(10)); // db 에는 없는값, sdto에만 있는값 
+				result.add(sdto);
+			}
+
+		} catch(Exception e) {
+			System.out.println("GetSNSList(sns)메서드에서 에러 : " + e);
+		} finally {
+			freeResource();
+		}
+		
+		return result;
+	}
 	
+	// myinfo 나 friendinfo 볼때 조회하고 싶은 사람
+	// 게시글 list 얻기 (매개변수 두개로 구분) (초기 로딩, 무한 스크롤 로딩)
+	public ArrayList<SNSDTO> GetSNSList(int idxnuminfo, String email) {
+		
+		ArrayList<SNSDTO> result = new ArrayList<SNSDTO>(); 
+	
+		try {
+			con = getConnection();
+
+			// authimg 때문에 join 해서 가져옴
+			String sql 	= "select * from snsboard where idx<? and auth=? order by 1 desc limit 0,9;"; 
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, idxnuminfo);
+			pstmt.setString(2, email);
+			rs = pstmt.executeQuery();
+			while(rs.next()){
+				SNSDTO sdto = new SNSDTO();
+				sdto.setIdx(rs.getInt(1));
+				sdto.setImg(rs.getString(2));
+				sdto.setContents(rs.getString(3));
+				sdto.setComments(rs.getString(4));
+				sdto.setAuth(rs.getString(8));
+				sdto.setTime(rs.getTimestamp(9));
+				// sdto.setAuthimg(rs.getString(10)); // db 에는 없는값, sdto에만 있는값 
+				result.add(sdto);
+			}
+
+		} catch(Exception e) {
+			System.out.println("GetSNSList(info)메서드에서 에러 : " + e);
+		} finally {
+			freeResource();
+		}
+		
+		return result;
+	}
+
+	public void addCommentsInPost(int idx, String result) {
+		// 기존의 comment column의 내용을 얻고, 거기다가 추가 해줄것
+		try {
+			con = getConnection();
+			
+			String sql 	= "update snsboard set comments = concat(comments,?) where idx = ?";
+			 
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, result);
+			pstmt.setInt(2, idx);
+			pstmt.executeUpdate();
+		
+		} catch(Exception e) {
+			System.out.println("addCommentsInPost()메서드에서 에러 : " + e);
+		} finally {
+			freeResource();
+		}
+		
+		
+	}
 	
 }

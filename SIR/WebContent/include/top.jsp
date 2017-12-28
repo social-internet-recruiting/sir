@@ -16,6 +16,10 @@
 </style>
 
 <title>JSP 게시판 웹 사이트</title>
+ 
+</head>
+<html>
+
 <%
 	Cookie[] cookies = request.getCookies();
 	CookieAction cookieAction = new CookieAction();
@@ -48,7 +52,8 @@
 
 %>
 
-<nav class="navbar navbar-expand-lg navbar-blue bg-blue" style="z-index:10000;">
+<nav class="navbar navbar-blue" style="z-index:1035; margin-top:-1px;">
+<div class="fixedboard bg-blue" style="width:100%;opacity:1;">
   <div class="container">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -89,16 +94,14 @@
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
+</div>
 </nav>
 <%
 	} else { // 로그인 안된 화면
 %>
- 
-</head>
-<html>
 
 
-<nav class="navbar navbar-expand-lg navbar-blue bg-blue">
+<nav class="navbar navbar-blue bg-blue" style="margin-top:-1px;">
 <div class="container">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -124,9 +127,8 @@
       	</div>
 	 	<button type="submit" class="btn btn-light">Login</button>
     	</form>
-	</div>
     </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->  
+</div><!-- /.container-fluid -->  
    
 </nav>
 <%
