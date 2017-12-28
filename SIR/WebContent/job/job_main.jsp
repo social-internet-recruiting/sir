@@ -529,7 +529,7 @@
 			<td>제목</td>
 			<td>지원자격</td>
 			<td>근무조건</td>
-			<td>마감일</td>
+			<td>시작일 ~ 마감일</td>
 		</tr>
 	<c:forEach var="v1" items="${v1}">
 	  <c:if test="${empty v1}">
@@ -541,8 +541,7 @@
          <td>${v1.co_title}</td>
          <td><a href="#" onclick="window.open('job_detail.job?job_idx=${v1.job_idx}','${v1.recruit_notice}','width=700,height=700,left=250,right=150,resize=no,scrollbars=yes');">${v1.recruit_notice}</a></td>
          <td>${v1.qualify_up} /${v1.career} ${v1.career_up}</td>
-         <td>${v1.income_up}만원 ▲<br/>
-         </td>
+         <td>${v1.income_up}만원 ▲/${v1.position}</td>
          <td>${v1.applicate_period1} ~ ${v1.applicate_period2}</td>
       </tr>
       </c:forEach>
@@ -557,8 +556,7 @@
          <td>${v2.co_title}</td>
          <td><a href="#" onclick="window.open('job_detail.job?job_idx=${v2.job_idx}','${v2.recruit_notice}','width=700,height=700,left=250,right=150,resize=no,scrollbars=yes');">${v2.recruit_notice}</a></td>
          <td>${v2.qualify_up} /${v2.career} ${v2.career_up}</td>
-         <td>${v2.income_up}만원 ▲<br/>
-         </td>
+         <td>${v2.income_up}만원 ▲/${v2.position}</td>
          <td>${v2.applicate_period1} ~ ${v2.applicate_period2}</td>
       </tr>
       </c:forEach> 
@@ -573,8 +571,7 @@
          <td>${v3.co_title}</td>
          <td><a href="#" onclick="window.open('job_detail.job?job_idx=${v3.job_idx}','${v3.recruit_notice}','width=700,height=700,left=250,right=150,resize=no,scrollbars=yes');">${v3.recruit_notice}</a></td>
          <td>${v3.qualify_up} /${v3.career} ${v3.career_up}</td>
-         <td>${v3.income_up}만원 ▲<br/>
-         </td>
+         <td>${v3.income_up}만원 ▲/${v3.position}</td>
          <td>${v3.applicate_period1} ~ ${v3.applicate_period2}</td>
       </tr>
       </c:forEach> 
@@ -619,16 +616,5 @@
 <!-- footer 부분 끝 -->
    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
    <script src="./js/bootstrap.js"></script>
-<script type="text/javascript">
-// $(document).ready(function() {
-	
-// 	$("#bs_all").click(function() {
-// 		$('input:checkbox[name="bs"]').attr("checked", true); 
-// 	});
-	
-	
-// });
-   </script>
-   
 </body>
 </html>

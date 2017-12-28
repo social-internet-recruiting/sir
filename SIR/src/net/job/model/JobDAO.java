@@ -296,7 +296,6 @@ public class JobDAO {
 			pstmt.setString(47,qualify_up);
 			pstmt.setString(48,qualify_down);
 			pstmt.setInt(49,income_up);
-			//System.out.println(pstmt);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				dto = new jobDTO();

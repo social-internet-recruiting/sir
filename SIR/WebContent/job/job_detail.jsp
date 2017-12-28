@@ -15,23 +15,20 @@
 				<td><h1>${dto.co_title}</h1></td>
 			</tr>
 			<tr>
-				<td>마감날짜:</td>
-				<td><font color="red">${dto.applicate_period2}</font></td>
+				<td>회사주소</td>
+				<td>${dto.co_addr}</td>
 			</tr>
 			<tr>
 				<td>설립일</td>
 				<td>${dto.establish}</td>
+			</tr>
+			<tr>
 				<td>매출액</td>
 				<td>${dto.sales}</td>
 			</tr>
 			<tr>
 				<td>사원수</td>
 				<td>${dto.employees}명</td>
-				<td>기업형태</td>
-				<td>${dto.co_type}</td>
-			</tr>
-			<tr>
-				<td>회사주소</td>
 			</tr>
 		</table>
 		<h2>모집요강</h2>
@@ -42,7 +39,7 @@
 		<hr size="1">
 		<p>모집인원: ${dto.recruit_volume}명</p>
 		<hr size="1">
-		<p>급여:${income_up}</p>
+		<p>급여:${dto.income_up}만원</p>
 		<hr size="1">
 		지원자격
 		<p>
