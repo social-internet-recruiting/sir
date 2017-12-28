@@ -38,100 +38,271 @@ public class JobFrontController extends HttpServlet {
 		// System.out.println(contextPath.length());
 		String command = RequestURI.substring(contextPath.length());
 		// System.out.println(command);
+		
+		int totalRecord = 0;
+		int numPerPage = 3;
+		int pagePerBlock = 3;
+		int totalPage = 0;
+		int totalBlock = 0;
+		int nowPage = 0;
+		int nowBlock = 0;
+		int beginPerPage = 0;
 
 		if ("/job_main.job".equals(command)) {
 			
-			try{
-//				JobDAO dao = new JobDAO();
-				
-//				Vector<jobDTO> v = dao.getAllList();
-				
-//				request.setAttribute("v", v);
-				
-				
-				
-//				request.setAttribute("count", dao.getTotalCount());
-				
-				// 현재 보여질 페이지 번호 저장
-//				request.setAttribute("nowpage", request.getParameter("nowPage"));
-				// 현재 보여질 블럭 번호 저장
-//				request.setAttribute("nowBolck", request.getParameter("nowBlock"));
-				
-			}catch(Exception e){
-				System.out.println("/job_main.job error " + e);
-				e.printStackTrace();
+			JobDAO dao = new JobDAO();
+
+			Vector<jobDTO> v = dao.getAllList();
+			totalRecord = v.size();
+			totalPage = (int)Math.ceil((double)totalRecord/numPerPage);
+			if(request.getParameter("nowPage")!=null){
+				nowPage = Integer.parseInt(request.getParameter("nowPage"));
+			}
+			if(request.getParameter("nowBlock")!=null){
+				nowBlock = Integer.parseInt(request.getParameter("nowBlock"));
+			}
+			totalBlock = (int)Math.ceil((double)totalPage / pagePerBlock);
+			beginPerPage = nowPage*numPerPage;
+			
+			Vector<jobDTO> jdto = new Vector<jobDTO>();
+			for(int i=beginPerPage;i<(beginPerPage + numPerPage);i++){
+				if(i==totalRecord) break;
+				 jdto.add(v.get(i));
 			}
 			
-			
+			request.setAttribute("nowPage", nowPage);
+			request.setAttribute("totalPage", totalPage);
+			request.setAttribute("totalBlock", totalBlock);
+			request.setAttribute("nowBlock", nowBlock);
+			request.setAttribute("v1", jdto);
+
 			RequestDispatcher dis = request.getRequestDispatcher("./job/job_main.jsp");
-			
+
 			dis.forward(request, response);
 			
 			
 			
 		} else if ("/check_search.job".equals(command)) {
-			 String[] check_job = request.getParameterValues("Check_job"); //1차 2차 직업 분류 조건
-			// for(String out : check_job) {
-			// System.out.println(out);
-			// }
-			 String[] check_region = request.getParameterValues("Check_region"); //지역 분류 조건
-			// for(String out : check_region) {
-			// System.out.println(out);
-			// }
-			 String[] check_career = request.getParameterValues("career"); // 경력 체크 조건
-			// for(String out : check_career) {
-			// System.out.println(out);
-			// }
-			 String career_up = request.getParameter("career_up"); //경력 이상 조건
-			// System.out.println(career_up);
-			 String career_down = request.getParameter("career_down"); //경력 이하 조건
-			// System.out.println(career_down);
-			 String qualify_school1 = request.getParameter("qualify_school1"); //학력 이상 조건
-			// System.out.println(qualify_school1);
-			 String qualify_school2 = request.getParameter("qualify_school2"); //학력 이하 조건
-			// System.out.println(qualify_school2);
-			 String check_school = request.getParameter("School"); //학력 무관 조건
-			// System.out.println(school);
-			 String income_up = request.getParameter("income_up"); //연봉 이상  조건
-			// System.out.println(income_up);
-			 String income = request.getParameter("income"); //연봉 체크 조건
-			// System.out.println(income);
-			 
+			
+			String career,career_up,career_down;
+			String qualify_up;
+			String qualify_down;
+			int income_up;
+			String AA = request.getParameter("AA");
+			//System.out.println(AA);
+			String AB = request.getParameter("AB");
+			//System.out.println(AB);
+			String AC = request.getParameter("AC");
+			//System.out.println(AC);
+			String BA = request.getParameter("BA");
+			//System.out.println(BA);
+			String BB = request.getParameter("BB");
+			//System.out.println(BB);
+			String BC = request.getParameter("BC");
+			//System.out.println(BC);
+			String CA = request.getParameter("CA");
+			//System.out.println(CA);
+			String CB = request.getParameter("CB");
+			//System.out.println(CB);
+			String CC = request.getParameter("CC");
+			//System.out.println(CC);
+			String DA = request.getParameter("DA");
+			//System.out.println(DA);
+			String DB = request.getParameter("DB");
+			//System.out.println(DB);
+			String DC = request.getParameter("DC");
+			//System.out.println(DC);
+			String EA = request.getParameter("EA");
+			//System.out.println(EA);
+			String EB = request.getParameter("EB");
+			//System.out.println(EB);
+			String EC = request.getParameter("EC");
+			//System.out.println(EC);
+			String FA = request.getParameter("FA");
+			//System.out.println(FA);
+			String FB = request.getParameter("FB");
+			//System.out.println(FB);
+			String FC = request.getParameter("FC");
+			//System.out.println(FC);
+			String GA = request.getParameter("GA");
+			//System.out.println(GA);
+			String GB = request.getParameter("GB");
+			//System.out.println(GB);
+			String GC = request.getParameter("GC");
+			//System.out.println(GC);
+			String HA = request.getParameter("HA");
+			//System.out.println(HA);
+			String HB = request.getParameter("HB");
+			//System.out.println(HB);
+			String HC = request.getParameter("HC");
+			//System.out.println(HC);
+			String IA = request.getParameter("IA");
+			//System.out.println(IA);
+			String IB = request.getParameter("IB");
+			//System.out.println(IB);
+			String IC = request.getParameter("IC");
+			//System.out.println(IC);
+			String bs_all = request.getParameter("bs_all");
+			//System.out.println(bs_all);
+			String bs_01 = request.getParameter("bs_01");
+			//System.out.println(bs_01);
+			String bs_02 = request.getParameter("bs_02");
+			//System.out.println(bs_02);
+			String bs_03 = request.getParameter("bs_03");
+			//System.out.println(bs_03);
+			String bs_04 = request.getParameter("bs_04");
+			//System.out.println(bs_04);
+			String bs_05 = request.getParameter("bs_05");
+			//System.out.println(bs_05);
+			String bs_06 = request.getParameter("bs_06");
+			//System.out.println(bs_06);
+			String bs_07 = request.getParameter("bs_07");
+			//System.out.println(bs_07);
+			String bs_08 = request.getParameter("bs_08");
+			//System.out.println(bs_08);
+			String bs_09 = request.getParameter("bs_09");
+			//System.out.println(bs_09);
+			String bs_10 = request.getParameter("bs_10");
+			//System.out.println(bs_10);
+			String bs_11 = request.getParameter("bs_11");
+			//System.out.println(bs_11);
+			String bs_12 = request.getParameter("bs_12");
+			//System.out.println(bs_12);
+			String bs_13 = request.getParameter("bs_13");
+			//System.out.println(bs_13);
+			String bs_14 = request.getParameter("bs_14");
+			//System.out.println(bs_14);
+			String newcomer = request.getParameter("newcomer");
+			//System.out.println(newcomer);
+			String career_no = request.getParameter("career_no");
+			//System.out.println(career_no);
+			
+			if(newcomer == null) {
+				career = request.getParameter("career");
+				//System.out.println(career);
+				career_up = request.getParameter("career_up");
+				//System.out.println(career_up);
+				career_down = request.getParameter("career_down");
+				//System.out.println(career_down);
+			} else {
+				career = null;
+				//System.out.println(career);
+				career_up = "없음";
+				//System.out.println(career_up);
+				career_down = "없음";
+				System.out.println(career_down);
+			}
+			
+			if(career_no != null) {
+				newcomer = "신입";
+				//System.out.println(newcomer);
+				career = null;
+				//System.out.println(career);
+				career_up = "없음";
+				//System.out.println(career_up);
+				career_down = "없음";
+				//System.out.println(career_down);
+			}
+
+			String qualify_no = request.getParameter("qualify_no");
+			//System.out.println(qualify_no);
+			
+			if(qualify_no != null) {
+				qualify_up = "없음";
+				//System.out.println(qualify_up);
+				qualify_down = "없음";
+				//System.out.println(qualify_down);
+			} else {
+				qualify_up = request.getParameter("qualify_up");
+				//System.out.println(qualify_up);
+				qualify_down = request.getParameter("qualify_down");
+				//System.out.println(qualify_down);
+			}
+			
+			String income_no = request.getParameter("income_no");
+			if(income_no != null) {
+				income_up = 0;
+				//System.out.println(income_up);
+			} else {
+				income_up = Integer.parseInt(request.getParameter("income_up"));
+				//System.out.println(income_up);
+			}
+			
 			
 			JobDAO dao = new JobDAO();
-			Vector<jobDTO> v = dao.getCheckList(check_job,check_region,
-												check_career,career_up,career_down,
-												qualify_school1,qualify_school2,check_school,
-												income_up,income);
+			Vector<jobDTO> v = dao.getCheckList(AA,AB,AC,BA,BB,BC,CA,CB,CC,DA,DB,DC,EA,EB,EC,FA,FB,FC,GA,GB,GC,HA,HB,HC,IA,IB,IC,
+												bs_all,bs_01,bs_02,bs_03,bs_04,bs_05,bs_06,bs_07,bs_08,bs_09,bs_10,bs_11,bs_12,bs_13,bs_14,
+												newcomer,career,career_up,career_down,qualify_up,qualify_down,income_up);
 			
-			request.setAttribute("v", v);
-
+			totalRecord = v.size();
+			totalPage = (int)Math.ceil((double)totalRecord/numPerPage);
+			if(request.getParameter("nowPage")!=null){
+				nowPage = Integer.parseInt(request.getParameter("nowPage"));
+			}
+			if(request.getParameter("nowBlock")!=null){
+				nowBlock = Integer.parseInt(request.getParameter("nowBlock"));
+			}
+			totalBlock = (int)Math.ceil((double)totalPage / pagePerBlock);
+			beginPerPage = nowPage*numPerPage;
 			
+			Vector<jobDTO> jdto = new Vector<jobDTO>();
+			for(int i=beginPerPage;i<(beginPerPage + numPerPage);i++){
+				if(i==totalRecord) break;
+				 jdto.add(v.get(i));
+			}
 			
-			RequestDispatcher dis = request.getRequestDispatcher("./job/job_list.jsp");
-
-			dis.forward(request, response);
-
-			
-		} else if("/job_detail.job".equals(command)) {
-			String idx = request.getParameter("job_idx");
-			System.out.println("��ȣ :" +idx);
-			JobDAO dao = new JobDAO();
-			jobDTO dto = dao.getSelectList(idx);
-			request.setAttribute("dto", dto);
-			
-			RequestDispatcher dis = request.getRequestDispatcher("./job/job_detail.jsp");
-			dis.forward(request, response);
-		
-		} else if("/job_search.job".equals(command)) {
-			
-			JobDAO dao = new JobDAO();
-			
-			String search = (String)request.getAttribute("search");
-			System.out.println(search);
+			request.setAttribute("nowPage", nowPage);
+			request.setAttribute("totalPage", totalPage);
+			request.setAttribute("totalBlock", totalBlock);
+			request.setAttribute("nowBlock", nowBlock);
+			request.setAttribute("v2", jdto);
 			
 			RequestDispatcher dis = request.getRequestDispatcher("./job/job_main.jsp");
+			
 			dis.forward(request, response);
+
+		
+		} else if("/text_search.job".equals(command)) {
+			String company = request.getParameter("company");
+			JobDAO dao = new JobDAO();
+			Vector<jobDTO> v = dao.getTextList(company);
+			
+			totalRecord = v.size();
+			totalPage = (int)Math.ceil((double)totalRecord/numPerPage);
+			if(request.getParameter("nowPage")!=null){
+				nowPage = Integer.parseInt(request.getParameter("nowPage"));
+			}
+			if(request.getParameter("nowBlock")!=null){
+				nowBlock = Integer.parseInt(request.getParameter("nowBlock"));
+			}
+			totalBlock = (int)Math.ceil((double)totalPage / pagePerBlock);
+			beginPerPage = nowPage*numPerPage;
+			
+			Vector<jobDTO> jdto = new Vector<jobDTO>();
+			for(int i=beginPerPage;i<(beginPerPage + numPerPage);i++){
+				if(i==totalRecord) break;
+				 jdto.add(v.get(i));
+			}
+			
+			request.setAttribute("nowPage", nowPage);
+			request.setAttribute("totalPage", totalPage);
+			request.setAttribute("totalBlock", totalBlock);
+			request.setAttribute("nowBlock", nowBlock);
+			request.setAttribute("v3", jdto);
+			
+			RequestDispatcher dis = request.getRequestDispatcher("./job/job_main.jsp");
+			
+			dis.forward(request, response);
+			
+		} else if("/job_detail.job".equals(command)) {
+			
+		String idx = request.getParameter("job_idx");
+		JobDAO dao = new JobDAO();
+		jobDTO dto = dao.getSelectList(idx);
+		request.setAttribute("dto", dto);
+		
+		RequestDispatcher dis = request.getRequestDispatcher("./job/job_detail.jsp");
+		dis.forward(request, response);
 		}
 	}
 

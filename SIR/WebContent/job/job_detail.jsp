@@ -46,12 +46,12 @@
 		<hr size="1">
 		<p>모집인원: ${dto.recruit_volume}</p>
 		<hr size="1">
-		<p>급여: ${dto.salary1} ~ ${dto.salary2}</p>
+		<p>급여:${income_up}</p>
 		<hr size="1">
 		지원자격
 		<p>
-			학력 : ${dto.qualify_school1}<br/>
-			경력:  ${dto.qualify_career1}<br/>
+			학력 : ${dto.qualify_up} / ${dto.qualify_down }<br/>
+			경력:  ${dto.career_up} / ${dto.career_down }<br/>
 			자격증: 우대 => ${dto.qualify_license}<br/>
 			우대조건: ${dto.prefer}<br/>
 		</p>
