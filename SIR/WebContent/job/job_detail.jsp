@@ -16,11 +16,7 @@
 			</tr>
 			<tr>
 				<td>마감날짜:</td>
-				<td><font color="red">~${dto.applicate_period2}</font>남음</td>
-			</tr>
-			<tr>
-				<td><img width="150" height="150" src="./job/image/${dto.logo}" /></td>
-				<td>${dto.co_title}</td>
+				<td><font color="red">${dto.applicate_period2}</font></td>
 			</tr>
 			<tr>
 				<td>설립일</td>
@@ -30,7 +26,7 @@
 			</tr>
 			<tr>
 				<td>사원수</td>
-				<td>${dto.employees}</td>
+				<td>${dto.employees}명</td>
 				<td>기업형태</td>
 				<td>${dto.co_type}</td>
 			</tr>
@@ -44,15 +40,15 @@
 		<hr size="1">
 		<p>근무형태: ${dto.position}</p>
 		<hr size="1">
-		<p>모집인원: ${dto.recruit_volume}</p>
+		<p>모집인원: ${dto.recruit_volume}명</p>
 		<hr size="1">
-		<p>급여: ${dto.salary1} ~ ${dto.salary2}</p>
+		<p>급여:${income_up}</p>
 		<hr size="1">
 		지원자격
 		<p>
-			학력 : ${dto.qualify_school1}<br/>
-			경력:  ${dto.qualify_career1}<br/>
-			자격증: 우대 => ${dto.qualify_license}<br/>
+			학력 : ${dto.qualify_up} / ${dto.qualify_down }<br/>
+			경력:  ${dto.career_up} / ${dto.career_down }<br/>
+			자격증: ${dto.qualify_license}<br/>
 			우대조건: ${dto.prefer}<br/>
 		</p>
 		<h2>접수기간 및 방법</h2>
