@@ -55,16 +55,13 @@ public class jobDTO {
 	private int income_up; //income_up varchar(10) default '', -- 연봉 이상
 	private String co_title; //co_title varchar(30) default '', -- 회사명
 	private String recruit_notice; //recruit_notice varchar(100) default '', -- 채용공고
-	private String logo; //logo varchar(10) default '', -- 로고
 	private Date establish; //establish date default '2000-01-01', -- 설립일
 	private String sales; //sales varchar(10) default '', -- 매출액 
 	private int employees; //employees int(10) default 0, -- 사원수
-	private String co_type; //co_type varchar(10) default '', -- 기업형태
 	private String co_addr; //co_addr varchar(100) default '', -- 회사주소
 	private String duty; //duty varchar(10) default '', -- 담당업무
 	private String position; //position varchar(10) default '', -- 근무형태
 	private int recruit_volume; //recruit_volume int(3), -- 모집인원
-	private int applicant; //applicant int(3) default 0, -- 지원자
 	private String qualify_license; //qualify_license varchar(50) default '', -- 자격증
 	private String prefer; //prefer varchar(50) default '', -- 우대사항
 	private Date applicate_period1; //applicate_period1 Date default '2000-01-01', -- 접수기간시작
@@ -386,12 +383,6 @@ public class jobDTO {
 	public void setRecruit_notice(String recruit_notice) {
 		this.recruit_notice = recruit_notice;
 	}
-	public String getLogo() {
-		return logo;
-	}
-	public void setLogo(String logo) {
-		this.logo = logo;
-	}
 	public Date getEstablish() {
 		return establish;
 	}
@@ -409,12 +400,6 @@ public class jobDTO {
 	}
 	public void setEmployees(int employees) {
 		this.employees = employees;
-	}
-	public String getCo_type() {
-		return co_type;
-	}
-	public void setCo_type(String co_type) {
-		this.co_type = co_type;
 	}
 	public String getCo_addr() {
 		return co_addr;
@@ -439,12 +424,6 @@ public class jobDTO {
 	}
 	public void setRecruit_volume(int recruit_volume) {
 		this.recruit_volume = recruit_volume;
-	}
-	public int getApplicant() {
-		return applicant;
-	}
-	public void setApplicant(int applicant) {
-		this.applicant = applicant;
 	}
 	public String getQualify_license() {
 		return qualify_license;
