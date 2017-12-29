@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@page import="net.cookie.controller.CookieAction"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -13,11 +14,8 @@
 </head>
 <style>
 .job_recommand {
-   width: 1000px;
-   height: 250px;
-   background-color: yellow;
-   text-align:center;
-   padding-top:100px;
+   width: 500px;
+   height: 150px;
 }
 
 .paging {
@@ -29,12 +27,23 @@
 <!-- header 부분  시작-->
 <jsp:include page="/include/top.jsp"/>
 <!-- header 부분 끝 -->
-   
-
 <div class="container">
    <h2>추천 공고</h2>
    <div class="job_recommand">
-   추천 내용 넣기
+   	<table border="1">
+   	<c:forEach var="job" items="${job2}">
+   	<c:if test="${j%4 == 0}">
+		<tr>
+	</c:if>
+   		 <td>
+   		 <h3>${job.co_title}</h3>
+   		 <a href="#" onclick="window.open('job_detail.job?job_idx=${job.job_idx}','${job.recruit_notice}','width=700,height=700,left=250,right=150,resize=no,scrollbars=yes');">${job.recruit_notice}</a><br/>
+   		 ${job.income_up}만원 ▲/${job.position}<br/>
+   		 </td><br/>
+   	<c:set var="j" value="${j+1}" />
+   	</c:forEach>
+   	</tr>
+   	</table>
    </div><!-- End of job_recommand -->
    <div class="job_search">
    <h2>채용정보 상세검색</h2>

@@ -25,7 +25,7 @@
 	CookieAction cookieAction = new CookieAction();
 	String email = cookieAction.getEmailInCookie(cookies);
 	
-	System.out.println("email ID : " + email); // 확인용 좀있다 삭제 할 것
+	//System.out.println("email ID : " + email); // 확인용 좀있다 삭제 할 것
 
 	if(email != null){ //email 값 있으니깐 로그인 화면으로
 		
@@ -70,12 +70,6 @@
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="margin-top:15px;">
-      <form class="navbar-form navbar-left">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search" style="width:450px;">
-        </div>
-        <button type="submit" class="btn btn-light">Search</button>
-      </form>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="./snspage.snsboard" style="color:black; font:bolder;" ><img src="./images/home.gif" style="height:35px; weight:35px; margin-top:-8px;" > &nbsp;Home</a></li>
         <li><a href="./job_main.job" style="color:black; font:bolder;" ><img src="./images/job.gif" style="height:35px; weight:35px; margin-top:-8px;" > &nbsp;Job</a></li>

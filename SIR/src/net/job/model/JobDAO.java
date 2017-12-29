@@ -472,5 +472,185 @@ public class JobDAO {
 		}
 		return v;
 	}
+	
+	public Vector<jobDTO> getRecommand(String job2) {
+		Vector<jobDTO> v =new Vector<jobDTO>();
+		jobDTO dto = null;
+		String sql = "";
+		try {
+			con = getConnection();
+			if(job2 == null) {
+				sql = "select * from jobs order by job_idx desc";
+			} else {
+				switch(job2) {
+				case "기획/전략/경영": 
+					sql = "select * from jobs where AA=? order by job_idx desc";
+					break;
+				case "인사/교육/노무":
+					sql = "select * from jobs where AB=? order by job_idx desc";
+					break;
+				case "마케팅/광고/분석":
+					sql = "select * from jobs where AC=? order by job_idx desc";
+					break;
+				case "간호사":
+					sql = "select * from jobs where BA=? order by job_idx desc";
+					break;
+				case "간호조무사":
+					sql = "select * from jobs where BB=? order by job_idx desc";
+					break;
+				case "세무/원무/코디":
+					sql = "select * from jobs where BC=? order by job_idx desc";
+					break;
+				case "여행/관광/항공":
+					sql = "select * from jobs where CA=? order by job_idx desc";
+					break;
+				case "요리/제빵사/영양사":
+					sql = "select * from jobs where CB=? order by job_idx desc";
+					break;
+				case "사무/원무/코디":
+					sql = "select * from jobs where CC=? order by job_idx desc";
+					break;
+				case "생산관리/품질관리":
+					sql = "select * from jobs where DA=? order by job_idx desc";
+					break;
+				case "섬유/의료/패션":
+					sql = "select * from jobs where DB=? order by job_idx desc";
+					break;
+				case "전기/전자/제어":
+					sql = "select * from jobs where DC=? order by job_idx desc";
+					break;
+				case "구매/자제/재고":
+					sql = "select * from jobs where EA=? order by job_idx desc";
+					break;
+				case "물류/유통/운송":
+					sql = "select * from jobs where EB=? order by job_idx desc";
+					break;
+				case "해외영업/무역영업":
+					sql = "select * from jobs where EC=? order by jodb_idx desc";
+					break;
+				case "외국어/어학원":
+					sql = "select * from jobs where FA=? order by jodb_idx desc";
+					break;
+				case "유치원/보육":
+					sql = "select * from jobs where FB=? order by job_idx desc";
+					break;
+				case "전문직업/IT강사":
+					sql = "select * from jobs where FC=? order by job_idx desc";
+					break;
+				case "경영분석/컨설턴트":
+					sql = "select * from jobs where GA=? order by job_idx desc";
+					break;
+				case "세무회계/CPA":
+					sql = "select * from jobs where GB=? order by job_idx desc";
+					break;
+				case "외국어/번역/통역":
+					sql = "select * from jobs where GC=? order by job_idx desc";
+					break;
+				case "웹개발":
+					sql = "select * from jobs where HA=? order by job_idx desc";
+					break;
+				case "응용프로그램개발":
+					sql = "select * from jobs where HB=? order by job_idx desc";
+					break;
+				case "게임":
+					sql = "select * from jobs where HC=? order by job_idx desc";
+					break;
+				case "공연/무대/스텝":
+					sql = "select * from jobs where IA=? order by job_idx desc";
+					break;
+				case "영화/출판/편집":
+					sql = "select * from jobs where IB=? order by job_idx desc";
+					break;
+				case "방송/연출/PD/감독":
+					sql = "select * from jobs where IC=? order by job_idx desc";
+					break;
+				default :
+				}
+			}
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1,job2);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				dto = new jobDTO();
+				dto.setJob_idx(rs.getInt(1));
+				dto.setAA(rs.getString(2));
+				dto.setAB(rs.getString(3));
+				dto.setAC(rs.getString(4));
+				dto.setBA(rs.getString(5));
+				dto.setBB(rs.getString(6));
+				dto.setBC(rs.getString(7));
+				dto.setCA(rs.getString(8));
+				dto.setCB(rs.getString(9));
+				dto.setCC(rs.getString(10));
+				dto.setDA(rs.getString(11));
+				dto.setDB(rs.getString(12));
+				dto.setDC(rs.getString(13));
+				dto.setEA(rs.getString(14));
+				dto.setEB(rs.getString(15));
+				dto.setEC(rs.getString(16));
+				dto.setFA(rs.getString(17));
+				dto.setFB(rs.getString(18));
+				dto.setFC(rs.getString(19));
+				dto.setGA(rs.getString(20));
+				dto.setGB(rs.getString(21));
+				dto.setGC(rs.getString(22));
+				dto.setHA(rs.getString(23));
+				dto.setHB(rs.getString(24));
+				dto.setHC(rs.getString(25));
+				dto.setIA(rs.getString(26));
+				dto.setIB(rs.getString(27));
+				dto.setIC(rs.getString(28));
+				dto.setBS_ALL(rs.getString(29));
+				dto.setBS_01(rs.getString(30));
+				dto.setBS_02(rs.getString(31));
+				dto.setBS_03(rs.getString(32));
+				dto.setBS_04(rs.getString(33));
+				dto.setBS_05(rs.getString(34));
+				dto.setBS_06(rs.getString(35));
+				dto.setBS_07(rs.getString(36));
+				dto.setBS_08(rs.getString(37));
+				dto.setBS_09(rs.getString(38));
+				dto.setBS_10(rs.getString(39));
+				dto.setBS_11(rs.getString(40));
+				dto.setBS_12(rs.getString(41));
+				dto.setBS_13(rs.getString(42));
+				dto.setBS_14(rs.getString(43));
+				dto.setNewcomer(rs.getString(44));
+				dto.setCareer(rs.getString(45));
+				dto.setCareer_up(rs.getString(46));
+				dto.setCareer_down(rs.getString(47));
+				dto.setQualify_up(rs.getString(48));
+				dto.setQualify_down(rs.getString(49));
+				dto.setIncome_up(rs.getInt(50));
+				dto.setCo_title(rs.getString(51));
+				dto.setRecruit_notice(rs.getString(52));
+				dto.setLogo(rs.getString(53));
+				dto.setEstablish(rs.getDate(54));
+				dto.setSales(rs.getString(55));
+				dto.setEmployees(rs.getInt(56));
+				dto.setCo_type(rs.getString(57));
+				dto.setCo_addr(rs.getString(58));
+				dto.setDuty(rs.getString(59));
+				dto.setPosition(rs.getString(60));
+				dto.setRecruit_volume(rs.getInt(61));
+				dto.setApplicant(rs.getInt(62));
+				dto.setQualify_license(rs.getString(63));
+				dto.setPrefer(rs.getString(64));
+				dto.setApplicate_period1(rs.getDate(65));
+				dto.setApplicate_period2(rs.getDate(66));
+				dto.setForm(rs.getString(67));
+				dto.setReception(rs.getString(68));
+				dto.setJob_process(rs.getString(69));
+				v.add(dto);
+			}
+		} catch (Exception e) {
+			System.out.println("getRecommand 메소드 오류");
+			e.printStackTrace();
+		} finally {
+			freeResource();
+		}
+		
+		return v;
+	}
 
 } // end class JobDAO

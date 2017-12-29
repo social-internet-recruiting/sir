@@ -7,12 +7,15 @@ import java.util.Vector;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import net.cookie.controller.CookieAction;
 import net.job.model.JobDAO;
 import net.job.model.jobDTO;
+import net.member.model.MemberDAO;
 
 @WebServlet("*.job")
 public class JobFrontController extends HttpServlet {
@@ -75,6 +78,17 @@ public class JobFrontController extends HttpServlet {
 			request.setAttribute("totalBlock", totalBlock);
 			request.setAttribute("nowBlock", nowBlock);
 			request.setAttribute("v1", jdto);
+			
+			//추천 공고 불러오기
+			Cookie[] cookies = request.getCookies();
+			CookieAction cookieAction = new CookieAction();
+			String email = cookieAction.getEmailInCookie(cookies);
+			MemberDAO mdao = new MemberDAO();
+			String job2_name = mdao.getJob2Code(email);
+			JobDAO jdao = new JobDAO();
+			Vector<jobDTO> job2 = jdao.getRecommand(job2_name);
+			
+			request.setAttribute("job2",job2);
 
 			RequestDispatcher dis = request.getRequestDispatcher("./job/job_main.jsp");
 

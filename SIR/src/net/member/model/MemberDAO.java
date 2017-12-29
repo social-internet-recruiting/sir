@@ -228,10 +228,10 @@ public class MemberDAO {
 	public void reviseSchoolCount(String delHigh, String delUni, String high_school, String university) {
 		
 		try {
-			System.out.println("-1 고등학교 이름 : " + delHigh);
-			System.out.println("-1 대학교 이름 : " + delUni);
-			System.out.println("+1 고등학교 이름: " + high_school);
-			System.out.println("+1 대학교 이름 : " + university);
+			// System.out.println("-1 고등학교 이름 : " + delHigh);
+			// System.out.println("-1 대학교 이름 : " + delUni);
+			// System.out.println("+1 고등학교 이름: " + high_school);
+			// System.out.println("+1 대학교 이름 : " + university);
 
 			String sql="";
 			con = getConnection();
@@ -319,5 +319,27 @@ public class MemberDAO {
 		} finally {
 			freeResource();
 		}
+	}
+	
+	//직업2차 분류 불러오는 메소드
+	public String getJob2Code(String email) {
+		String job2_name = "";
+		try {
+			String sql="select job2_name from member where email=?";
+			con = getConnection();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1,email);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				job2_name = rs.getString("job2_name");
+			}
+		} catch (Exception e) {
+			System.out.println("getJob2Code 메소드 오류");
+			e.printStackTrace();
+		} finally {
+			freeResource();
+		}
+		return job2_name;
 	}
 }
