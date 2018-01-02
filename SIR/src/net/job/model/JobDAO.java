@@ -1,8 +1,10 @@
 package net.job.model;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
 import java.util.Vector;
 
 import javax.naming.Context;
@@ -636,6 +638,57 @@ public class JobDAO {
 		}
 		
 		return v;
+	}
+
+
+	public void insertScrap(String email, String recruit_notice, String co_title, String co_addr, String establish,
+			String sales, int employees, String duty, String position, int recruit_volume, int income_up,
+			String qualify_down, String qualify_up, String career_down, String career_up, String qualify_license,
+			String prefer, String applicate_period1, String applicate_period2, String form, String reception, String job_process) {
+		
+		
+		try {		
+			con = getConnection();
+			String sql = "insert into job_scrap(email,career_up,career_down,qualify_up,"
+					+ "	  qualify_down,income_up,co_title,recruit_notice,establish,sales,employees,"
+					+ "	  co_addr,duty,position,recruit_volume,qualify_license,prefer,"
+					+ "   applicate_period1,applicate_period2,form,reception,job_process) "
+					+ "   values(?,?,?,?,?,?,?,?,?,?,"
+					+ "          ?,?,?,?,?,?,?,?,?,?,"
+					+ "          ?,?)";
+			
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1,email);
+			pstmt.setString(2,career_up);
+			pstmt.setString(3,career_down);
+			pstmt.setString(4,qualify_up);
+			pstmt.setString(5,qualify_down);
+			pstmt.setInt(6,income_up);
+			pstmt.setString(7,co_title);
+			pstmt.setString(8,recruit_notice);
+			pstmt.setString(9,establish);
+			pstmt.setString(10,sales);
+			pstmt.setInt(11,employees);
+			pstmt.setString(12,co_addr);
+			pstmt.setString(13,duty);
+			pstmt.setString(14,position);
+			pstmt.setInt(15,recruit_volume);
+			pstmt.setString(16,qualify_license);
+			pstmt.setString(17,prefer);
+			pstmt.setString(18,applicate_period1);
+			pstmt.setString(19,applicate_period2);
+			pstmt.setString(20,form);
+			pstmt.setString(21,reception);
+			pstmt.setString(22,job_process);
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			System.out.println("insertScrap 메소드 오류");
+			e.printStackTrace();
+		} finally {
+			freeResource();
+		}
+		
+		
 	}
 
 } // end class JobDAO
