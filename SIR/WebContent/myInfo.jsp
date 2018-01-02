@@ -178,6 +178,7 @@ div.bhoechie-tab div.bhoechie-tab-content:not(.active){
 		<ul class="nav nav-tabs" role="tablist" id="">
 		  <li role="presentation" class="active"><a href="#snsScrollAddInfo" aria-controls="snsScrollAddInfo" role="tab" data-toggle="tab" style="font-size:20px;">게시물</a></li>
 		  <li role="presentation"><a href="#B" aria-controls="B" role="tab" data-toggle="tab" style="font-size:20px;">스크랩</a></li>
+  		  <li role="presentation"><a href="#C" aria-controls="C" role="tab" data-toggle="tab" style="font-size:20px;">공고</a></li>
 		</ul>
 	</div>
 	<div class="tab-content row">
@@ -187,6 +188,10 @@ div.bhoechie-tab div.bhoechie-tab-content:not(.active){
 		  
 		<div role="tabpanel" class="tab-pane" id="B">
 			<a>스크랩</a>
+		</div>
+		
+		<div role="tabpanel" class="tab-pane" id="C">
+			<a>공고</a>
 		</div>
 	</div><!--End of tab-content--><hr/>
 			<!-- End of job_check_one -->
