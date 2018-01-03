@@ -470,89 +470,89 @@ public class JobDAO {
 		try {
 			con = getConnection();
 			if(job2 == null) {
-				sql = "select * from jobs order by job_idx desc";
+				sql = "select * from jobs order by job_idx desc limit 1,4";
 			} else {
 				switch(job2) {
 				case "기획/전략/경영": 
-					sql = "select * from jobs where AA=? order by job_idx desc";
+					sql = "select * from jobs where AA=? order by job_idx desc limit 1,4";
 					break;
 				case "인사/교육/노무":
-					sql = "select * from jobs where AB=? order by job_idx desc";
+					sql = "select * from jobs where AB=? order by job_idx desc limit 1,4";
 					break;
 				case "마케팅/광고/분석":
-					sql = "select * from jobs where AC=? order by job_idx desc";
+					sql = "select * from jobs where AC=?  order by job_idx desc limit 1,4";
 					break;
 				case "간호사":
-					sql = "select * from jobs where BA=? order by job_idx desc";
+					sql = "select * from jobs where BA=?  order by job_idx desc limit 1,4";
 					break;
 				case "간호조무사":
-					sql = "select * from jobs where BB=? order by job_idx desc";
+					sql = "select * from jobs where BB=?  order by job_idx desc limit 1,4";
 					break;
 				case "세무/원무/코디":
-					sql = "select * from jobs where BC=? order by job_idx desc";
+					sql = "select * from jobs where BC=?  order by job_idx desc limit 1,4";
 					break;
 				case "여행/관광/항공":
-					sql = "select * from jobs where CA=? order by job_idx desc";
+					sql = "select * from jobs where CA=?  order by job_idx desc limit 1,4";
 					break;
 				case "요리/제빵사/영양사":
-					sql = "select * from jobs where CB=? order by job_idx desc";
+					sql = "select * from jobs where CB=?  order by job_idx desc limit 1,4";
 					break;
 				case "사무/원무/코디":
-					sql = "select * from jobs where CC=? order by job_idx desc";
+					sql = "select * from jobs where CC=?  order by job_idx desc limit 1,4";
 					break;
 				case "생산관리/품질관리":
-					sql = "select * from jobs where DA=? order by job_idx desc";
+					sql = "select * from jobs where DA=?  order by job_idx desc limit 1,4";
 					break;
 				case "섬유/의료/패션":
-					sql = "select * from jobs where DB=? order by job_idx desc";
+					sql = "select * from jobs where DB=?  order by job_idx desc limit 1,4";
 					break;
 				case "전기/전자/제어":
-					sql = "select * from jobs where DC=? order by job_idx desc";
+					sql = "select * from jobs where DC=?  order by job_idx desc limit 1,4";
 					break;
 				case "구매/자제/재고":
-					sql = "select * from jobs where EA=? order by job_idx desc";
+					sql = "select * from jobs where EA=?  order by job_idx desc limit 1,4";
 					break;
 				case "물류/유통/운송":
-					sql = "select * from jobs where EB=? order by job_idx desc";
+					sql = "select * from jobs where EB=?  order by job_idx desc limit 1,4";
 					break;
 				case "해외영업/무역영업":
-					sql = "select * from jobs where EC=? order by jodb_idx desc";
+					sql = "select * from jobs where EC=?  order by job_idx desc limit 1,4";
 					break;
 				case "외국어/어학원":
-					sql = "select * from jobs where FA=? order by jodb_idx desc";
+					sql = "select * from jobs where FA=?  order by job_idx desc limit 1,4";
 					break;
 				case "유치원/보육":
-					sql = "select * from jobs where FB=? order by job_idx desc";
+					sql = "select * from jobs where FB=?  order by job_idx desc limit 1,4";
 					break;
 				case "전문직업/IT강사":
-					sql = "select * from jobs where FC=? order by job_idx desc";
+					sql = "select * from jobs where FC=?  order by job_idx desc limit 1,4";
 					break;
 				case "경영분석/컨설턴트":
-					sql = "select * from jobs where GA=? order by job_idx desc";
+					sql = "select * from jobs where GA=?  order by job_idx desc limit 1,4";
 					break;
 				case "세무회계/CPA":
-					sql = "select * from jobs where GB=? order by job_idx desc";
+					sql = "select * from jobs where GB=?  order by job_idx desc limit 1,4";
 					break;
 				case "외국어/번역/통역":
-					sql = "select * from jobs where GC=? order by job_idx desc";
+					sql = "select * from jobs where GC=?  order by job_idx desc limit 1,4";
 					break;
 				case "웹개발":
-					sql = "select * from jobs where HA=? order by job_idx desc";
+					sql = "select * from jobs where HA=?  order by job_idx desc limit 1,4";
 					break;
 				case "응용프로그램개발":
-					sql = "select * from jobs where HB=? order by job_idx desc";
+					sql = "select * from jobs where HB=?  order by job_idx desc limit 1,4";
 					break;
 				case "게임":
-					sql = "select * from jobs where HC=? order by job_idx desc";
+					sql = "select * from jobs where HC=?  order by job_idx desc limit 1,4";
 					break;
 				case "공연/무대/스텝":
-					sql = "select * from jobs where IA=? order by job_idx desc";
+					sql = "select * from jobs where IA=?  order by job_idx desc limit 1,4";
 					break;
 				case "영화/출판/편집":
-					sql = "select * from jobs where IB=? order by job_idx desc";
+					sql = "select * from jobs where IB=?  order by job_idx desc limit 1,4";
 					break;
 				case "방송/연출/PD/감독":
-					sql = "select * from jobs where IC=? order by job_idx desc";
+					sql = "select * from jobs where IC=?  order by job_idx desc limit 1,4";
 					break;
 				default :
 				}
