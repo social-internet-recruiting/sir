@@ -568,7 +568,7 @@ div.bhoechie-tab div.bhoechie-tab-content:not(.active){
 	<script src="./js/jquery-3.1.1.min.js"></script>
 	<script src="./js/bootstrap.js"></script>
 
-	<script src="./js/jquery-1.6.1.min.js"></script>
+	<script src="./js/jquery-1.9.1.min.js"></script>
 	<script src="./js/schoolSearch.js"></script>
 	<script src="./js/jobCode.js"></script>
 	<script src="./js/postcode.v2.js"></script>

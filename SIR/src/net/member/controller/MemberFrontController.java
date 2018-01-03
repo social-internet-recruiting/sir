@@ -2,6 +2,7 @@ package net.member.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.Vector;
 
 import javax.servlet.RequestDispatcher;
@@ -17,6 +18,7 @@ import net.job.model.JobDAO;
 import net.job.model.scrapDTO;
 import net.member.model.MemberDAO;
 import net.member.model.MemberDTO;
+import net.sns.controller.SNSGetFriendAskedList;
 
 @WebServlet("*.mem")
 public class MemberFrontController extends HttpServlet {
@@ -191,6 +193,20 @@ public class MemberFrontController extends HttpServlet {
 				RequestDispatcher dis = request.getRequestDispatcher("main.jsp?center=friendInfo.jsp");
 				dis.forward(request, response);
 			}
+		} else if ("/askedPage.mem".equals(command)) {
+
+			Cookie[] cookies = request.getCookies();
+			CookieAction cookieAction = new CookieAction();
+			// email 쿠키값 가져옴 
+			String email = cookieAction.getEmailInCookie(cookies);
+			
+			SNSGetFriendAskedList getFriendAskedList = new SNSGetFriendAskedList();
+			ArrayList<String> mainContents = getFriendAskedList.getFriendAskedListMethod(email);
+
+			request.setAttribute("mainContents", mainContents);
+			
+			RequestDispatcher dis = request.getRequestDispatcher("main.jsp?center=askedPage.jsp");
+			dis.forward(request, response);
 		}
 		
 	}

@@ -47,10 +47,8 @@ public class SNSBoardController extends HttpServlet {
 				// 친구 리스트 얻기
 				SNSDAO sdao = new SNSDAO();
 				ArrayList<String> friendsList = sdao.getFriendsList(email);
-				System.out.println("friendsList : " + friendsList.toString() + ", 친구 몇명 : " + friendsList.size());
-				if (friendsList.size()==0){
-					friendsList.add("친구가 없습니다.");
-				}
+				//System.out.println("friendsList : " + friendsList.toString() + ", 친구 몇명 : " + friendsList.size());
+
 				request.setAttribute("fList", friendsList);
 
 				viewpage = "main.jsp?center=snspage.jsp";
@@ -77,7 +75,6 @@ public class SNSBoardController extends HttpServlet {
 				ArrayList<SNSDTO> slistArr = slist.getScrapList(request, response, email);
 				SNSTransStringForInfiniteScroll ts = new SNSTransStringForInfiniteScroll();
 				String resultString = ts.getInfoString(slistArr);
-				System.out.println("resultString scrap : " + resultString);
 				PrintWriter out = response.getWriter();
 				out.println(resultString);
 				return;
@@ -99,6 +96,23 @@ public class SNSBoardController extends HttpServlet {
 				PrintWriter out = response.getWriter();
 				out.println(result);
 				return;
+			} else if ("/askFriend.snsboard".equals(command)) { // 친구 추가 요청
+				String askedId = request.getParameter("askedId");
+				SNSDAO sdao = new SNSDAO();
+				int result = sdao.askingFriend(email,askedId);
+				PrintWriter out = response.getWriter();
+				out.println(result);
+				return;
+			} else if ("/askFriendAccept.snsboard".equals(command)) { // 친구 추가 요청
+				String askingId = request.getParameter("askingId");
+				SNSDAO sdao = new SNSDAO();
+				sdao.askFriendAccept(email,askingId);
+				viewpage = "./askedPage.mem";
+			} else if ("/askFriendReject.snsboard".equals(command)) { // 친구 추가 요청
+				String askingId = request.getParameter("askingId");
+				SNSDAO sdao = new SNSDAO();
+				sdao.askFriendReject(email,askingId);
+				viewpage = "./askedPage.mem";
 			}
 			
 		} else { // email 쿠키값이 없으면 main page로 넘겨라, 잘못된 접근이다.
