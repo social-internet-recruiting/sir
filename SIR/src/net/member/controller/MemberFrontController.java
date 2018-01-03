@@ -164,12 +164,26 @@ public class MemberFrontController extends HttpServlet {
 			// 그사람 정보는 js 무한 스크롤로 뿌려줄거고, 그사람 정보만 저장하면 된다.
 			String friend = request.getParameter("friend"); // snspage에서 id의 href 값으로 넘어오는 값
 			System.out.println("friend : " + friend);
-			MemberDTO mdto = new MemberDTO();
-			mdto = mdao.getMemberInfoDTO(friend);
-			request.setAttribute("mdto", mdto);
 			
-			RequestDispatcher dis = request.getRequestDispatcher("main.jsp?center=friendInfo.jsp");
-			dis.forward(request, response);
+			// friend 정보가 본인일 경우 때문에 cookie 값 확인
+			Cookie[] cookies = request.getCookies();
+			CookieAction cookieAction = new CookieAction();
+			// email 쿠키값 가져옴 
+			String email = cookieAction.getEmailInCookie(cookies);
+			System.out.println("eamil : " + email);
+			if (friend.equals(email)){
+				// friend 정보가 본인일 경우 때문에 cookie 값 확인 하고 맞으면 myInfo 로 보냄
+				RequestDispatcher dis = request.getRequestDispatcher("./myInfo.mem");
+				dis.forward(request, response);
+				
+			} else {
+				MemberDTO mdto = new MemberDTO();
+				mdto = mdao.getMemberInfoDTO(friend);
+				request.setAttribute("mdto", mdto);
+				
+				RequestDispatcher dis = request.getRequestDispatcher("main.jsp?center=friendInfo.jsp");
+				dis.forward(request, response);
+			}
 		}
 		
 	}

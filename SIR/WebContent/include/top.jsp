@@ -33,11 +33,11 @@
 		MemberDAO mdao = new MemberDAO();
 		MemberDTO mdto = mdao.getMemberInfoDTO(email);
 		String imgPath = mdto.getImg();
-		
+
 		// 파일이 지워진 거면 noneProfile.jpg 띄워야 된다.
 		CheckExistProfileInServer checkExistProfile = new CheckExistProfileInServer();
 		boolean checkFile = checkExistProfile.checkProfile(request, response, mdto.getImg());
-		if (!checkFile){ // 파일이 없다고 뜨면
+		if (!checkFile || "".equals(mdto.getImg().trim())){ // 파일이 없다고 뜨면, 신규가입이면 빈칸임
 			String realProfileFilePath = "./images/noneProfile.jpg";
 			mdto.setImg(realProfileFilePath);
 			mdao.reviseMyInfo(mdto); // DB값 바꾸기 위해서
@@ -49,7 +49,7 @@
 			// System.out.println("imgPath : " + imgPath);
 			
 		} // 파일이 있으면 별다른 수정 안한다.
-
+		
 %>
 
 <nav class="navbar navbar-blue" style="z-index:1035; margin-top:-1px;">

@@ -137,8 +137,9 @@
 <script src="./js/jquery.form.js"></script>
 <script src="./js/ajaxSnsImageUpload.js"></script>
 <script src="./js/forwardPost.js"></script>
-<script src="./js/infiniteScroll.js"></script>
+<script src="./js/infiniteScrollSns.js"></script>
 <script src="./js/forwardComment.js"></script>
+<script src="./js/scrap.js"></script>
 
 </html>
 

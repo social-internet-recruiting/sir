@@ -176,18 +176,17 @@ div.bhoechie-tab div.bhoechie-tab-content:not(.active){
 	<div class="row">
 	<div class="col-sm-5"></div>
 		<ul class="nav nav-tabs" role="tablist" id="">
-		  <li role="presentation" class="active"><a href="#snsScrollAddInfo" aria-controls="snsScrollAddInfo" role="tab" data-toggle="tab" style="font-size:20px;">게시물</a></li>
-		  <li role="presentation"><a href="#B" aria-controls="B" role="tab" data-toggle="tab" style="font-size:20px;">스크랩</a></li>
+		  <li role="presentation" class="active"><a href="#snsScrollAddMyInfoForPost" aria-controls="snsScrollAddMyInfoForPost" role="tab" data-toggle="tab" style="font-size:20px;">게시물</a></li>
+		  <li role="presentation"><a href="#snsScrollAddMyInfoForScrap" aria-controls="snsScrollAddMyInfoForScrap" role="tab" data-toggle="tab" style="font-size:20px;">스크랩</a></li>
   		  <li role="presentation"><a href="#C" aria-controls="C" role="tab" data-toggle="tab" style="font-size:20px;">공고</a></li>
 		</ul>
 	</div>
 	<div class="tab-content row">
 		<!-- 본인 게시글 -->
-		<div role="tabpanel" class="tab-pane active" id="snsScrollAddInfo">  
+		<div role="tabpanel" class="tab-pane active" id="snsScrollAddMyInfoForPost">  
 		</div>
 		  
-		<div role="tabpanel" class="tab-pane" id="B">
-			<a>스크랩</a>
+		<div role="tabpanel" class="tab-pane" id="snsScrollAddMyInfoForScrap">
 		</div>
 		
 		<div role="tabpanel" class="tab-pane" id="C">
@@ -548,7 +547,7 @@ div.bhoechie-tab div.bhoechie-tab-content:not(.active){
 	<script src="./js/jobCode.js"></script>
 	<script src="./js/postcode.v2.js"></script>
 	<script src="./js/postCode.js"></script>
-	<script src="./js/infiniteScrollInfo.js"></script>
+	<script src="./js/infiniteScrollMyInfo.js"></script>
 	
 	<script type="text/javascript">
     	
