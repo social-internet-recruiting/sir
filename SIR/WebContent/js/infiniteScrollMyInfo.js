@@ -11,6 +11,7 @@ $(document).ready(function (event){
         //스크롤이 맨아래로 갔는지 아닌지 확인하는 if문
         if(subtract<3){
         	infiniteScrollMyInfoAjaxMethod();	
+        	infiniteScrollMyScrapAjaxMethod();
         }
         
     });
@@ -40,7 +41,7 @@ $(document).ready(function (event){
 	
 	// scrap 용
 	var idxnumMyScrap;
-	
+/*	
 	$(window).scroll(function(){
         var scrollHeight = $(window).scrollTop() + $(window).height();
         var documentHeight = $(document).height();
@@ -50,7 +51,7 @@ $(document).ready(function (event){
         	infiniteScrollMyScrapAjaxMethod();	
         }
         
-    });
+    });*/
 
 	
 
@@ -66,7 +67,7 @@ $(document).ready(function (event){
 	        	dataArr = data.split("#%&@#");
 	        	postdata = dataArr[0]; // post 내용
 	        	$('#snsScrollAddMyInfoForScrap').append(postdata);  
-	        	idxnumMyinfo = dataArr[1]; // 마지막 게시글 번호 저장
+	        	idxnumMyScrap = dataArr[1]; // 마지막 게시글 번호 저장
 	        } ,
         	error : function(){ 
         		alert('실패111 '); 

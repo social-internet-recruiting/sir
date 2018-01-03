@@ -42,7 +42,7 @@ public class SNSTransStringForInfiniteScroll {
 			lastIdxNum = sdto.getIdx();
 			
 		}
-		
+		System.out.println("lastIdxNum 확인 : " + lastIdxNum);
 		// "#%&@#" = 구분자 
 		result += "#%&@#" + lastIdxNum;
 		

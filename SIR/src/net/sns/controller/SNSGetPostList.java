@@ -53,7 +53,7 @@ public class SNSGetPostList {
 			// 초기 로드 될때는 max 값 그대로 사용, 무한 스크롤때만 request 값 받아서
 			idxnumScrap = Integer.parseInt(request.getParameter("idxnumScrap").trim());  
 		}
-
+		System.out.println("idxnumScrap 확인 : " + idxnumScrap);
 		SNSDAO sdao = new SNSDAO();
 		result = sdao.GetSNSScrapList(idxnumScrap, email);
 		

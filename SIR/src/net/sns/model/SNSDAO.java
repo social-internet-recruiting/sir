@@ -221,29 +221,35 @@ public class SNSDAO {
 			rs = pstmt.executeQuery();
 			
 			while (rs.next()){
+				
 				String scrapString = rs.getString(1);
 				String [] scrapList = scrapString.split(",");
 				// 처음 조회 하는 값인지 확인
-				boolean isInitResult = true;
-				for(int i=scrapList.length-1; i>=0; i--){
-					if (scrapList[i].equals(String.valueOf(idxnumScrap))){ // idxnumScrap 이랑 일치하면 이다음부터 9개 
-						for(int k=i-1; k>=i-1-9; k--){
-							if (k<0) break;
-							if (scrapList[k].trim().equals("")) break;
-							System.out.println("index 확인 : "+ k);
-							SNSDTO getDto = getSNSDTOForScrap(k);
-							result.add(getDto);
-						}
-						isInitResult = false;
-					}
-				}
-				if (isInitResult){ // 처음 조회 하는 값이면 max 부터 9개 
-					for(int k=scrapList.length-1; k>=scrapList.length-1-9; k--){
+
+				System.out.println("idxnumScrap : " + idxnumScrap);
+				
+				if (idxnumScrap == 2147483647){ // 처음 조회 하는 값이면 max 부터 9개 
+					for(int k=scrapList.length-1; k>scrapList.length-10; k--){
 						if (k<0) break;
-						if (scrapList[k].trim().equals("")) break;
-						System.out.println("index 확인 : "+ k);
-						SNSDTO getDto = getSNSDTOForScrap(k);
+						if (scrapList[k].trim().equals("")) continue;
+						int index = Integer.parseInt(scrapList[k]);
+						// System.out.println("index 확인 : "+ k);
+						SNSDTO getDto = getSNSDTOForScrap(index);
 						result.add(getDto);
+					}
+				} else {
+					if (idxnumScrap == 0) break;
+					for(int i=scrapList.length-1; i>=0; i--){
+						if (scrapList[i].equals(String.valueOf(idxnumScrap))){ // idxnumScrap 이랑 일치하면 이다음부터 9개 
+							for(int k=i-1; k>i-10; k--){
+								if (k<0) break;
+								if (scrapList[k].trim().equals("")) continue;
+								int index = Integer.parseInt(scrapList[k]);
+								// System.out.println("index 확인 : "+ k);
+								SNSDTO getDto = getSNSDTOForScrap(index);
+								result.add(getDto);
+							}
+						}
 					}
 				}
 			}
