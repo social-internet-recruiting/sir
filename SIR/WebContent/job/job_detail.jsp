@@ -81,7 +81,7 @@
 			<input type="hidden" value="${dto.form}" name="form" />
 			<input type="hidden" value="${dto.reception}" name="reception" />
 			<input type="hidden" value="${dto.job_process}" name="job_process" />
-			<input type="submit" value="스크랩" onclick="javascript:alert('스크랩이 완료되었습니다');" />
+			<input type="submit" value="공고하기" onclick="javascript:alert('공고하기가 완료되었습니다');" />
 		</form>
 	</div><!-- End of container -->
 </body>

@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import net.cookie.controller.CookieAction;
 import net.job.model.JobDAO;
 import net.job.model.jobDTO;
+import net.job.model.scrapDTO;
 import net.member.model.MemberDAO;
 
 @WebServlet("*.job")
@@ -366,7 +367,16 @@ public class JobFrontController extends HttpServlet {
 			request.setAttribute("dto", dto);
 			RequestDispatcher dis = request.getRequestDispatcher("./job/job_detail.jsp");
 			dis.forward(request, response);
+			
+		} else if("/scrap_detail.job".equals(command)) {
+			String idx = request.getParameter("scrap_idx");
+			JobDAO dao = new JobDAO();
+			scrapDTO dto = dao.getScrapDetail(idx);
+			
+			request.setAttribute("dto", dto);
+			RequestDispatcher dis = request.getRequestDispatcher("./job/scrap_detail.jsp");
+			dis.forward(request, response);
 		}
-	}
+	} 
 
 }

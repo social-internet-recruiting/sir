@@ -2,7 +2,7 @@ package net.member.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
+import java.util.Vector;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -13,9 +13,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import net.cookie.controller.CookieAction;
+import net.job.model.JobDAO;
+import net.job.model.scrapDTO;
 import net.member.model.MemberDAO;
 import net.member.model.MemberDTO;
-import net.sns.model.SNSDAO;
 
 @WebServlet("*.mem")
 public class MemberFrontController extends HttpServlet {
@@ -118,6 +119,12 @@ public class MemberFrontController extends HttpServlet {
 				request.setAttribute("address2", address2);
 				
 				request.setAttribute("mdto", mdto);
+				
+				//공고 부분
+				JobDAO jdao = new JobDAO();
+				Vector<scrapDTO> jv = jdao.getScrap(email);
+				
+				request.setAttribute("sdto", jv);
 				
 				RequestDispatcher dis = request.getRequestDispatcher("myInfo.jsp");
 				//getRequestDispatcher("main.jsp?center=myInfo.jsp"); center 값 바꿔서 갈라니깐

@@ -691,4 +691,100 @@ public class JobDAO {
 		
 	}
 
+
+	public Vector<scrapDTO> getScrap(String email) {
+		Vector<scrapDTO> v =new Vector<scrapDTO>();
+		scrapDTO dto = null;
+		String sql = "";
+		
+		try {
+			con = getConnection();
+			sql = "select * from job_scrap where email=? order by scrap_idx desc";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1,email);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				dto = new scrapDTO();
+				dto.setScrap_idx(rs.getInt(1));
+				dto.setEmail(rs.getString(2));
+				dto.setCareer_up(rs.getString(3));
+				dto.setCareer_down(rs.getString(4));
+				dto.setQualify_up(rs.getString(5));
+				dto.setQualify_down(rs.getString(6));
+				dto.setIncome_up(rs.getInt(7));
+				dto.setCo_title(rs.getString(8));
+				dto.setRecruit_notice(rs.getString(9));
+				dto.setEstablish(rs.getString(10));
+				dto.setSales(rs.getString(11));
+				dto.setEmployees(rs.getInt(12));
+				dto.setCo_addr(rs.getString(13));
+				dto.setDuty(rs.getString(14));
+				dto.setPosition(rs.getString(15));
+				dto.setRecruit_volume(rs.getInt(16));
+				dto.setQualify_license(rs.getString(17));
+				dto.setPrefer(rs.getString(18));
+				dto.setApplicate_period1(rs.getString(19));
+				dto.setApplicate_period2(rs.getString(20));
+				dto.setForm(rs.getString(21));
+				dto.setReception(rs.getString(22));
+				dto.setJob_process(rs.getString(23));
+				v.add(dto);
+			}
+		} catch (Exception e) {
+			System.out.println("getScrap 메소드 오류");
+			e.printStackTrace();
+		} finally {
+			freeResource();
+		}
+		return v;
+	}
+
+
+	public scrapDTO getScrapDetail(String idx) {
+		scrapDTO dto = null;
+		
+		try {
+			con = getConnection(); 
+			String sql = "select * from job_scrap where scrap_idx =? ";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1,Integer.parseInt(idx));
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				dto = new scrapDTO();
+				dto.setScrap_idx(rs.getInt(1));
+				dto.setEmail(rs.getString(2));
+				dto.setCareer_up(rs.getString(3));
+				dto.setCareer_down(rs.getString(4));
+				dto.setQualify_up(rs.getString(5));
+				dto.setQualify_down(rs.getString(6));
+				dto.setIncome_up(rs.getInt(7));
+				dto.setCo_title(rs.getString(8));
+				dto.setRecruit_notice(rs.getString(9));
+				dto.setEstablish(rs.getString(10));
+				dto.setSales(rs.getString(11));
+				dto.setEmployees(rs.getInt(12));
+				dto.setCo_addr(rs.getString(13));
+				dto.setDuty(rs.getString(14));
+				dto.setPosition(rs.getString(15));
+				dto.setRecruit_volume(rs.getInt(16));
+				dto.setQualify_license(rs.getString(17));
+				dto.setPrefer(rs.getString(18));
+				dto.setApplicate_period1(rs.getString(19));
+				dto.setApplicate_period2(rs.getString(20));
+				dto.setForm(rs.getString(21));
+				dto.setReception(rs.getString(22));
+				dto.setJob_process(rs.getString(23));
+			}
+			
+		} catch (Exception e) {
+			System.out.println("getScrapDetail 메소드");
+			e.printStackTrace();
+		} finally {
+			freeResource();
+		}
+		return dto;
+	}
+
 } // end class JobDAO
