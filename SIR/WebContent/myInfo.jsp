@@ -185,7 +185,8 @@ div.bhoechie-tab div.bhoechie-tab-content:not(.active){
 		<!-- 본인 게시글 -->
 		<div role="tabpanel" class="tab-pane active" id="snsScrollAddMyInfoForPost">  
 		</div>
-		  
+		
+		<!-- 본인 스크랩 -->
 		<div role="tabpanel" class="tab-pane" id="snsScrollAddMyInfoForScrap">
 		</div>
 		
