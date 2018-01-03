@@ -55,7 +55,7 @@ public class SNSBoardController extends HttpServlet {
 
 				viewpage = "main.jsp?center=snspage.jsp";
 
-			} else if ("/infiniteScroll.snsboard".equals(command)){ // 무한 스크롤 할때 작동
+			} else if ("/infiniteScrollSns.snsboard".equals(command)){ // 무한 스크롤 할때 작동
 				SNSGetPostList slist = new SNSGetPostList();
 				ArrayList<SNSDTO> slistArr = slist.getSnsList(request, response);
 				SNSTransStringForInfiniteScroll ts = new SNSTransStringForInfiniteScroll();
@@ -64,21 +64,43 @@ public class SNSBoardController extends HttpServlet {
 				out.println(resultString);
 				return; // 밑에 RequestDispatcher dis = request.getRequestDispatcher(viewpage); 이거 때문에 return 해야지 오류 없이 됨
 						// 안그럼 페이지 이동 하려고 함
-			} else if ("/infiniteScrollInfo.snsboard".equals(command)){ // 무한 스크롤 (info) 할때 작동
+			} else if ("/infiniteScrollMyInfo.snsboard".equals(command)){ // 무한 스크롤 (myinfo) 할때 작동
 				SNSGetPostList slist = new SNSGetPostList();
-				System.out.println("friend request 값 : " + request.getParameter("friend"));
-				if (request.getParameter("friend") != null){ // friend 가 null 이 아니면 친구 글 조회상태, 
-					email = request.getParameter("friend");
-				} else { 
-					// friend 가 null 이면 본인 글 조회 상태  email 값 변동 없음
-				}
 				ArrayList<SNSDTO> slistArr = slist.getInfoList(request, response, email);
 				SNSTransStringForInfiniteScroll ts = new SNSTransStringForInfiniteScroll();
 				String resultString = ts.getInfoString(slistArr);
 				PrintWriter out = response.getWriter();
 				out.println(resultString);
 				return;
+			} else if ("/infiniteScrollMyScrap.snsboard".equals(command)){ // 무한 스크롤 (my Scrap) 할때 작동
+				SNSGetPostList slist = new SNSGetPostList();
+				ArrayList<SNSDTO> slistArr = slist.getScrapList(request, response, email);
+				SNSTransStringForInfiniteScroll ts = new SNSTransStringForInfiniteScroll();
+				String resultString = ts.getInfoString(slistArr);
+				System.out.println("resultString scrap : " + resultString);
+				PrintWriter out = response.getWriter();
+				out.println(resultString);
+				return;
+			} else if ("/infiniteScrollFriendInfo.snsboard".equals(command)){ // 무한 스크롤 (friend info) 할때 작동
+				SNSGetPostList slist = new SNSGetPostList();
+				System.out.println("friend request 값 : " + request.getParameter("friend"));
+				String friend = request.getParameter("friend");
+				ArrayList<SNSDTO> slistArr = slist.getInfoList(request, response, friend);
+				SNSTransStringForInfiniteScroll ts = new SNSTransStringForInfiniteScroll();
+				String resultString = ts.getInfoString(slistArr);
+				PrintWriter out = response.getWriter();
+				out.println(resultString);
+				return;
+			} else if ("/addScrap.snsboard".equals(command)){ // scrap 추가 하면
+				String postIdx = request.getParameter("postIdx");
+				System.out.println("postIdx : " + postIdx);
+				SNSDAO sdao = new SNSDAO();
+				int result = sdao.addScrap(email,postIdx); // 페이지 이동은 필요없다 db에 삽입만 하는걸로, 조회는 myinfo 에서 scrap 누르면 확인하는 걸로
+				PrintWriter out = response.getWriter();
+				out.println(result);
+				return;
 			}
+			
 		} else { // email 쿠키값이 없으면 main page로 넘겨라, 잘못된 접근이다.
 			viewpage = "main.jsp";
 		}

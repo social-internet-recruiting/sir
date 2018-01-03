@@ -37,6 +37,11 @@ public class MemberDTO {
 	private Date prev_finishdate;
 	private String prev_jobcontent;
 	
+	// 친구, 스크랩, 요청받은거 
+	private String friends;
+	private String scrap;
+	private String asked;
+	
 	// 공개 비공개 설정
 	private int public_phone;
 	private int public_addr;
@@ -45,7 +50,25 @@ public class MemberDTO {
 	private int public_cert;
 	private int public_intro;
 	private int public_career;
-
+	
+	public String getFriends() {
+		return friends;
+	}
+	public void setFriends(String friends) {
+		this.friends = friends;
+	}
+	public String getScrap() {
+		return scrap;
+	}
+	public void setScrap(String scrap) {
+		this.scrap = scrap;
+	}
+	public String getAsked() {
+		return asked;
+	}
+	public void setAsked(String asked) {
+		this.asked = asked;
+	}
 	public int getPublic_phone() {
 		return public_phone;
 	}

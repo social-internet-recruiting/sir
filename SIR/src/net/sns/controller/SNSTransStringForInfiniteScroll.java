@@ -31,6 +31,7 @@ public class SNSTransStringForInfiniteScroll {
 		
 		String result = "";
 		int lastIdxNum = 0;
+		System.out.println("slistArr : " + slistArr);
 		for (int i=0; i<slistArr.size(); i++){
 			SNSDTO sdto = (SNSDTO)slistArr.get(i);
 			// db 글 뿌려주는 로직 (9개씩)
@@ -41,7 +42,7 @@ public class SNSTransStringForInfiniteScroll {
 			lastIdxNum = sdto.getIdx();
 			
 		}
-		
+		System.out.println("lastIdxNum 확인 : " + lastIdxNum);
 		// "#%&@#" = 구분자 
 		result += "#%&@#" + lastIdxNum;
 		

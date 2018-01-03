@@ -133,6 +133,9 @@ div.bhoechie-tab div.bhoechie-tab-content:not(.active){
   height: 380px;
 }
  
+ .paging {
+	text-align:center;
+ }
 </style>
 
 <body style="background-color:gray;">
@@ -176,22 +179,44 @@ div.bhoechie-tab div.bhoechie-tab-content:not(.active){
 	<div class="row">
 	<div class="col-sm-5"></div>
 		<ul class="nav nav-tabs" role="tablist" id="">
-		  <li role="presentation" class="active"><a href="#snsScrollAddInfo" aria-controls="snsScrollAddInfo" role="tab" data-toggle="tab" style="font-size:20px;">게시물</a></li>
-		  <li role="presentation"><a href="#B" aria-controls="B" role="tab" data-toggle="tab" style="font-size:20px;">스크랩</a></li>
+		  <li role="presentation" class="active"><a href="#snsScrollAddMyInfoForPost" aria-controls="snsScrollAddMyInfoForPost" role="tab" data-toggle="tab" style="font-size:20px;">게시물</a></li>
+		  <li role="presentation"><a href="#snsScrollAddMyInfoForScrap" aria-controls="snsScrollAddMyInfoForScrap" role="tab" data-toggle="tab" style="font-size:20px;">스크랩</a></li>
   		  <li role="presentation"><a href="#C" aria-controls="C" role="tab" data-toggle="tab" style="font-size:20px;">공고</a></li>
 		</ul>
 	</div>
 	<div class="tab-content row">
 		<!-- 본인 게시글 -->
-		<div role="tabpanel" class="tab-pane active" id="snsScrollAddInfo">  
+		<div role="tabpanel" class="tab-pane active" id="snsScrollAddMyInfoForPost">  
 		</div>
-		  
-		<div role="tabpanel" class="tab-pane" id="B">
-			<a>스크랩</a>
+		
+		<!-- 본인 스크랩 -->
+		<div role="tabpanel" class="tab-pane" id="snsScrollAddMyInfoForScrap">
 		</div>
 		
 		<div role="tabpanel" class="tab-pane" id="C">
-			<a>공고</a>
+			<table class="table">
+      <tr align="center">
+			<td>기업명</td>
+			<td>제목</td>
+			<td>지원자격</td>
+			<td>근무조건</td>
+			<td>시작일 ~ 마감일</td>
+		</tr>
+	<c:forEach var="sdto" items="${sdto}">
+	  <c:if test="${empty sdto}">
+         <tr>
+         	<td colspan="5" align="center"><font color="red">회사 목록이 없습니다</font></td>
+         </tr>
+      </c:if>
+      <tr align="center">
+         <td>${sdto.co_title}</td>
+         <td><a href="#" onclick="window.open('scrap_detail.job?scrap_idx=${sdto.scrap_idx}','${sdto.recruit_notice}','width=700,height=700,left=250,right=150,resize=no,scrollbars=yes');">${sdto.recruit_notice}</a></td>
+         <td>${sdto.qualify_up} /경력 ${sdto.career_up}</td>
+         <td>${sdto.income_up}만원 ▲/${sdto.position}</td>
+         <td>${sdto.applicate_period1} ~ ${sdto.applicate_period2}</td>
+      </tr>
+      </c:forEach>
+      </table>
 		</div>
 	</div><!--End of tab-content--><hr/>
 			<!-- End of job_check_one -->
@@ -548,7 +573,7 @@ div.bhoechie-tab div.bhoechie-tab-content:not(.active){
 	<script src="./js/jobCode.js"></script>
 	<script src="./js/postcode.v2.js"></script>
 	<script src="./js/postCode.js"></script>
-	<script src="./js/infiniteScrollInfo.js"></script>
+	<script src="./js/infiniteScrollMyInfo.js"></script>
 	
 	<script type="text/javascript">
     	

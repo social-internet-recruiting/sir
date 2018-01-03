@@ -1,7 +1,6 @@
 package net.job.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Vector;
 
 import javax.servlet.RequestDispatcher;
@@ -15,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import net.cookie.controller.CookieAction;
 import net.job.model.JobDAO;
 import net.job.model.jobDTO;
+import net.job.model.scrapDTO;
 import net.member.model.MemberDAO;
 
 @WebServlet("*.job")
@@ -309,15 +309,74 @@ public class JobFrontController extends HttpServlet {
 			dis.forward(request, response);
 			
 		} else if("/job_detail.job".equals(command)) {
+		
+		Cookie[] cookies = request.getCookies();
+		CookieAction cookieAction = new CookieAction();
+		String email = cookieAction.getEmailInCookie(cookies);
 			
 		String idx = request.getParameter("job_idx");
 		JobDAO dao = new JobDAO();
 		jobDTO dto = dao.getSelectList(idx);
 		request.setAttribute("dto", dto);
+		request.setAttribute("id",email);
 		
 		RequestDispatcher dis = request.getRequestDispatcher("./job/job_detail.jsp");
 		dis.forward(request, response);
+		
+		} else if("/job_scrap.job".equals(command)) {
+			JobDAO dao = new JobDAO();
+			try {
+				String email = request.getParameter("email");
+				String recruit_notice = request.getParameter("recruit_notice");
+				String co_title = request.getParameter("co_title");
+				String co_addr = request.getParameter("co_addr");
+				String establish = request.getParameter("establish");
+				String sales = request.getParameter("sales");
+				int employees = Integer.parseInt(request.getParameter("employees"));
+				String duty = request.getParameter("duty");
+				String position = request.getParameter("position");
+				int recruit_volume = Integer.parseInt(request.getParameter("recruit_volume"));
+				int income_up = Integer.parseInt(request.getParameter("income_up"));
+				String qualify_down = request.getParameter("qualify_down");
+				String qualify_up = request.getParameter("qualify_up");
+				String career_down = request.getParameter("career_down");
+				String career_up = request.getParameter("career_up");
+				String qualify_license = request.getParameter("qualify_license");
+				String prefer = request.getParameter("prefer");
+				String applicate_period1 = request.getParameter("applicate_period1");
+				String applicate_period2 = request.getParameter("applicate_period2");
+				String form = request.getParameter("form");
+				String reception = request.getParameter("reception");
+				String job_process = request.getParameter("job_process");
+				
+				dao.insertScrap(email,recruit_notice,co_title,co_addr,establish,sales,employees,
+								duty,position,recruit_volume,income_up,qualify_down,qualify_up,
+								career_down,career_up,qualify_license,prefer,applicate_period1,
+								applicate_period2,form,reception,job_process);
+				
+			} catch (Exception e) {
+				System.out.println("/job_scrap.job 쪽 오류");
+				e.printStackTrace();
+			}
+			
+			
+			
+			String idx = request.getParameter("job_idx");
+			jobDTO dto = dao.getSelectList(idx);
+			
+			request.setAttribute("dto", dto);
+			RequestDispatcher dis = request.getRequestDispatcher("./job/job_detail.jsp");
+			dis.forward(request, response);
+			
+		} else if("/scrap_detail.job".equals(command)) {
+			String idx = request.getParameter("scrap_idx");
+			JobDAO dao = new JobDAO();
+			scrapDTO dto = dao.getScrapDetail(idx);
+			
+			request.setAttribute("dto", dto);
+			RequestDispatcher dis = request.getRequestDispatcher("./job/scrap_detail.jsp");
+			dis.forward(request, response);
 		}
-	}
+	} 
 
 }

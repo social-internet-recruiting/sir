@@ -181,7 +181,6 @@ public class SNSDAO {
 		try {
 			con = getConnection();
 
-			// authimg 때문에 join 해서 가져옴
 			String sql 	= "select * from snsboard where idx<? and auth=? order by 1 desc limit 0,9;"; 
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, idxnuminfo);
@@ -207,7 +206,107 @@ public class SNSDAO {
 		
 		return result;
 	}
+	
+	public ArrayList<SNSDTO> GetSNSScrapList(int idxnumScrap, String email) {
+		
+		ArrayList<SNSDTO> result = new ArrayList<SNSDTO>(); 
+	
+		try {
+			con = getConnection();
 
+			String sql 	= "select scrap from member where email=?"; 
+			System.out.println("sql1111 : " + sql);
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, email);
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()){
+				
+				String scrapString = rs.getString(1);
+				String [] scrapList = scrapString.split(",");
+				// 처음 조회 하는 값인지 확인
+
+				System.out.println("idxnumScrap : " + idxnumScrap);
+				
+				if (idxnumScrap == 2147483647){ // 처음 조회 하는 값이면 max 부터 9개 
+					for(int k=scrapList.length-1; k>scrapList.length-10; k--){
+						if (k<0) break;
+						if (scrapList[k].trim().equals("")) continue;
+						int index = Integer.parseInt(scrapList[k]);
+						// System.out.println("index 확인 : "+ k);
+						SNSDTO getDto = getSNSDTOForScrap(index);
+						result.add(getDto);
+					}
+				} else {
+					if (idxnumScrap == 0) break;
+					for(int i=scrapList.length-1; i>=0; i--){
+						if (scrapList[i].equals(String.valueOf(idxnumScrap))){ // idxnumScrap 이랑 일치하면 이다음부터 9개 
+							for(int k=i-1; k>i-10; k--){
+								if (k<0) break;
+								if (scrapList[k].trim().equals("")) continue;
+								int index = Integer.parseInt(scrapList[k]);
+								// System.out.println("index 확인 : "+ k);
+								SNSDTO getDto = getSNSDTOForScrap(index);
+								result.add(getDto);
+							}
+						}
+					}
+				}
+			}
+		} catch(Exception e) {
+			System.out.println("GetSNSScrapList(scrap)메서드에서 에러 : " + e);
+		} finally {
+			freeResource();
+		}
+		
+		return result;
+	}
+	public SNSDTO getSNSDTOForScrap(int idxnum){
+		
+		Connection conIn = null;
+		PreparedStatement pstmtIn = null;
+		ResultSet rsIn = null;
+		DataSource dsIn = null;
+		
+		try {
+			Context ctxIn = new InitialContext();
+			dsIn = (DataSource)ctxIn.lookup("java:comp/env/jdbc/sir");
+		} catch (Exception e) {
+			System.out.println("getSNSDTOForScrap(sub)에서 에러 남 : " + e);
+		}
+
+		SNSDTO sdto = new SNSDTO();
+		try {
+			conIn = dsIn.getConnection();
+			// return 할 arrayList 얻기
+			String sql = "select * from snsboard where idx = ?";
+			pstmtIn = conIn.prepareStatement(sql);
+			pstmtIn.setInt(1, idxnum);
+			rsIn = pstmtIn.executeQuery();
+			while(rsIn.next()){
+				sdto.setIdx(rsIn.getInt(1));
+				System.out.println("확인 : " + rsIn.getInt(1));
+				sdto.setImg(rsIn.getString(2));
+				sdto.setContents(rsIn.getString(3));
+				sdto.setComments(rsIn.getString(4));
+				sdto.setAuth(rsIn.getString(8));
+				sdto.setTime(rsIn.getTimestamp(9));
+				// sdto.setAuthimg(rsIn.getString(10)); // db 에는 없는값, sdto에만 있는값 
+			}
+		} catch(Exception e) {
+			System.out.println("getSNSDTOForScrap(scrap)메서드에서 에러 : " + e);
+		} finally {
+			try {
+				if(conIn != null) conIn.close();
+				if(pstmtIn != null) pstmtIn.close();
+				if(rsIn != null) rsIn.close();
+			} catch(Exception e) {
+				System.out.println("getSNSDTOForScrap(finally)메서드에서 에러 : " + e);
+			}
+		}
+		return sdto;
+	}
+	
 	public void addCommentsInPost(int idx, String result) {
 		// 기존의 comment column의 내용을 얻고, 거기다가 추가 해줄것
 		try {
@@ -225,8 +324,35 @@ public class SNSDAO {
 		} finally {
 			freeResource();
 		}
+	
+	}
+
+	public int addScrap(String email, String postIdx) {
+		int result = 1;
+		try {
+			con = getConnection();
+			
+			String sql 	= "select scrap from member where scrap like ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, "%," + postIdx +  ",%");
+			rs = pstmt.executeQuery();
+			if (rs.next()){
+				result = 0;
+			} else {// 스크랩에 글번호 추가 안되어 있으면 스크랩 추가 
+				sql = "update member set scrap = concat(scrap,?) where email = ?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1,postIdx +  ",");
+				pstmt.setString(2,email);
+				pstmt.executeUpdate();
+				result = 1;
+			}
+		} catch(Exception e) {
+			System.out.println("addScrap()메서드에서 에러 : " + e);
+		} finally {
+			freeResource();
+		}	
 		
-		
+		return result;
 	}
 	
 }

@@ -42,4 +42,21 @@ public class SNSGetPostList {
 		
 		return result;
 	}
+	
+	public ArrayList getScrapList(HttpServletRequest request, HttpServletResponse response, String email){
+		
+		ArrayList result = new ArrayList();
+		
+		// 오름차순으로 조회하니깐 초기 int 값은 int 의 max 최댓값 2147483647
+		int	idxnumScrap = 2147483647; // 초기 로드 경우
+		if (request.getParameter("idxnumScrap") != null){ // 무한 스크롤 로드 경우
+			// 초기 로드 될때는 max 값 그대로 사용, 무한 스크롤때만 request 값 받아서
+			idxnumScrap = Integer.parseInt(request.getParameter("idxnumScrap").trim());  
+		}
+		System.out.println("idxnumScrap 확인 : " + idxnumScrap);
+		SNSDAO sdao = new SNSDAO();
+		result = sdao.GetSNSScrapList(idxnumScrap, email);
+		
+		return result;
+	}
 }

@@ -16,7 +16,12 @@ public class SNSMakePost {
 				+ 	"<div class='list-group-item' align='left'>"
 				+ 	"<img src='" + sdto.getAuthimg() + "' id='authImgId' > &nbsp;&nbsp; "
 				+ 	"<a href='./friendInfo.mem?friend=" + sdto.getAuth() + "' style='cursor:pointer; word-break: break-all;'>" + sdto.getAuth() + "</a>" 
-				+ 	"&nbsp;&nbsp;" + "<span style='float:right'> No. : " + sdto.getIdx() + "</span>" 
+				+	"<span style='float:right;'> "
+				+ 	"No. : " + sdto.getIdx()
+				+	"<ul style='display:block; list-style:none; padding-left: 0px;'>"		
+				+ 	"<li style='float:right;'><a style='cursor:pointer;' onclick='addScrapMethod(" + sdto.getIdx() + ");'>스크랩</a></li>"
+				+ 	"</ul>"
+				+ 	"</span>" 
 				+ 	"</div>"
 				+ 	"<a align='left' style='height:400px;' class='list-group-item-img'><img src='" + sdto.getImg() + "' style='width:100%; height:400px;'></a>"
 				+ 	"<div class='list-group-item' align='left'><br/>"

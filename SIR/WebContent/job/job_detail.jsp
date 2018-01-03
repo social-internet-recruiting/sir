@@ -56,7 +56,33 @@
 		<hr size="1">
 		<p>전형 절차: ${dto.job_process}</p>
 		<hr size="1">
-		
+
+		<form action="job_scrap.job" method="post">
+		    <input type="hidden" value="${dto.job_idx }" name="job_idx" />
+			<input type="hidden" value="${id}" name="email" />
+			<input type="hidden" value="${dto.recruit_notice}" name="recruit_notice" />
+			<input type="hidden" value="${dto.co_title}" name="co_title" />
+			<input type="hidden" value="${dto.co_addr}" name="co_addr" />
+			<input type="hidden" value="${dto.establish}" name="establish" />
+			<input type="hidden" value="${dto.sales}" name="sales" />
+			<input type="hidden" value="${dto.employees}" name="employees" />
+			<input type="hidden" value="${dto.duty}" name="duty" />
+			<input type="hidden" value="${dto.position}" name="position" />
+			<input type="hidden" value="${dto.recruit_volume}" name="recruit_volume" />
+			<input type="hidden" value="${dto.income_up}" name="income_up" />
+			<input type="hidden" value="${dto.qualify_down}" name="qualify_down" />
+			<input type="hidden" value="${dto.qualify_up}" name="qualify_up" />
+			<input type="hidden" value="${dto.career_down}" name="career_down" />
+			<input type="hidden" value="${dto.career_up}" name="career_up" />
+			<input type="hidden" value="${dto.qualify_license}" name="qualify_license" />
+			<input type="hidden" value="${dto.prefer}" name="prefer" />
+			<input type="hidden" value="${dto.applicate_period1}" name="applicate_period1" />
+			<input type="hidden" value="${dto.applicate_period2}" name="applicate_period2" />
+			<input type="hidden" value="${dto.form}" name="form" />
+			<input type="hidden" value="${dto.reception}" name="reception" />
+			<input type="hidden" value="${dto.job_process}" name="job_process" />
+			<input type="submit" value="공고하기" onclick="javascript:alert('공고하기가 완료되었습니다');" />
+		</form>
 	</div><!-- End of container -->
 </body>
 </html>
