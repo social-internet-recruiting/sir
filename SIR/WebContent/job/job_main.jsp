@@ -21,102 +21,131 @@
 .paging {
 	text-align:center;
  }
-
+.list-group-button {
+  position: relative;
+  display: block;
+  padding: 10px 15px;
+  margin-bottom: -1px;
+  border: 1px solid #ddd;
+}
 </style>
 <body>
 <!-- header 부분  시작-->
 <jsp:include page="/include/top.jsp"/>
 <!-- header 부분 끝 -->
-<div class="container">
-   <h2>추천 공고</h2>
-   <div class="job_recommand">
-   	<table border="1">
-   	<c:forEach var="job" items="${job2}">
-   	<c:if test="${j%4 == 0}">
-		<tr>
-	</c:if>
-   		 <td>
-   		 <h3>${job.co_title}</h3>
-   		 <a href="#" onclick="window.open('job_detail.job?job_idx=${job.job_idx}','${job.recruit_notice}','width=700,height=700,left=250,right=150,resize=no,scrollbars=yes');">${job.recruit_notice}</a><br/>
-   		 ${job.income_up}만원 ▲/${job.position}<br/>
-   		 </td><br/>
-   	<c:set var="j" value="${j+1}" />
-   	</c:forEach>
-   	</tr>
-   	</table>
-   </div><!-- End of job_recommand -->
-   <div class="job_search">
-   <h2>채용정보 상세검색</h2>
-   <form action="text_search.job" method="post">
-   	<input type="text" name="company" placeholder="회사 이름을 입력하세요" />
-   	<input type="submit" value="검색" />
-   </form>
-   </div><!-- End of job_search -->
+<div class="container">   
+	<div class="btn-danger">
+	<h2>채용정보</h2>
+	</div>
+	<div class="job_recommand list-group" style="width:100%;">
+   		<div border="1" class="list-group-item" style="background-color:rgb(230,120,150); width:100%; height:320%;">
+   			<c:forEach var="job" items="${job2}">				
+   					<div class="list-group-item" style="float:left; width:100%; background-color:rgb(0,0,0);" >
+   						<b style="font-size:25px; color:white;">${job.co_title}</b>
+   					</div>				
+   					<span class="list-group-item" style="float:left; width:25%;">
+   						<b style="font-size:20px;" >${job.recruit_notice}</b>
+   					</span>
+   					<span class="list-group-item" style="float:left; width:25%;">
+   						<b style="font-size:20px;">${job.income_up}만원</b>
+   					</span>
+   					<span class="list-group-item" style="float:left; width:25%;">
+						<b style="font-size:20px;">▲/${job.position}</b>
+					</span>			
+					<div class="list-group-button btn btn-warning" style="float:right; width:25%;" value="모집개요">
+						<b style="font-size:20px;" href="#" onclick="window.open('job_detail.job?job_idx=${job.job_idx}','${job.recruit_notice}','width=700,height=700,left=250,right=150,resize=no,scrollbars=yes');">모집개요</b>
+					</div>					
+			</c:forEach>
+		</div>
+	</div><!-- End of job_recommand -->
+		<div><br/></div>
+		<div><br/></div>
+		<div><br/></div>
+		<div><br/></div>
+		<div><br/></div>
+		<div><br/></div>
+		<div><br/></div>
+		<div><br/></div>
+		<div><br/></div>
+		<div><br/></div>
+		<div><br/></div>
+		<div><br/></div>
+		<div><br/></div>
+		<div><br/></div>
+		<div><br/></div>
+		<div><br/></div>
+	<div class="job_search">
+		<h2>채용정보 상세검색</h2>
+		<form action="text_search.job" method="post">
+			<input type="text" name="company" placeholder="회사 이름을 입력하세요" />
+			<input type="submit" value="검색" />
+		</form>
+	</div><!-- End of job_search -->
    
-   <form action="check_search.job" method="post">
-   <div class="job_check_one">
-      <!-- 직종별 분류 -->
-<h3>직종별</h3>   
-<ul class="nav nav-tabs" role="tablist" id="job_ck">
-  <li role="presentation" class="active"><a href="#A" aria-controls="A" role="tab" data-toggle="tab" style="font-size:20px;">경영/사무</a></li>
-  <li role="presentation"><a href="#B" aria-controls="B" role="tab" data-toggle="tab" style="font-size:20px;">의료</a></li>
-  <li role="presentation"><a href="#C" aria-controls="C" role="tab" data-toggle="tab" style="font-size:20px;">서비스</a></li>
-  <li role="presentation"><a href="#D" aria-controls="D" role="tab" data-toggle="tab" style="font-size:20px;">생산/제조</a></li>
-  <li role="presentation"><a href="#E" aria-controls="E" role="tab" data-toggle="tab" style="font-size:20px;">유통/무역</a></li>
-  <li role="presentation"><a href="#F" aria-controls="F" role="tab" data-toggle="tab" style="font-size:20px;">교육</a></li>
-  <li role="presentation"><a href="#G" aria-controls="G" role="tab" data-toggle="tab" style="font-size:20px;">전문직</a></li>
-  <li role="presentation"><a href="#H" aria-controls="H" role="tab" data-toggle="tab" style="font-size:20px;">IT/인터넷</a></li>
-  <li role="presentation"><a href="#I" aria-controls="I" role="tab" data-toggle="tab" style="font-size:20px;">미디어</a></li>
-</ul>
+	<form action="check_search.job" method="post">
+	<div class="job_check_one">
+	<!-- 직종별 분류 -->
+		<h3>직종별</h3>   
+		<ul class="nav nav-tabs" role="tablist" id="job_ck">
+			<li role="presentation" class="active"><a href="#A" aria-controls="A" role="tab" data-toggle="tab" style="font-size:20px;">경영/사무</a></li>
+			<li role="presentation"><a href="#B" aria-controls="B" role="tab" data-toggle="tab" style="font-size:20px;">의료</a></li>
+			<li role="presentation"><a href="#C" aria-controls="C" role="tab" data-toggle="tab" style="font-size:20px;">서비스</a></li>
+			<li role="presentation"><a href="#D" aria-controls="D" role="tab" data-toggle="tab" style="font-size:20px;">생산/제조</a></li>
+			<li role="presentation"><a href="#E" aria-controls="E" role="tab" data-toggle="tab" style="font-size:20px;">유통/무역</a></li>
+			<li role="presentation"><a href="#F" aria-controls="F" role="tab" data-toggle="tab" style="font-size:20px;">교육</a></li>
+			<li role="presentation"><a href="#G" aria-controls="G" role="tab" data-toggle="tab" style="font-size:20px;">전문직</a></li>
+			<li role="presentation"><a href="#H" aria-controls="H" role="tab" data-toggle="tab" style="font-size:20px;">IT/인터넷</a></li>
+			<li role="presentation"><a href="#I" aria-controls="I" role="tab" data-toggle="tab" style="font-size:20px;">미디어</a></li>
+		</ul>
 
-<div class="tab-content">
-  <div role="tabpanel" class="tab-pane active" id="A">
-     <label>기획/전략/경영</label><input type="checkbox" name="AA" value="기획/전략/경영"  />
-     <label>인사/교육/노무</label><input type="checkbox" name="AB" value="인사/교육/노무"  />
-     <label>마케팅/광고/분석</label><input type="checkbox" name="AC" value="마케팅/광고/분석"  />
-  </div>
-  <div role="tabpanel" class="tab-pane" id="B">
-     <label>간호사</label><input type="checkbox" name="BA" value="간호사"  />
-     <label>간호조무사</label><input type="checkbox" name="BB" value="간호조무사"  />
-     <label>세무/원무/코디</label><input type="checkbox" name="BC" value="세무/원무/코디"  />
-  </div>
-  <div role="tabpanel" class="tab-pane" id="C">
-     <label>여행/관광/항공</label><input type="checkbox" name="CA" value="여행/관광/항공"  />
-     <label>요리/제빵사/영양사</label><input type="checkbox" name="CB" value="요리/제빵사/영양사"  />
-     <label>사무/원무/코디</label><input type="checkbox" name="CC" value="사무/원무/코디"  />
-  </div>
-  <div role="tabpanel" class="tab-pane" id="D">
-     <label>생산관리/품질관리</label><input type="checkbox" name="DA" value="생산관리/품질관리"  />
-     <label>섬유/의료/패션</label><input type="checkbox" name="DB" value="섬유/의료/패션"  />
-     <label>전기/전자/제어</label><input type="checkbox" name="DC" value="전기/전자/제어"  />
-  </div>
-  <div role="tabpanel" class="tab-pane" id="E">
-     <label>구매/자제/재고</label><input type="checkbox" name="EA" value="구매/자제/재고"  />
-     <label>물류/유통/운송</label><input type="checkbox" name="EB" value="물류/유통/운송"  />
-     <label>해외영업/무역영업</label><input type="checkbox" name="EC" value="해외영업/무역영업"  />
-  </div>
-  <div role="tabpanel" class="tab-pane" id="F">
-     <label>외국어/어학원</label><input type="checkbox" name="FA" value="외국어/어학원"  />
-     <label>유치원/보육</label><input type="checkbox" name="FB" value="유치원/보육"  />
-     <label>전문직업/IT강사</label><input type="checkbox" name="FC" value="전문직업/IT강사"  />
-  </div>
-  <div role="tabpanel" class="tab-pane" id="G">
-     <label>경영분석/컨설턴트</label><input type="checkbox" name="GA" value="경영분석/컨설턴트"  />
-     <label>세무회계/CPA</label><input type="checkbox" name="GB" value="세무회계/CPA"  />
-     <label>외국어/번역/통역</label><input type="checkbox" name="GC" value="외국어/번역/통역"  />
-  </div>
-  <div role="tabpanel" class="tab-pane" id="H">
-     <label>웹개발</label><input type="checkbox" name="HA" value="웹개발"  />
-     <label>응용프로그램개발</label><input type="checkbox" name="HB" value="응용프로그램개발"  />
-     <label>게임</label><input type="checkbox" name="HC" value="게임"  />
-  </div>
-  <div role="tabpanel" class="tab-pane" id="I">
-     <label>공연/무대/스텝</label><input type="checkbox" name="IA" value="공연/무대/스텝"  />
-     <label>영화/출판/편집</label><input type="checkbox" name="IB" value="영화/출판/편집"  />
-     <label>방송/연출/PD/감독</label><input type="checkbox" name="IC" value="방송/연출/PD/감독"  />
-  </div>
-</div><!--End of tab-content--><hr/>
-   </div><!-- End of job_check_one -->
+	<div class="tab-content">
+		<div role="tabpanel" class="tab-pane active" id="A">
+			<label>기획/전략/경영</label><input type="checkbox" name="AA" value="기획/전략/경영"  />
+			<label>인사/교육/노무</label><input type="checkbox" name="AB" value="인사/교육/노무"  />
+			<label>마케팅/광고/분석</label><input type="checkbox" name="AC" value="마케팅/광고/분석"  />
+		</div>
+		<div role="tabpanel" class="tab-pane" id="B">
+			<label>간호사</label><input type="checkbox" name="BA" value="간호사"  />
+			<label>간호조무사</label><input type="checkbox" name="BB" value="간호조무사"  />
+			<label>세무/원무/코디</label><input type="checkbox" name="BC" value="세무/원무/코디"  />
+		</div>
+		<div role="tabpanel" class="tab-pane" id="C">
+			<label>여행/관광/항공</label><input type="checkbox" name="CA" value="여행/관광/항공"  />
+			<label>요리/제빵사/영양사</label><input type="checkbox" name="CB" value="요리/제빵사/영양사"  />
+			<label>사무/원무/코디</label><input type="checkbox" name="CC" value="사무/원무/코디"  />
+		</div>
+		<div role="tabpanel" class="tab-pane" id="D">
+			<label>생산관리/품질관리</label><input type="checkbox" name="DA" value="생산관리/품질관리"  />
+			<label>섬유/의료/패션</label><input type="checkbox" name="DB" value="섬유/의료/패션"  />
+			<label>전기/전자/제어</label><input type="checkbox" name="DC" value="전기/전자/제어"  />
+		</div>
+		<div role="tabpanel" class="tab-pane" id="E">
+			<label>구매/자제/재고</label><input type="checkbox" name="EA" value="구매/자제/재고"  />
+			<label>물류/유통/운송</label><input type="checkbox" name="EB" value="물류/유통/운송"  />
+			<label>해외영업/무역영업</label><input type="checkbox" name="EC" value="해외영업/무역영업"  />
+		</div>
+		<div role="tabpanel" class="tab-pane" id="F">
+			<label>외국어/어학원</label><input type="checkbox" name="FA" value="외국어/어학원"  />
+			<label>유치원/보육</label><input type="checkbox" name="FB" value="유치원/보육"  />
+			<label>전문직업/IT강사</label><input type="checkbox" name="FC" value="전문직업/IT강사"  />
+		</div>
+		<div role="tabpanel" class="tab-pane" id="G">
+			<label>경영분석/컨설턴트</label><input type="checkbox" name="GA" value="경영분석/컨설턴트"  />
+			<label>세무회계/CPA</label><input type="checkbox" name="GB" value="세무회계/CPA"  />
+			<label>외국어/번역/통역</label><input type="checkbox" name="GC" value="외국어/번역/통역"  />
+		</div>
+		<div role="tabpanel" class="tab-pane" id="H">
+			<label>웹개발</label><input type="checkbox" name="HA" value="웹개발"  />
+			<label>응용프로그램개발</label><input type="checkbox" name="HB" value="응용프로그램개발"  />
+			<label>게임</label><input type="checkbox" name="HC" value="게임"  />
+		</div>
+		<div role="tabpanel" class="tab-pane" id="I">
+			<label>공연/무대/스텝</label><input type="checkbox" name="IA" value="공연/무대/스텝"  />
+			<label>영화/출판/편집</label><input type="checkbox" name="IB" value="영화/출판/편집"  />
+			<label>방송/연출/PD/감독</label><input type="checkbox" name="IC" value="방송/연출/PD/감독"  />
+		</div>
+	</div><!--End of tab-content--><hr/>
+	</div><!-- End of job_check_one -->
 
 <!-- 지역별 분류 -->
 <div class="job_check_two">
