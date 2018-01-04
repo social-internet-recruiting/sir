@@ -14,24 +14,57 @@
 <link rel="stylesheet" href="./css/custom.css">
 </head>
 <style>
+.list-group-button {
+  position: relative;
+  display: block;
+  padding: 10px 15px;
+  margin-bottom: -2px;
+}
+
+.list-group-text {
+  position: relative;
+  display: block;
+  padding: 10px 10px;
+  border: 1px solid black;
+}
+
+.list-group-choice {
+  position: relative;
+  display: block;
+  padding: 10px 10px;
+  border: 1px solid red;
+}
+
+.wrapper-friend {
+     background-image: url( "./images/friend.gif" );
+}
 
 </style>
-<body style="background-color:gray; z-index: 0;">
+<body class="wrapper-friend" style="background-color:rgb(50,50,50); z-index: 0;">
 
 	<div class="container" style="background-color:#fff;margin-top:-20px">
 		<div class="row" style="margin:50px 0 50px 0">
-
-		<h1>알림 List</h1>
+		<div class="btn-warning">
+			<h1>알림 List</h1>
+		</div>
+		
 		<c:if test="${empty mainContents}">
-			요청이 없습니다.
+			<h1>요청이 없습니다.</h1>
 		</c:if>
-		<c:forEach var="mainContents" items="${mainContents}">
-			<div>
-				${mainContents} 님이 친구 요청 하였습니다.
-				<input type="button" value="수락" onclick="askFriendAccept('${mainContents}');"/>
-				<input type="button" value="거절" onclick="askFriendReject('${mainContents}');"/>
+ 		<c:forEach var="mainContents" items="${mainContents}">
+			<div class="list-group">
+ 				<div class="list-group-text" style="width:60%;float:left;height:auto;border-radius: 4px;">
+ 					<em style="font-size:22px;color:green;"><b>${mainContents} <b> </b></em> <b style="font-size:22px;">&nbsp;님의 친구 요청!</b>
+ 				</div>
+ 				<div class="list-group-failed btn btn-outline-info" style="width:20%;float:left;height:auto;">
+ 					<div class="list-group-button" style="font-size:15px; width:100%; height:auto;" value="수락" onclick="askFriendAccept('${mainContents}');">수락</div>
+ 				</div>				
+				<div class="list-group-failed btn btn-outline-danger" style="width:20%;float:left;height:auto; ">
+					<div class="list-group-button" style="font-size:15px; width:100%; height:auto%;" value="거절" onclick="askFriendReject('${mainContents}');">거절</div>
+				</div>
 			</div>
-      	</c:forEach>
+ 		</c:forEach>
+	</div>
 	</div>
 
 </body>

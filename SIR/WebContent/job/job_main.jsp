@@ -42,11 +42,13 @@
 }
 
 </style>
-<body>
 <!-- header 부분  시작-->
 <jsp:include page="/include/top.jsp"/>
 <!-- header 부분 끝 -->
-<div class="container">   
+<body style="background-color:gray;">
+
+<div class="container" style="background-color:white;margin-top:-25px;" >   
+	<br/>
 	<div class="btn-danger">
 	<h2>채용정보</h2>
 	</div>
