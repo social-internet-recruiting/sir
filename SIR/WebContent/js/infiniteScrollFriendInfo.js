@@ -29,6 +29,11 @@ $(document).ready(function (event){
 	        	postdata = dataArr[0]; // post 내용
 	        	$('#snsScrollAddFriendInfoForPost').append(postdata);  
 	        	idxnumFriendinfo = dataArr[1]; // 마지막 게시글 번호 저장
+	        	if (document.getElementById("snsScrollAddFriendInfoForPost").innerHTML.length < 10){ 
+	        		// 5글자 보다 적으면 게시글이 없다고 보면 된다.
+	        		postdata = "<h1 align='center'>작성된 글이 없습니다.</h1>";
+	        		$('#snsScrollAddFriendInfoForPost').append(postdata);
+	        	}	
 	        } ,
         	error : function(){ 
         		alert('실패 '); 

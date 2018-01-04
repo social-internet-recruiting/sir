@@ -113,6 +113,13 @@ public class SNSBoardController extends HttpServlet {
 				SNSDAO sdao = new SNSDAO();
 				sdao.askFriendReject(email,askingId);
 				viewpage = "./askedPage.mem";
+			} else if ("/likePost.snsboard".equals(command)) { // 친구 추가 요청
+				String postIdx = request.getParameter("postIdx");
+				SNSDAO sdao = new SNSDAO();
+				int result = sdao.likeCount(email, postIdx);
+				PrintWriter out = response.getWriter();
+				out.println(result);
+				return;
 			}
 			
 		} else { // email 쿠키값이 없으면 main page로 넘겨라, 잘못된 접근이다.

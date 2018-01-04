@@ -49,7 +49,7 @@ public class SNSDAO {
 			con = getConnection();
 			
 			// comments 는 text 타입이기 때문에 default 값을 줄수 없다 그래서 여기서 '' 바로 줌
-			String sql = "insert into snsboard (img,contents,comments,hashtag,auth,time) values (?,?,'',?,?,now())";
+			String sql = "insert into snsboard (img,contents,comments,likePeople,hashtag,auth,time) values (?,?,'', ',' ,?,?,now())";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, img);
 			pstmt.setString(2, contents);
@@ -90,9 +90,11 @@ public class SNSDAO {
 				sdto.setImg(rs.getString(2));
 				sdto.setContents(rs.getString(3));
 				sdto.setComments(rs.getString(4));
+				sdto.setLikecount(rs.getInt(7));
 				sdto.setAuth(rs.getString(8));
 				sdto.setTime(rs.getTimestamp(9));
-				sdto.setAuthimg(rs.getString(10));
+				sdto.setLikePeople(rs.getString("likePeople"));
+				sdto.setAuthimg(rs.getString(11)); // db 에는 없는값, sdto에만 있는값 그래서 맨 마지막에 위치
 			}
 
 		} catch(Exception e) {
@@ -125,7 +127,6 @@ public class SNSDAO {
 					}
 				}
 			}
-
 		} catch(Exception e) {
 			System.out.println("getFriendsList()메서드에서 에러 : " + e);
 		} finally {
@@ -158,9 +159,13 @@ public class SNSDAO {
 				sdto.setImg(rs.getString(2));
 				sdto.setContents(rs.getString(3));
 				sdto.setComments(rs.getString(4));
+				sdto.setLikecount(rs.getInt(7));
 				sdto.setAuth(rs.getString(8));
 				sdto.setTime(rs.getTimestamp(9));
-				sdto.setAuthimg(rs.getString(10)); // db 에는 없는값, sdto에만 있는값 
+				sdto.setLikePeople(rs.getString("likePeople"));
+				
+				sdto.setAuthimg(rs.getString(11)); // db 에는 없는값, sdto에만 있는값 그래서 맨 마지막에 위치
+				
 				result.add(sdto);
 			}
 
@@ -193,9 +198,11 @@ public class SNSDAO {
 				sdto.setImg(rs.getString(2));
 				sdto.setContents(rs.getString(3));
 				sdto.setComments(rs.getString(4));
+				sdto.setLikecount(rs.getInt(7));
 				sdto.setAuth(rs.getString(8));
 				sdto.setTime(rs.getTimestamp(9));
-				// sdto.setAuthimg(rs.getString(10)); // db 에는 없는값, sdto에만 있는값 
+				sdto.setLikePeople(rs.getString("likePeople"));
+				// sdto.setAuthimg(rs.getString(11)); // db 에는 없는값, sdto에만 있는값 그래서 맨 마지막에 위치
 				result.add(sdto);
 			}
 
@@ -290,9 +297,12 @@ public class SNSDAO {
 				sdto.setImg(rsIn.getString(2));
 				sdto.setContents(rsIn.getString(3));
 				sdto.setComments(rsIn.getString(4));
+				sdto.setLikecount(rs.getInt(7));
 				sdto.setAuth(rsIn.getString(8));
 				sdto.setTime(rsIn.getTimestamp(9));
-				// sdto.setAuthimg(rsIn.getString(10)); // db 에는 없는값, sdto에만 있는값 
+				sdto.setLikePeople(rs.getString("likePeople"));
+				// sdto.setAuthimg(rsIn.getString(11)); // db 에는 없는값, sdto에만 있는값 그래서 맨 마지막에 위치
+				
 			}
 		} catch(Exception e) {
 			System.out.println("getSNSDTOForScrap(scrap)메서드에서 에러 : " + e);
@@ -502,5 +512,45 @@ public class SNSDAO {
 			freeResource();
 		}
 		return postCount;
+	}
+
+	public int likeCount(String email, String postIdx) {
+		int result = 0;
+		try {
+			con = getConnection();
+			
+			String sql 	= "select likePeople from snsboard where (likePeople like ?) and idx=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, "%," + email + ",%");
+			pstmt.setString(2, postIdx);
+			rs = pstmt.executeQuery();
+			if (rs.next()){ // 이미 값이 입력 됨 - 좋아요 한 사람 빼고 , count 1 내리고 
+				String likePeople = rs.getString(1);
+				sql = "update snsboard set likePeople = replace(likePeople,?,''), likecount = likecount - 1 where idx=?;";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, email + ",");
+				pstmt.setString(2, postIdx);
+				pstmt.executeUpdate();
+				result = 0;
+			} else { // 값이 입력 되지 않았음
+				sql = "update snsboard set likePeople = concat(likePeople,?), likecount = likecount + 1 where idx=?;";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, email + ",");
+				pstmt.setString(2, postIdx);
+				pstmt.executeUpdate();
+				result = 1;
+			}
+			
+		} catch(Exception e) {
+			System.out.println("likeCount()메서드에서 에러 : " + e);
+		} finally {
+			freeResource();
+		}
+		return result;
+	}
+
+	public int getLikeCount(String likePeople) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 }

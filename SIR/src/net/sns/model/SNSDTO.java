@@ -13,11 +13,19 @@ public class SNSDTO {
 	private int likecount;
 	private String auth;
 	private Timestamp time;
+
+	private String likePeople;
 	
 	// 실제 db에는 없는 값, join 해서 가져올것
 	// (myinfo에서 사진 변경하면 authimg 변경을 하면 변경되는 로직이 필요함 따라서 이렇게 하는게 더 좋음)
 	private String authimg;
 	
+	public String getLikePeople() {
+		return likePeople;
+	}
+	public void setLikePeople(String likePeople) {
+		this.likePeople = likePeople;
+	}
 	public String getAuthimg() {
 		return authimg;
 	}

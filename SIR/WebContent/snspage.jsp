@@ -143,6 +143,8 @@
 <script src="./js/infiniteScrollSns.js"></script>
 <script src="./js/forwardComment.js"></script>
 <script src="./js/scrap.js"></script>
+<script src="./js/forwardLikeCount.js"></script>
+<script src="./js/likePost.js"></script>
 
 </html>
 
