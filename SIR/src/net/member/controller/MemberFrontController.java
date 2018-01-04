@@ -19,6 +19,7 @@ import net.job.model.scrapDTO;
 import net.member.model.MemberDAO;
 import net.member.model.MemberDTO;
 import net.sns.controller.SNSGetFriendAskedList;
+import net.sns.model.SNSDAO;
 
 @WebServlet("*.mem")
 public class MemberFrontController extends HttpServlet {
@@ -122,6 +123,15 @@ public class MemberFrontController extends HttpServlet {
 				
 				request.setAttribute("mdto", mdto);
 				
+				// 친구 숫자
+				SNSDAO sdao = new SNSDAO();
+				int friendCount = sdao.getFriendCount(email);
+				request.setAttribute("friendCount", friendCount);
+				
+				// 게시글 숫자
+				int postCount = sdao.getPostCount(email);
+				request.setAttribute("postCount", postCount);
+				
 				//공고 부분
 				JobDAO jdao = new JobDAO();
 				Vector<scrapDTO> jv = jdao.getScrap(email);
@@ -186,8 +196,19 @@ public class MemberFrontController extends HttpServlet {
 				dis.forward(request, response);
 				
 			} else {
+				
 				MemberDTO mdto = new MemberDTO();
 				mdto = mdao.getMemberInfoDTO(friend);
+				
+				// 친구 숫자
+				SNSDAO sdao = new SNSDAO();
+				int friendCount = sdao.getFriendCount(friend);
+				request.setAttribute("friendCount", friendCount);
+				
+				// 게시글 숫자
+				int postCount = sdao.getPostCount(friend);
+				request.setAttribute("postCount", postCount);
+				
 				request.setAttribute("mdto", mdto);
 				
 				RequestDispatcher dis = request.getRequestDispatcher("main.jsp?center=friendInfo.jsp");
