@@ -43,8 +43,8 @@ public class JobFrontController extends HttpServlet {
 		// System.out.println(command);
 		
 		int totalRecord = 0;
-		int numPerPage = 3;
-		int pagePerBlock = 3;
+		int numPerPage = 10;
+		int pagePerBlock = 10;
 		int totalPage = 0;
 		int totalBlock = 0;
 		int nowPage = 0;
@@ -271,6 +271,17 @@ public class JobFrontController extends HttpServlet {
 			request.setAttribute("nowBlock", nowBlock);
 			request.setAttribute("v2", jdto);
 			
+			//추천 공고 불러오기
+			Cookie[] cookies = request.getCookies();
+			CookieAction cookieAction = new CookieAction();
+			String email = cookieAction.getEmailInCookie(cookies);
+			MemberDAO mdao = new MemberDAO();
+			String job2_name = mdao.getJob2Code(email);
+			JobDAO jdao = new JobDAO();
+			Vector<jobDTO> job2 = jdao.getRecommand(job2_name);
+			
+			request.setAttribute("job2",job2);
+			
 			RequestDispatcher dis = request.getRequestDispatcher("./job/job_main.jsp");
 			
 			dis.forward(request, response);
@@ -303,6 +314,17 @@ public class JobFrontController extends HttpServlet {
 			request.setAttribute("totalBlock", totalBlock);
 			request.setAttribute("nowBlock", nowBlock);
 			request.setAttribute("v3", jdto);
+			
+			//추천 공고 불러오기
+			Cookie[] cookies = request.getCookies();
+			CookieAction cookieAction = new CookieAction();
+			String email = cookieAction.getEmailInCookie(cookies);
+			MemberDAO mdao = new MemberDAO();
+			String job2_name = mdao.getJob2Code(email);
+			JobDAO jdao = new JobDAO();
+			Vector<jobDTO> job2 = jdao.getRecommand(job2_name);
+			
+			request.setAttribute("job2",job2);
 			
 			RequestDispatcher dis = request.getRequestDispatcher("./job/job_main.jsp");
 			
