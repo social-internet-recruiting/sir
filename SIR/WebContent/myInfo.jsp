@@ -13,6 +13,26 @@
 <link rel="stylesheet" href="./css/schoolSearch.css">
 <title>Insert title here</title>
 </head>
+<script type=text/javascript">
+$(function(){
+
+    $("ul.sub").hide();
+
+	 $("ul.menu li").hover(function(){
+
+	    $("ul:not(:animated)",this).slideDown("fast");
+
+		},
+
+		function(){
+
+		   $("ul",this).slideUp("fast");
+
+		});
+
+ });
+
+</script>
 <style>
 
 #profileImageMain{
@@ -136,6 +156,20 @@ div.bhoechie-tab div.bhoechie-tab-content:not(.active){
  .paging {
 	text-align:center;
  }
+ 
+ .modal-scrap {
+  position: relative;
+  width: auto;
+  margin: 10px;
+}	
+
+.list-group-button {
+  position: relative;
+  display: block;
+  padding: 10px 15px;
+  margin-bottom: -2px;
+}
+
 </style>
 
 <body style="background-color:gray;">
@@ -176,6 +210,7 @@ div.bhoechie-tab div.bhoechie-tab-content:not(.active){
 			</div>
 			<div style="margin-left:100px">
 				<input class="btn btn-outline-success" type="button" data-toggle="modal" data-target="#myModal" value="정보수정"/>
+				<input class="btn btn-outline-success" type="button" data-toggle="modal" data-target="#SCModal" value="스크랩 확인"/>
 			</div>
 		</div>
 	</div>
@@ -239,6 +274,7 @@ div.bhoechie-tab div.bhoechie-tab-content:not(.active){
 								<h2 style="float:left">회원정보 수정</h2>
 								<input type="button" class="close btn btn-danger" style="float:right; weight:120px; height:50px;" data-dismiss="modal" value="&nbsp;&times;&nbsp;">
 							</div>
+							
 <div class="row" style="margin-top:20px">
 <div class="col-sm-2">							
 <div style="width:1000px;">
@@ -567,7 +603,74 @@ div.bhoechie-tab div.bhoechie-tab-content:not(.active){
 				</div>
 	
 	</div>
+<!-- 스크랩 시작 -->	
+	<div class="container">
+		<div class="modal container" id="SCModal" role="dialog" >
+			<div class="modal-scrap" style="width:100%">
+				<!-- Modal content-->
+				<div class="modal-content" style="">
+					<div class="modal-header" style="">						
+						<input type="button" class="close btn btn-danger" style="float:right; weight:100px; height:30px;" data-dismiss="modal" value="&nbsp;&times;&nbsp;">
+					</div>
+					<div class="list-group">
+					<div class="list-group-item">
+					
+						<div class="list-group-item">
+							<a href="" style="cursor:pointer;"><img src="./images/noneImage.jpg" style="width:50px;height:50px;"> &nbsp; nespia1@naver.com</a>							
+							<div style='float:right;'>
+								<b>글번호</b> <br/>
+								<div class="dropdown">
+         							<div href="" class="dropdown-toggle btn btn-outline-dark" data-toggle="dropdown" role="button">MENU</div>
+									<ul class="dropdown-menu" style="left:-90px;">
+										<li class="btn" style="width:100%"><a href="">게시물 수정</a></li>
+										<li class="btn" style="width:100%"><a href="">게시물 삭제</a></li>
+										<li class="btn" style="width:100%"><a href="">게시물 숨김</a></li>
+									</ul>	
+								</div>	
+							</div>								
+						</div>
+						
+						<div class="list-group">
+								<a align='left' style='height:400px;' class='list-group-item-img'><img src='" + sdto.getImg() + "' style='width:100%; height:400px;'></a>
+							<div class='list-group-item' align='left'><br/>
+								<span style='float:left; font-size: medium; font-weight: bold; font-style: italic;'>Contents</span><br/><br/>sdto.getContents()
+								<br/>
+								<hr style='margin:10px 0 10px 0;'/>
+								<span style='float:left; font-size: medium; font-weight: bold; font-style: italic;'>Comments</span><br/><br/>
+							<div style='align:left;' id='snsCommentsAdd_" + sdto.getIdx() + "'>sdto.getComments()
+								<div>
+									<div style='width: 20%; display:inline-block; vertical-align:top; word-break: break-all;'><a href='./friendInfo.mem?friend=" + commentAuth + "'> commentAuth </a></div>
+									<div style='width: 1%; display:inline-block; vertical-align:top;'></div>
+									<div style='width: 53%; display:inline-block; word-break: break-all;'>  comment </div>
+									<div style='width: 1%; display:inline-block; vertical-align:top;'></div>
+									<div style='width: 23%; display:inline-block; vertical-align:top; float:right;'>시간 : realTime </div>
+								</div>
+								<div style='margin-bottom:5px;'></div>
+								
+								<hr style='margin:10px 0 10px 0;'/>
+								<a style='cursor:pointer;' onclick='likePost(" + sdto.getIdx() + ");' ><img src='./images/좋아요.gif' style='height:25px; weight:25px;'>좋아요  &nbsp; + sdto.getLikecount() + 개</a>
+								<span style='float:right'> 글 작성시간 :  + timeS + </span>
+								<br/>
+								
+								<div class='list-group-item' style='height:78px;'>
+								<span class='list-group-item-img' style='float:left; width:80%; height:100%;'>
+								<textarea style='resize: none;' class='form-control' id='comments_" + sdto.getIdx() + "' name='comments_" + sdto.getIdx() + "' rows='2'></textarea>
+								</span>
+								<span class='list-group-item-img' style='float:right; width:20% ;height:100%;'>
+								<input type='button' class='btn btn-outline-dark' value='댓글 추가' style='width:100%; height:100%' onclick='addComments(" + sdto.getIdx() + ");' />
+								</span>
+								</div>
+							</div>
+							</div>
+						</div>
+					</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 	</form>
+<!-- 스크랩 끝 -->
 	
 	<jsp:include page="/include/footer.jsp"/>
 
