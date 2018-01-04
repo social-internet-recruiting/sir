@@ -64,7 +64,7 @@ public class MemberDAO {
 			con = getConnection();
 			
 			// friends는 text 타입으로  default 값을 줄수가 없다. 따라서 여기서 그냥 ''으로 디펄트 값 줌
-			String sql = "insert into member (name,email,pass,friends,scrap,asked) values (?,?,?,'','','')";
+			String sql = "insert into member (name,email,pass,friends,scrap,asked) values (?,?,?, ',' , ',' , ',')";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, name);
 			pstmt.setString(2, email);

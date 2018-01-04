@@ -158,7 +158,7 @@ div.bhoechie-tab div.bhoechie-tab-content:not(.active){
 					<a style="cursor:pointer;">${requestScope.mdto.phone}</a>
 				</div>
 				<div style="margin-left:100px">
-					<input class="btn btn-outline-success" type="button" value="친구요청"/>
+					<input class="btn btn-outline-success" type="button" value="친구요청" onclick="askFriend('${requestScope.mdto.email}');"/>
 				</div>
 			</div>
 		</div>
@@ -180,10 +180,14 @@ div.bhoechie-tab div.bhoechie-tab-content:not(.active){
 		</div>
 	</div>
 	
-</body>
 	<script src="./js/jquery-3.1.1.min.js"></script>
 	<script src="./js/bootstrap.js"></script>
-	<script src="./js/jquery-1.6.1.min.js"></script>
+	<script src="./js/jquery-1.9.1.min.js"></script>
+	<script src="./js/bootstrap.js"></script>
+	<!-- ./js/bootstrap.js 이거 두번해야지 에러 안뜨네 진짜 거지 같네 .... -->
 	
 	<script src="./js/infiniteScrollFriendInfo.js"></script>
+	<script src="./js/asked.js"></script>
+	
+</body>
 </html>

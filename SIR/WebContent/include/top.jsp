@@ -78,9 +78,8 @@
           	<img src="<%=imgPath%>" style="margin-top:-8px;" id="profileImageSmall" > &nbsp;회원정보 <span class="caret"></span>
           </a>
           <ul class="dropdown-menu">
-            <li><a href="#"></a></li>
             <li><a href="./myInfo.mem">My Page</a></li>
-            <li><a href="#">글 & 활동</a></li>
+            <li><a href="./askedPage.mem">글 & 활동</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="./removeEmailId.cookie">로 그 아 웃</a></li>
           </ul>

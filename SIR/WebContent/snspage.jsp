@@ -59,8 +59,11 @@
 		<ul class="list-group">
 	 	 	<li class="list-group-item" style="border-width: medium; font-size: large; font-style: italic; font-weight: bold;">Friends List</li>
 	 	 	<ul class="list-group" style="height:300px; overflow: auto;">
-			<c:forEach items="${fList}" var="fLists">
-				<a style="cursor:pointer;" align="left"><li class="list-group-item">${fLists}</li></a>
+	 	 	<c:if test="${empty fList}">
+				<a style="cursor:pointer;" align="left"><li class="list-group-item">친구가 없습니다.</li></a>
+			</c:if>
+			<c:forEach items="${fList}" var="fList">
+				<a style="cursor:pointer;" align="left" href="./friendInfo.mem?friend=${fList}"><li class="list-group-item">${fList}</li></a>
 			</c:forEach>
 			</ul>
 		</ul>

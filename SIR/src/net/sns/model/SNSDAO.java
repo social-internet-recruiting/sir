@@ -116,10 +116,11 @@ public class SNSDAO {
 			rs = pstmt.executeQuery();
 			if (rs.next()){
 				String friends = rs.getString("friends");
-				System.out.println("java파일에서 friends : '" + friends + "' 친구 길이 : " + friends.trim().length());
+				// System.out.println("java파일에서 friends : '" + friends + "' 친구 길이 : " + friends.trim().length());
 				if (friends.trim().length() != 0){ // friends 가 공란이 아니면 추가 할것, 공란일때도 친추수를 1로 잡고 있더라 씨발좆같네
 					String [] friendsArr = friends.split(",");
 					for (int i=0; i<friendsArr.length; i++){
+						if (friendsArr[i].trim().equals("")) continue;
 						friendsList.add(friendsArr[i]);
 					}
 				}
@@ -215,7 +216,7 @@ public class SNSDAO {
 			con = getConnection();
 
 			String sql 	= "select scrap from member where email=?"; 
-			System.out.println("sql1111 : " + sql);
+			
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, email);
 			rs = pstmt.executeQuery();
@@ -285,7 +286,7 @@ public class SNSDAO {
 			rsIn = pstmtIn.executeQuery();
 			while(rsIn.next()){
 				sdto.setIdx(rsIn.getInt(1));
-				System.out.println("확인 : " + rsIn.getInt(1));
+				//System.out.println("확인 : " + rsIn.getInt(1));
 				sdto.setImg(rsIn.getString(2));
 				sdto.setContents(rsIn.getString(3));
 				sdto.setComments(rsIn.getString(4));
@@ -353,6 +354,112 @@ public class SNSDAO {
 		}	
 		
 		return result;
+	}
+
+	public int askingFriend(String askingId, String askedId) {
+		int result = 1;
+		try {
+			con = getConnection();
+			
+			String sql 	= "select asked from member where asked like ? or friends like ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, "%," + askingId +  ",%");
+			pstmt.setString(2, "%," + askingId +  ",%");
+			rs = pstmt.executeQuery();
+			if (rs.next()){ // 이미 친구 이거나, 친구 추천 했거나
+				result = 0;
+			} else {// 요청에 askingId 없으면 1 반환 
+				sql = "update member set asked = concat(asked,?) where email = ?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1,askingId +  ",");
+				pstmt.setString(2,askedId);
+				pstmt.executeUpdate();
+				result = 1;
+			}
+		} catch(Exception e) {
+			System.out.println("askingFriend()메서드에서 에러 : " + e);
+		} finally {
+			freeResource();
+		}	
+		
+		return result;
+	}
+
+	public ArrayList<String> getFriendAskedList(String email) {
+		
+		ArrayList<String> result = new ArrayList<String>(); 
+		
+		try {
+			con = getConnection();
+
+			String sql 	= "select asked from member where email=?"; 
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, email);
+			rs = pstmt.executeQuery();
+			while(rs.next()){
+				String askedString = rs.getString(1);
+				String[] array = askedString.split(",");
+				for (int i=0; i<array.length; i++){
+					if (array[i].trim().equals("")) continue;
+					result.add(array[i]);
+				}
+			}
+
+		} catch(Exception e) {
+			System.out.println("getFriendAskedList()메서드에서 에러 : " + e);
+		} finally {
+			freeResource();
+		}
+		
+		return result;
+	}
+
+	public void askFriendAccept(String askedId, String askingId) {
+		try {
+			con = getConnection();
+			
+			String sql 	= "update member set asked = replace(asked,?,'') where email=?; ";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, askingId + ",");
+			pstmt.setString(2, askedId); // asked 에서 삭제		
+			pstmt.executeUpdate();
+			
+			sql = "update member set friends = concat(friends,?) where email=?;";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, askingId + ","); 
+			pstmt.setString(2, askedId); // 요청 받은 사람 친구에 추가 
+			pstmt.executeUpdate();
+			
+			sql = "update member set friends = concat(friends,?) where email=?;";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, askedId + ","); 
+			pstmt.setString(2, askingId); // 요청한 사람 친구에 추가 				
+			pstmt.executeUpdate();
+			
+			// sql 하나라 합쳐서 하면 오류 난다, 분리해서 실핼 할것
+
+		} catch(Exception e) {
+			System.out.println("askFriendAccept()메서드에서 에러 : " + e);
+		} finally {
+			freeResource();
+		}
+	}
+	
+	public void askFriendReject(String askedId, String askingId) {
+		try {
+			con = getConnection();
+			
+			String sql 	= "update member set asked = replace(asked,?,'') where email=?; ";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, askingId + ",");
+			pstmt.setString(2, askedId); // asked 에서 삭제		
+			pstmt.executeUpdate();
+
+		} catch(Exception e) {
+			System.out.println("askFriendReject()메서드에서 에러 : " + e);
+		} finally {
+			freeResource();
+		}
 	}
 	
 }

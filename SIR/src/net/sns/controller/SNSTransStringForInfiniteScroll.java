@@ -31,7 +31,7 @@ public class SNSTransStringForInfiniteScroll {
 		
 		String result = "";
 		int lastIdxNum = 0;
-		System.out.println("slistArr : " + slistArr);
+		// System.out.println("slistArr : " + slistArr);
 		for (int i=0; i<slistArr.size(); i++){
 			SNSDTO sdto = (SNSDTO)slistArr.get(i);
 			// db 글 뿌려주는 로직 (9개씩)
