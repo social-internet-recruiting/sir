@@ -62,7 +62,7 @@ public class EmailAction {
 	public boolean sendEmailToCertMethod(String email, String addParam) {
 		String subject = 	"반갑습니다. SIR 인증 메일 입니다.";
 		String content = 	"아래 링크를 클릭하세요<br/>"
-							// + "<a target='_blank' href='http://192.168.4.224:8080/SIR/main.jsp?center=registerOk.jsp" + addParam + "'>인증받기</a><br/>"
+							// + "<a target='_blank' href='http://192.168.4.227:8080/SIR/main.jsp?center=registerOk.jsp" + addParam + "'>인증받기</a><br/>"
 							// + "<a target='_blank' href='http://192.168.0.9:8080/SIR/main.jsp?center=registerOk.jsp" + addParam + "'>인증받기</a><br/>"
 							+ "<a target='_blank' href='http://localhost:8080/SIR/main.jsp?center=registerOk.jsp" + addParam + "'>인증받기</a><br/>"
 							+ "5분 이내에 링크 클릭하세요. <br/>"

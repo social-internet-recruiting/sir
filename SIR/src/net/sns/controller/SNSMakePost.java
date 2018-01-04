@@ -34,7 +34,7 @@ public class SNSMakePost {
 				+ 	sdto.getComments()
 				+	"</div>"
 				+ 	"<hr style='margin:10px 0 10px 0;'/>"
-				+ 	"<a style='cursor:pointer;' ><img src='./images/좋아요.gif' style='height:25px; weight:25px;'>좋아요  &nbsp;" + sdto.getLikecount() + "개</a>"
+				+ 	"<a style='cursor:pointer;' onclick='likePost(" + sdto.getIdx() + ");' ><img src='./images/좋아요.gif' style='height:25px; weight:25px;'>좋아요  &nbsp;" + sdto.getLikecount() + "개</a>"
 				+	"<span style='float:right'> 글 작성시간 : " + timeS + "</span>"
 				+ 	"<br/>"
 				+ 	"</div>"

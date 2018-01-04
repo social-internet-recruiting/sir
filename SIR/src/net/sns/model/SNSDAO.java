@@ -263,7 +263,7 @@ public class SNSDAO {
 		return result;
 	}
 	public SNSDTO getSNSDTOForScrap(int idxnum){
-		
+		// 전역 변수로 선언한 con, pstmt, rs, ds 같이 사용하면 에러 발생함
 		Connection conIn = null;
 		PreparedStatement pstmtIn = null;
 		ResultSet rsIn = null;
@@ -333,9 +333,10 @@ public class SNSDAO {
 		try {
 			con = getConnection();
 			
-			String sql 	= "select scrap from member where scrap like ?";
+			String sql 	= "select scrap from member where (scrap like ?) and email=?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, "%," + postIdx +  ",%");
+			pstmt.setString(2, email);
 			rs = pstmt.executeQuery();
 			if (rs.next()){
 				result = 0;
@@ -361,10 +362,11 @@ public class SNSDAO {
 		try {
 			con = getConnection();
 			
-			String sql 	= "select asked from member where asked like ? or friends like ?";
+			String sql 	= "select asked from member where (asked like ? or friends like ?) and email=?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, "%," + askingId +  ",%");
 			pstmt.setString(2, "%," + askingId +  ",%");
+			pstmt.setString(3, askedId);
 			rs = pstmt.executeQuery();
 			if (rs.next()){ // 이미 친구 이거나, 친구 추천 했거나
 				result = 0;
@@ -418,18 +420,13 @@ public class SNSDAO {
 		try {
 			con = getConnection();
 			
-			String sql 	= "update member set asked = replace(asked,?,'') where email=?; ";
+			String sql 	= "update member set asked = replace(asked,?,''), friends = concat(friends,?) where email=?; ";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, askingId + ",");
-			pstmt.setString(2, askedId); // asked 에서 삭제		
+			pstmt.setString(1, askingId + ","); // asked 에서 삭제		
+			pstmt.setString(2, askingId + ","); // 요청 받은 사람 친구에 추가 
+			pstmt.setString(3, askedId);  
 			pstmt.executeUpdate();
-			
-			sql = "update member set friends = concat(friends,?) where email=?;";
-			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, askingId + ","); 
-			pstmt.setString(2, askedId); // 요청 받은 사람 친구에 추가 
-			pstmt.executeUpdate();
-			
+
 			sql = "update member set friends = concat(friends,?) where email=?;";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, askedId + ","); 
@@ -461,5 +458,49 @@ public class SNSDAO {
 			freeResource();
 		}
 	}
-	
+
+	public int getFriendCount(String email) {
+		int friendsCount = 0;
+		try {
+			con = getConnection();
+			
+			String sql 	= "select friends from member where email=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, email);	
+			rs = pstmt.executeQuery();
+			while(rs.next()){
+				String friendsString = rs.getString(1);
+				String [] friendsList = friendsString.split(",");
+				for (int k=0; k<friendsList.length; k++){
+					if (friendsList[k].trim().equals("")) continue;
+					friendsCount++;
+				}
+			}
+		} catch(Exception e) {
+			System.out.println("getFriendCount()메서드에서 에러 : " + e);
+		} finally {
+			freeResource();
+		}
+		return friendsCount;
+	}
+
+	public int getPostCount(String email) {
+		int postCount = 0;
+		try {
+			con = getConnection();
+			
+			String sql 	= "select count(*) from snsboard where auth=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, email);
+			rs = pstmt.executeQuery();
+			while(rs.next()){
+				postCount = rs.getInt(1);
+			}
+		} catch(Exception e) {
+			System.out.println("getPostCount()메서드에서 에러 : " + e);
+		} finally {
+			freeResource();
+		}
+		return postCount;
+	}
 }
