@@ -147,9 +147,15 @@ div.bhoechie-tab div.bhoechie-tab-content:not(.active){
 					<input type="hidden" value="${requestScope.mdto.email}" id="friend" name="friend" />
 					<h1>${requestScope.mdto.email}</h1>
 				</div>
-				<div style="margin:10px 0 10px 0;">
-					<span>게시물	 <span>0</span></span>
-					<span>친구 <span>0</span></span>
+				<div style="margin:10px 0 10px 0; width:200px;" >
+					<c:if test="${empty postCount}">
+						<c:set var="postCount" value="0"/>
+					</c:if>
+					<c:if test="${empty friendCount}">
+						<c:set var="friendCount" value="0"/>
+					</c:if>				
+					<span>게시물 : <span>${postCount}</span> 개 ,</span>
+					<span>친구 : <span>${friendCount}</span> 명</span>
 				</div>
 				<div>
 					<a style="cursor:pointer;">${requestScope.mdto.name}</a>

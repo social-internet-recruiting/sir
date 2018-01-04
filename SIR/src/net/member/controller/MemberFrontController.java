@@ -196,8 +196,19 @@ public class MemberFrontController extends HttpServlet {
 				dis.forward(request, response);
 				
 			} else {
+				
 				MemberDTO mdto = new MemberDTO();
 				mdto = mdao.getMemberInfoDTO(friend);
+				
+				// 친구 숫자
+				SNSDAO sdao = new SNSDAO();
+				int friendCount = sdao.getFriendCount(friend);
+				request.setAttribute("friendCount", friendCount);
+				
+				// 게시글 숫자
+				int postCount = sdao.getPostCount(friend);
+				request.setAttribute("postCount", postCount);
+				
 				request.setAttribute("mdto", mdto);
 				
 				RequestDispatcher dis = request.getRequestDispatcher("main.jsp?center=friendInfo.jsp");
