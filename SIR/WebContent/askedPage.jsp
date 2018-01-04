@@ -35,14 +35,14 @@
   border: 1px solid red;
 }
 
-.wrapper-friend {
-     background-image: url( "./images/friend.gif" );
+.wrapper-friends {
+      width:100%; height: 100%; background-image: url( "../images/friend.gif" );
 }
 
 </style>
-<body class="wrapper-friend" style="background-color:rgb(50,50,50); z-index: 0;">
+<body class="wrapper-friend" style="background-color:gray; z-index: 0;">
 
-	<div class="container" style="background-color:#fff;margin-top:-20px">
+	<div class="container" style="background-color:#fff;margin-top:-22px">
 		<div class="row" style="margin:50px 0 50px 0">
 		<div class="btn-warning">
 			<h1>알림 List</h1>
@@ -51,10 +51,10 @@
 		<c:if test="${empty mainContents}">
 			<h1>요청이 없습니다.</h1>
 		</c:if>
- 		<c:forEach var="mainContents" items="${mainContents}">
-			<div class="list-group">
+<%-- 		<c:forEach var="mainContents" items="${mainContents}">
+ --%>			<div class="list-group">
  				<div class="list-group-text" style="width:60%;float:left;height:auto;border-radius: 4px;">
- 					<em style="font-size:22px;color:green;"><b>${mainContents} <b> </b></em> <b style="font-size:22px;">&nbsp;님의 친구 요청!</b>
+ 					<em style="font-size:22px;color:green;"><b>${mainContents} </b></em> <b style="font-size:22px;">&nbsp;님의 친구 요청!</b>
  				</div>
  				<div class="list-group-failed btn btn-outline-info" style="width:20%;float:left;height:auto;">
  					<div class="list-group-button" style="font-size:15px; width:100%; height:auto;" value="수락" onclick="askFriendAccept('${mainContents}');">수락</div>
@@ -63,8 +63,8 @@
 					<div class="list-group-button" style="font-size:15px; width:100%; height:auto%;" value="거절" onclick="askFriendReject('${mainContents}');">거절</div>
 				</div>
 			</div>
- 		</c:forEach>
-	</div>
+<%-- 		</c:forEach>
+ --%>	</div>
 	</div>
 
 </body>
