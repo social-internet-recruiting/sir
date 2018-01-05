@@ -9,7 +9,9 @@ $(document).ready(function (event){
         var subtract = documentHeight - scrollHeight; 
         //스크롤이 맨아래로 갔는지 아닌지 확인하는 if문
         if(subtract<3){
-        	infiniteScrollSnsAjaxMethod();	
+        	setTimeout(function() { // 시간 간격을 안주면 게시글을 두번 조회하는 오류가 있음
+        		infiniteScrollSnsAjaxMethod();
+        	}, 500);
         }
         
     });
