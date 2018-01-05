@@ -47,7 +47,7 @@
 	
 </style>
 
-<body style="background-color:gray;">
+<body class="wrapper" style="background-color:gray;">
 
 
 <div class="container" style="background-color:white;margin-top:30px;">

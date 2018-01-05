@@ -42,7 +42,7 @@
 		<hr size="1">
 		<p>모집인원: ${dto.recruit_volume}명</p>
 		<hr size="1">
-		<p>급여:${dto.income_up}만원</p>
+		<p>급여: ${dto.income_up}만원</p>
 		<hr size="1">
 		지원자격
 		<p>

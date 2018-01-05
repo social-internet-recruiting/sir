@@ -45,7 +45,7 @@
 <!-- header 부분  시작-->
 <jsp:include page="/include/top.jsp"/>
 <!-- header 부분 끝 -->
-<body style="background-color:gray;">
+<body class="wrapper" style="background-color:gray;">
 
 <div class="container" style="background-color:white;margin-top:-25px;" >   
 	<br/>
@@ -471,7 +471,7 @@
     <label class="btn btn-outline-danger" style="font-size:20px;width:19.66%;"><input type="checkbox" name="" value=""  /> 진안군</label>
   </div>
   <div role="tabpanel" class="tab-pane" id="CN">
-    <label class="btn btn-outline-danger" style="font-size:20px;width:19.66%;"><input type="checkbox" name="" value=""  /> 충남전체</label>
+  	<label class="btn btn-outline-danger" style="width:19.66%;font-size:20px;"><input type="checkbox" name="" value=""  />충남전체</label>
     <label class="btn btn-outline-danger" style="font-size:20px;width:19.66%;"><input type="checkbox" name="" value=""  /> 계룡시</label>
     <label class="btn btn-outline-danger" style="font-size:20px;width:19.66%;"><input type="checkbox" name="" value=""  /> 공주시</label>
     <label class="btn btn-outline-danger" style="font-size:20px;width:19.66%;"><input type="checkbox" name="" value=""  /> 금산군</label>
