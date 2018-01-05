@@ -40,7 +40,7 @@
 }
 
 </style>
-<body class="wrapper" style="background-color:gray; z-index: 0;">
+<body class="wrapper" style="background-color:rgb(50,50,50); z-index: 0;">
 
 	<div class="container" style="background-color:#fff;margin-top:-22px">
 		<div class="row" style="margin:50px 0 50px 0">

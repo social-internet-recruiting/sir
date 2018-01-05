@@ -45,7 +45,7 @@
 <!-- header 부분  시작-->
 <jsp:include page="/include/top.jsp"/>
 <!-- header 부분 끝 -->
-<body class="wrapper" style="background-color:gray;">
+<body class="wrapper" style="background-color:rgb(50,50,50);">
 
 <div class="container" style="background-color:white;margin-top:-25px;" >   
 	<br/>

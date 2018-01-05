@@ -11,11 +11,6 @@
 
 <title>Insert title here</title>
 
-</head>
-<body>
-
-</head>
-
 <style>
 .container1 {
   padding-right: 15px;
@@ -47,7 +42,7 @@
 	
 </style>
 
-<body class="wrapper" style="background-color:gray;">
+<body class="wrapper" style="background-color:rgb(50,50,50);">
 
 
 <div class="container" style="background-color:white;margin-top:30px;">

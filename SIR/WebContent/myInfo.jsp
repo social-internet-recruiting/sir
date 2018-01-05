@@ -178,7 +178,7 @@ div.bhoechie-tab div.bhoechie-tab-content:not(.active){
 
 </style>
 
-<body class="wrapper" style="background-color:gray;">
+<body class="wrapper" style="background-color:rgb(50,50,50);">
 	<jsp:include page="/include/top.jsp"/>
 		
 
