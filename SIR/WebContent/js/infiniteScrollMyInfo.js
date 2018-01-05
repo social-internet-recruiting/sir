@@ -17,10 +17,16 @@ $(document).ready(function (event){
     });
 	
 	function infiniteScrollMyInfoAjaxMethod(){
+		try { 
+			var friend = document.getElementById("friend").value;
+			urlPath = "./infiniteScrollMyInfo.snsboard?friend=" + friend;
+		} catch (e) { // 에러나면 friend 값이 없는것 따라서 myinfo 조회중
+			urlPath = "./infiniteScrollMyInfo.snsboard";
+		}
 		
 		$.ajax({ 
 			type: "get",
-			url: "./infiniteScrollMyInfo.snsboard",
+			url: urlPath,
 			data: ({idxnuminfo: idxnumMyinfo}), 
 	        success : function(data){
 	        	//alert(data);

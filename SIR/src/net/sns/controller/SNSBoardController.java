@@ -64,6 +64,9 @@ public class SNSBoardController extends HttpServlet {
 						// 안그럼 페이지 이동 하려고 함
 			} else if ("/infiniteScrollMyInfo.snsboard".equals(command)){ // 무한 스크롤 (myinfo) 할때 작동
 				SNSGetPostList slist = new SNSGetPostList();
+				if (request.getParameter("friend") != null) { // friend 값이 있으면 email 값을 friend 로 변경
+					email = request.getParameter("friend");
+				}
 				ArrayList<SNSDTO> slistArr = slist.getInfoList(request, response, email);
 				SNSTransStringForInfiniteScroll ts = new SNSTransStringForInfiniteScroll();
 				String resultString = ts.getInfoString(slistArr);
@@ -73,16 +76,6 @@ public class SNSBoardController extends HttpServlet {
 			} else if ("/infiniteScrollMyScrap.snsboard".equals(command)){ // 무한 스크롤 (my Scrap) 할때 작동
 				SNSGetPostList slist = new SNSGetPostList();
 				ArrayList<SNSDTO> slistArr = slist.getScrapList(request, response, email);
-				SNSTransStringForInfiniteScroll ts = new SNSTransStringForInfiniteScroll();
-				String resultString = ts.getInfoString(slistArr);
-				PrintWriter out = response.getWriter();
-				out.println(resultString);
-				return;
-			} else if ("/infiniteScrollFriendInfo.snsboard".equals(command)){ // 무한 스크롤 (friend info) 할때 작동
-				SNSGetPostList slist = new SNSGetPostList();
-				System.out.println("friend request 값 : " + request.getParameter("friend"));
-				String friend = request.getParameter("friend");
-				ArrayList<SNSDTO> slistArr = slist.getInfoList(request, response, friend);
 				SNSTransStringForInfiniteScroll ts = new SNSTransStringForInfiniteScroll();
 				String resultString = ts.getInfoString(slistArr);
 				PrintWriter out = response.getWriter();
@@ -117,6 +110,15 @@ public class SNSBoardController extends HttpServlet {
 				String postIdx = request.getParameter("postIdx");
 				SNSDAO sdao = new SNSDAO();
 				int result = sdao.likeCount(email, postIdx);
+				PrintWriter out = response.getWriter();
+				out.println(result);
+				return;
+			} else if ("/showPost.snsboard".equals(command)) { // 스크랩 자기게시글 보기 
+				int postIdx = Integer.parseInt(request.getParameter("postIdx"));
+				SNSDAO sdao = new SNSDAO();
+				SNSDTO sdto = sdao.getSNSDTOForScrap(postIdx);
+				SNSMakePostForDetail showPost = new SNSMakePostForDetail();
+				String result = showPost.getPostDetail(sdto);
 				PrintWriter out = response.getWriter();
 				out.println(result);
 				return;

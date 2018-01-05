@@ -51,8 +51,8 @@
 		<c:if test="${empty mainContents}">
 			<h1>요청이 없습니다.</h1>
 		</c:if>
-<%-- 		<c:forEach var="mainContents" items="${mainContents}">
- --%>			<div class="list-group">
+		<c:forEach var="mainContents" items="${mainContents}">
+			<div class="list-group">
  				<div class="list-group-text" style="width:60%;float:left;height:auto;border-radius: 4px;">
  					<em style="font-size:22px;color:green;"><b>${mainContents} </b></em> <b style="font-size:22px;">&nbsp;님의 친구 요청!</b>
  				</div>
@@ -63,8 +63,8 @@
 					<div class="list-group-button" style="font-size:15px; width:100%; height:auto%;" value="거절" onclick="askFriendReject('${mainContents}');">거절</div>
 				</div>
 			</div>
-<%-- 		</c:forEach>
- --%>	</div>
+ 		</c:forEach>
+ 		</div>
 	</div>
 
 </body>

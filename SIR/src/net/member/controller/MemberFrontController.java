@@ -211,7 +211,10 @@ public class MemberFrontController extends HttpServlet {
 				
 				request.setAttribute("mdto", mdto);
 				
-				RequestDispatcher dis = request.getRequestDispatcher("main.jsp?center=friendInfo.jsp");
+				// 누구 정보인지 담기, friendInfo, myInfo 같이 사용하기 때문에
+				request.setAttribute("friend", friend);
+				
+				RequestDispatcher dis = request.getRequestDispatcher("myInfo.jsp");
 				dis.forward(request, response);
 			}
 		} else if ("/askedPage.mem".equals(command)) {

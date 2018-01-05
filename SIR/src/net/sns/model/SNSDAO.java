@@ -282,12 +282,15 @@ public class SNSDAO {
 		} catch (Exception e) {
 			System.out.println("getSNSDTOForScrap(sub)에서 에러 남 : " + e);
 		}
-
 		SNSDTO sdto = new SNSDTO();
 		try {
 			conIn = dsIn.getConnection();
 			// return 할 arrayList 얻기
-			String sql = "select * from snsboard where idx = ?";
+			// authimg 때문에 join 해서 가져옴
+			String sql 	= "select s.*, m.img " 
+						+ "from snsboard s join member m "
+						+ "on s.auth  = m.email "
+						+ "where s.idx = ?";
 			pstmtIn = conIn.prepareStatement(sql);
 			pstmtIn.setInt(1, idxnum);
 			rsIn = pstmtIn.executeQuery();
@@ -297,11 +300,11 @@ public class SNSDAO {
 				sdto.setImg(rsIn.getString(2));
 				sdto.setContents(rsIn.getString(3));
 				sdto.setComments(rsIn.getString(4));
-				sdto.setLikecount(rs.getInt(7));
+				sdto.setLikecount(rsIn.getInt(7));
 				sdto.setAuth(rsIn.getString(8));
 				sdto.setTime(rsIn.getTimestamp(9));
-				sdto.setLikePeople(rs.getString("likePeople"));
-				// sdto.setAuthimg(rsIn.getString(11)); // db 에는 없는값, sdto에만 있는값 그래서 맨 마지막에 위치
+				sdto.setLikePeople(rsIn.getString("likePeople"));
+				sdto.setAuthimg(rsIn.getString(11)); // db 에는 없는값, sdto에만 있는값 그래서 맨 마지막에 위치
 				
 			}
 		} catch(Exception e) {
@@ -317,6 +320,7 @@ public class SNSDAO {
 		}
 		return sdto;
 	}
+	
 	
 	public void addCommentsInPost(int idx, String result) {
 		// 기존의 comment column의 내용을 얻고, 거기다가 추가 해줄것
@@ -549,8 +553,4 @@ public class SNSDAO {
 		return result;
 	}
 
-	public int getLikeCount(String likePeople) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 }

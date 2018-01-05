@@ -14,7 +14,9 @@ public class SNSGetComment {
 				+ "<div style='width: 1%; display:inline-block; vertical-align:top;'></div>"
 				+ "<div style='width: 53%; display:inline-block; word-break: break-all;'>" +  comment + "	</div>"
 				+ "<div style='width: 1%; display:inline-block; vertical-align:top;'></div>"
-				+ "<div style='width: 23%; display:inline-block; vertical-align:top; float:right;'>시간 : " + realTime + "</div>"
+				+ "<div style='width: 23%; display:inline-block; vertical-align:top; float:right;'>"
+				+ "<span style='float:right;'> 시간 : " + realTime + "</span>" 
+				+ "</div>"
 				+ "</div><div style='margin-bottom:5px;'></div>";
 		return result;
 	}
