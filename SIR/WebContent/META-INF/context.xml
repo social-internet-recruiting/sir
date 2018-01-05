@@ -10,5 +10,7 @@
 	username="jspid"
 	password="jsppass"
 	/>
-
+<!--jdbc:mysql://localhost:3306/sir--><!--jdbc:mysql://localhost/itwillbs4-->
+<!--jspid--><!--itwillbs4-->
+<!--jsppass--><!--itwillbs8030909-->
 </Context>

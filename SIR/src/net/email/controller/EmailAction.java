@@ -64,7 +64,8 @@ public class EmailAction {
 		String content = 	"아래 링크를 클릭하세요<br/>"
 							// + "<a target='_blank' href='http://192.168.4.227:8080/SIR/main.jsp?center=registerOk.jsp" + addParam + "'>인증받기</a><br/>"
 							// + "<a target='_blank' href='http://192.168.0.9:8080/SIR/main.jsp?center=registerOk.jsp" + addParam + "'>인증받기</a><br/>"
-							+ "<a target='_blank' href='http://localhost:8080/SIR/main.jsp?center=registerOk.jsp" + addParam + "'>인증받기</a><br/>"
+							 + "<a target='_blank' href='http://localhost:8080/SIR/main.jsp?center=registerOk.jsp" + addParam + "'>인증받기</a><br/>"
+						    // + "<a target='_blank' href='http://itwillbs4.cafe24.com/SIR/main.jsp?center=registerOk.jsp" + addParam + "'>인증받기</a><br/>"
 							+ "5분 이내에 링크 클릭하세요. <br/>"
 							+ "로그인 완료된 창이 실행됩니다.";
 		boolean result = sendEmail(email, subject, content);

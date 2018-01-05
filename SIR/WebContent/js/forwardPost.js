@@ -24,6 +24,7 @@
 	};
 
 
+	// var webSocketPost = new WebSocket('ws://itwillbs4.cafe24.com/SIR/forwardPost'); // webservlet 주소 = forwardPost
 	// var webSocketPost = new WebSocket('ws://192.168.4.227:8080/SIR/forwardPost');
 	var webSocketPost = new WebSocket('ws://localhost:8080/SIR/forwardPost'); // webservlet 주소 = forwardPost
 	// var webSocketPost = new WebSocket('ws://192.168.0.9:8080/SIR/forwardPost'); // webservlet 주소 = forwardPost    
