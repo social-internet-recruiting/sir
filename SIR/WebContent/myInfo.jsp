@@ -269,7 +269,7 @@ div.bhoechie-tab div.bhoechie-tab-content:not(.active){
          			<td colspan="5" align="center"><font color="red">회사 목록이 없습니다</font></td>
          		</tr>
          		</c:if>
-				<tr class="btn-outline-dark" align="center" href="#" onclick="window.open('scrap_detail.job?scrap_idx=${sdto.scrap_idx}','${sdto.recruit_notice}','width=700,height=700,left=250,right=150,resize=no,scrollbars=yes');">
+				<tr class="btn-outline-dark" align="center" href="#" onclick="window.open('scrap_detail.job?scrap_idx=${sdto.scrap_idx}','${sdto.recruit_notice}','width=700,height=720,left=250,right=150,resize=no,scrollbars=yes');">
 					<td>${sdto.co_title}</td>
 					<td>${sdto.recruit_notice}</td>
 					<td>${sdto.qualify_up} /경력 ${sdto.career_up}</td>

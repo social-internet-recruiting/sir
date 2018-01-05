@@ -71,7 +71,7 @@
 						<div style="font-size:20px; width:100%;" href="#" 
 						onclick="window.open('job_detail.job?job_idx=${job.job_idx}',
 						'${job.recruit_notice}',
-						'width=700,height=700,left=250,right=150,resize=no,scrollbars=yes');">모집개요</div>
+						'width=700,height=720,left=250,right=150,resize=no,scrollbars=yes');">모집개요</div>
 					</div>					
 			</c:forEach>
 		</div>	
@@ -622,7 +622,7 @@
          	<td colspan="5" align="center"><font color="red">회사 목록이 없습니다</font></td>
          </tr>
       </c:if>
-      <tr class="btn-outline-dark" align="center" href="#" onclick="window.open('job_detail.job?job_idx=${v1.job_idx}','${v1.recruit_notice}','width=700,height=700,left=250,right=150,resize=no,scrollbars=yes');">
+      <tr class="btn-outline-dark" align="center" href="#" onclick="window.open('job_detail.job?job_idx=${v1.job_idx}','${v1.recruit_notice}','width=700,height=720,left=250,right=150,resize=no,scrollbars=yes');">
          <td>${v1.co_title}</td>
          <td>${v1.recruit_notice}</td>
          <td>${v1.qualify_up} /${v1.career} ${v1.career_up}</td>
@@ -637,7 +637,7 @@
          	<td colspan="5" align="center"><font color="red">회사 목록이 없습니다</font></td>
          </tr>
       </c:if>
-      <tr class="btn-outline-dark" align="center" href="#" onclick="window.open('job_detail.job?job_idx=${v2.job_idx}','${v2.recruit_notice}','width=700,height=700,left=250,right=150,resize=no,scrollbars=yes');">
+      <tr class="btn-outline-dark" align="center" href="#" onclick="window.open('job_detail.job?job_idx=${v2.job_idx}','${v2.recruit_notice}','width=700,height=720,left=250,right=150,resize=no,scrollbars=yes');">
          <td>${v2.co_title}</td>
          <td>${v2.recruit_notice}</td>
          <td>${v2.qualify_up} /${v2.career} ${v2.career_up}</td>
@@ -652,7 +652,7 @@
          	<td colspan="5" align="center"><font color="red">회사 목록이 없습니다</font></td>
          </tr>
       </c:if>
-      <tr class="btn-outline-dark" align="center" href="#" onclick="window.open('job_detail.job?job_idx=${v3.job_idx}','${v3.recruit_notice}','width=700,height=700,left=250,right=150,resize=no,scrollbars=yes');">
+      <tr class="btn-outline-dark" align="center" href="#" onclick="window.open('job_detail.job?job_idx=${v3.job_idx}','${v3.recruit_notice}','width=700,height=720,left=250,right=150,resize=no,scrollbars=yes');">
          <td>${v3.co_title}</td>
          <td>${v3.recruit_notice}</td>
          <td>${v3.qualify_up} /${v3.career} ${v3.career_up}</td>
