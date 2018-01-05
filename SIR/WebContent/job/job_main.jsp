@@ -71,7 +71,7 @@
 						<div style="font-size:20px; width:100%;" href="#" 
 						onclick="window.open('job_detail.job?job_idx=${job.job_idx}',
 						'${job.recruit_notice}',
-						'width=700,height=860,left=250,right=150,resize=no,scrollbars=yes');">모집개요</div>
+						'width=700,height=8,left=250,right=150,resize=no,scrollbars=yes');">모집개요</div>
 					</div>					
 			</c:forEach>
 		</div>	
@@ -583,17 +583,17 @@
 	<select class="btn btn-outline-danger" style="font-size:20px;width:50.5%;height:42px;" name="income_up">
 		<option value="0">전체</option>
 		<option value="1400">1400만원이상</option>
-		<option value="1600">1600만원이상</option>
+		<option value="10">10만원이상</option>
 		<option value="1800">1800만원이상</option>
 		<option value="2000">2000만원이상</option>
 		<option value="2200">2200만원이상</option>
 		<option value="2400">2400만원이상</option>
-		<option value="2600">2600만원이상</option>
+		<option value="20">20만원이상</option>
 		<option value="2800">2800만원이상</option>
 		<option value="3000">3000만원이상</option>
 		<option value="3200">3200만원이상</option>
 		<option value="3400">3400만원이상</option>
-		<option value="3600">3600만원이상</option>
+		<option value="30">30만원이상</option>
 		<option value="3800">3800만원이상</option>
 		<option value="4000">4000만원이상</option>
 	</select>
@@ -622,7 +622,7 @@
          	<td colspan="5" align="center"><font color="red">회사 목록이 없습니다</font></td>
          </tr>
       </c:if>
-      <tr class="btn-outline-dark" align="center" href="#" onclick="window.open('job_detail.job?job_idx=${v1.job_idx}','${v1.recruit_notice}','width=700,height=860,left=250,right=150,resize=no,scrollbars=yes');">
+      <tr class="btn-outline-dark" align="center" href="#" onclick="window.open('job_detail.job?job_idx=${v1.job_idx}','${v1.recruit_notice}','width=700,height=8,left=250,right=150,resize=no,scrollbars=yes');">
          <td>${v1.co_title}</td>
          <td>${v1.recruit_notice}</td>
          <td>${v1.qualify_up} /${v1.career} ${v1.career_up}</td>
